@@ -1,15 +1,22 @@
-from abc import ABC, abstractmethod
+import abc
 from aethelgard.core.broker import BaseTaskBroker
 
-class BaseServerTransport(ABC):
-    """
-    Abstract interface for the network layer receiving requests.
-    """
+class BaseServerTransport(abc.ABC):
+    """Abstract interface for the network layer receiving and routing requests."""
     def __init__(self, broker: BaseTaskBroker):
-        # Dependency Injection: The transport relies on the broker to manage state
+        # Dependency Injection: Transport relies on Broker
         self.broker = broker
 
-    @abstractmethod
-    async def start(self, host: str, port: int):
-        """Bootstraps the network listener (e.g., uvicorn.run for FastAPI)."""
+    @abc.abstractmethod
+    async def start(self, host: str, port: int) -> None:
+        pass
+
+class BaseClientTransport(abc.ABC):
+    """Abstract interface for the client-side outbound poller."""
+    @abc.abstractmethod
+    async def poll_tasks(self, client_id: str) -> list:
+        pass
+
+    @abc.abstractmethod
+    async def submit_insight(self, client_id: str, request_id: str, insight: str) -> None:
         pass
