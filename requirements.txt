@@ -1,0 +1,11 @@
+### requirements.txt ###
+
+# === Core numerics & IO ===
+
+# === Utilities ===
+python-dotenv>=1.0
+colorlog==6.10.1
+
+# === Testing ===
+pytest>=8.0
+
