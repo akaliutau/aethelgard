@@ -28,18 +28,19 @@ aethelgard/
 │   ├── __init__.py
 │   ├── core/                 # Abstract Base Classes (The "Ports")
 │   │   ├── broker.py         # Defines TaskBroker interface
-│   │   ├── transport.py      # Defines ServerTransport & ClientTransport
+│   │   └── transport.py      # Defines ServerTransport & ClientTransport
 │   ├── brokers/              # Concrete state managers (The "Adapters")
 │   │   ├── in_memory.py      # For local testing (no dependencies)
-│   │   ├── redis_broker.py   # For production (requires Redis)
+│   │   └── redis_broker.py   # For production (requires Redis)
 │   ├── transports/           # Concrete web servers/clients
 │   │   ├── fastapi_server.py # REST/HTTP implementation
-│   │   ├── httpx_client.py   # Async HTTP client implementation
+│   │   └── httpx_client.py   # Async HTTP client implementation
 │   ├── orchestrator.py       # The central SuperLink logic
 │   └── client_node.py        # The hospital SuperNode logic
 ├── samples/                 
-│   ├── 01_redis_fastapi/     # The PoC we built earlier
-│   └── 02_lancedb_medgemma/  # Full semantic firewall pipeline
+│   ├── 01_local_simulation.py    # The minimal PoC - used only for internal logic tests 
+│   ├── 02_production_server.py   # Integration tests
+│   └── 03_gemma_pipeline.py      # Full semantic firewall pipeline
 ├── tests/
 ├── docker-compose.yml        # Instantly spins up the environment
 ├── pyproject.toml            # Modern Python packaging
@@ -57,15 +58,15 @@ Ensure you have the Google Cloud SDK installed and authenticated.
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/akaliutau/square-tree.git
-cd square-tree
+git clone https://github.com/akaliutau/aethelgard.git
+cd aethelgard
 ```
 
 2. **Create and activate a Conda environment**
 
 ```bash
-conda create -n squaretree python=3.10 -y
-conda activate squaretree
+conda create -n aethelgard python=3.12 -y
+conda activate aethelgard
 ```
 
 3. **Install dependencies**
@@ -73,6 +74,13 @@ conda activate squaretree
 ```bash
 pip install -r requirements.txt
 ```
+
+4. (optional) **Run the Editable Install**
+
+```bash
+pip install -e .
+```
+
 
 
 ### 🚀 Running examples (In-Memory Simulation)

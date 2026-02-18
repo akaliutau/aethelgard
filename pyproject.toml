@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "aethelgard"
+version = "0.1.0"
+description = "A lightweight, pure-pull Federated Retrieval-Augmented Generation (FedRAG) framework."
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "redis==7.2.0",
+    "fastapi==0.129.0",
+    "pydantic==2.12.5",
+    "uvicorn==0.41.0",
+    "httpx==0.28.1",
+    "python-dotenv>=1.0",
+    "colorlog==6.10.1"
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest>=8.0",
+    "pytest-asyncio"
+]
+
+[tool.setuptools.packages.find]
+include = ["aethelgard*"]
+
+[tool.pytest.ini_options]
+minversion = "8.0"
+testpaths = ["tests"]
+asyncio_mode = "auto"
