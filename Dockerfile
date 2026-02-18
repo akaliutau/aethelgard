@@ -1,4 +1,5 @@
-FROM ubuntu:latest
-LABEL authors="al"
+# Use the Alpine version of Redis 7.2 to match Aethelgard's requirements
+FROM redis:7.2-alpine
 
-ENTRYPOINT ["top", "-b"]
+# Enable Append-Only File (AOF) for durable queue persistence
+CMD ["redis-server", "--appendonly", "yes"]

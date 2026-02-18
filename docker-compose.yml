@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  redis-broker:
+    build: .
+    container_name: aethelgard-redis
+    ports:
+      # Exposes the default Redis port expected by 02_production_server.py
+      - "6379:6379"
+    volumes:
+      # Maps the local 'cache' folder to the container's '/data' directory
+      - ./cache:/data
+    restart: unless-stopped

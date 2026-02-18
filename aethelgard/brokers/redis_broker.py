@@ -6,8 +6,8 @@ import redis.asyncio as redis
 class RedisBroker(BaseTaskBroker):
     """Production broker using Redis for distributed state management."""
     def __init__(self, redis_url: str = "redis://localhost:6379"):
-
         self.redis = redis.from_url(redis_url, decode_responses=True)
+        print("starting redis broker")
 
     async def enqueue_query(self, client_id: str, request_id: str, query_vector: List[float]) -> None:
         task = {"request_id": request_id, "query_vector": query_vector}

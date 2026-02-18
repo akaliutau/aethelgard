@@ -91,6 +91,14 @@ Want to see it in action without configuring Redis? Run the local simulation in 
 pip install aethelgard
 ```
 
+Run the following command to build and start the persistent Redis broker: 
+
+```bash
+sudo docker-compose up -d --build
+```
+
+It will start a container with redis, exposing `redis://localhost:6379` for requests.
+A cache folder will automatically appear in your project directory containing the `/appendonlydir` data.
 
 ### 🏗️ How It Works (The Pure-Pull Workflow)
 
