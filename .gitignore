@@ -211,3 +211,6 @@ aggregated_dump.txt
 utils/
 cache/
 docs/
+*-key.json
+batch_input.jsonl
+batch_metadata.json

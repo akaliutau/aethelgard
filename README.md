@@ -81,6 +81,20 @@ pip install -r requirements.txt
 pip install -e .
 ```
 
+5. (optional) **When using GCP hosted models for tests/experiments - Deploy infra**
+
+```bash
+scripts/deploy_infra_old.sh
+gcloud ai models list --region=us-central1
+```
+
+6. (optional) **Re-Generate datasets from scratch**
+
+* Go to the Google Cloud Console in your browser.
+* Search for Quotas (IAM & Admin -> Quotas).
+* In the Filter bar, paste exactly this metric: custom_model_serving_nvidia_a100_80gb_gpus.
+* Ensure the location is set to us-central1.
+* Select the checkbox next to the quota, click Edit Quotas, and request a limit of 1
 
 
 ### 🚀 Running examples (In-Memory Simulation)

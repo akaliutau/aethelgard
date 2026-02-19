@@ -138,7 +138,7 @@ async def generate_dataset(dataset_dir: str, limit: int):
     # 3. Configure GCP Gemini via Middleware
     config = ModelConfig(
         name="synthetic-generator",
-        model="gemini/gemini-1.5-pro",
+        model="gemini/gemini-2.0-flash-thinking-exp-1219",
         temperature=0.7,
         retries=3
     )

@@ -22,9 +22,10 @@ from dataclasses import dataclass
 from time import perf_counter_ns
 from typing import List, Dict, Any, TypeVar, Callable, Protocol, Coroutine, Optional
 
+import litellm
 from litellm import acompletion
 
-
+litellm.drop_params = True
 T_Coerced = TypeVar("T_Coerced")
 
 
