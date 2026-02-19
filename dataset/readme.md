@@ -1,0 +1,37 @@
+# A Synthetic Multimodal Clinical Dataset for Evaluating Local-First Federated Retrieval-Augmented Generation
+
+## Abstract
+Current methodologies for overcoming medical data silos are largely inadequate for the era of generative AI. 
+To validate the "Project Aethelgard" Federated RAG architecture, we introduce a highly realistic, synthetic multimodal dataset. 
+This dataset is a curated, downsampled subset (N=100) of the [CheXpert dataset](https://stanfordmlgroup.github.io/competitions/chexpert/), 
+enriched with generative synthetic clinical admission notes. 
+The dataset maps high-fidelity text narratives to confirmed radiographic ground truths, 
+physically siloed across multiple simulated environments to evaluate privacy-preserving inference networks.
+
+## Dataset Structure & Schema
+The dataset consists of approximately 100 patient records distributed across two simulated hospital environments (Hospital_A and Hospital_B).
+
+* Modality 1 (Visual): Open-access frontal and lateral chest radiographs sourced from CheXpert.
+
+* Modality 2 (Text): Synthetic clinical admission notes generated via MedGemma 27B instructed using a Chain-of-Thought reasoning process.
+
+* Schema (JSON): Each text record conforms to a strict JSON schema containing demographics, clinical_history, 
+vitals (including 'red herring' inconsistencies), radiographic_labels, and a hidden_diagnosis_label.
+
+## Disease Selection Rationale
+
+While the Aethelgard architecture is designed to solve the rare disease diagnostic odyssey, for validation purposes, 
+we select five highly prevalent and clinically significant pathologies from the CheXpert competition tasks: 
+Atelectasis, Cardiomegaly, Consolidation, Edema, and Pleural Effusion.  
+
+Utilizing these validated labels ensures the radiographic ground truth exactly matches the generative clinical presentation.
+
+## License 
+
+Original source of data: 
+
+CheXpert: A Large Chest X-Ray Dataset And Competition
+
+https://stanfordmlgroup.github.io/competitions/chexpert/
+
+Distributed under CC0 1.0 Universal license

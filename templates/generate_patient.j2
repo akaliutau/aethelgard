@@ -1,0 +1,21 @@
+Act as a senior attending physician. Generate a highly realistic admission note for a synthetic patient based on confirmed radiographic findings.
+
+Patient Profile:
+- Age: {{ age }}
+- Sex: {{ sex }}
+
+Chest X-Ray Ground Truth:
+- Confirmed Present: {{ positive_findings | join(', ') }}
+- Confirmed Absent: {{ negative_findings | join(', ') }}
+- Uncertain/Borderline: {{ uncertain_findings | join(', ') }}
+
+First, use a Chain of Thought to reason through a realistic clinical presentation that would result in exactly this combination of X-ray findings.
+Include standard vitals that match the severity of the findings.
+
+Finally, output the synthetic patient record strictly conforming to JSON. Do not include any markdown formatting outside of the JSON block.
+Must include:
+- demographics (age, sex)
+- clinical_history
+- vitals (HR, BP, SpO2, Temp)
+- radiographic_labels (positive, negative)
+- hidden_diagnosis_label
