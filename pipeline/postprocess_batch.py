@@ -35,7 +35,9 @@ BLIND_SPOT_DISEASE = "Consolidation"
 # ==========================================
 def get_gcp_token() -> str:
     """Dynamically fetches the GCP bearer token using default credentials."""
-    credentials, project = google.auth.default()
+    # Explicitly request the cloud-platform scope required for Vertex REST APIs
+    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+    credentials, project = google.auth.default(scopes=scopes)
     auth_req = google.auth.transport.requests.Request()
     credentials.refresh(auth_req)
     return credentials.token
