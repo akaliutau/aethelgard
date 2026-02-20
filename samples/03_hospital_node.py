@@ -1,30 +1,57 @@
 import asyncio
+import lancedb
 from aethelgard.node import HospitalNode
 from aethelgard.transports.httpx_client import HttpxClientTransport
 from aethelgard.firewall.litellm_firewall import LiteLLMFirewall
 
-
-# 1. Define your local database search function (e.g., LanceDB)
-async def my_lancedb_search(query_vector: list) -> str:
-    # Assume lancedb logic here...
-    return "Patient John Doe, 45, treated with Albuterol for severe Asthma at Stanford Hospital."
-
-
-# 2. Initialize the Semantic Firewall Adapter (Using local Ollama)
-firewall = LiteLLMFirewall(
-    model="ollama/gemma",  # Tell LiteLLM to route locally
-    api_base="http://0.0.0.0:11434",  # Standard Ollama port
-    retriever_fn=my_lancedb_search  # Inject the DB logic
-)
+# ==========================================
+# Connect to the local LanceDB store
+# ==========================================
+DB_PATH = "./lancedb_store"
+TABLE_NAME = "patients"
+db = lancedb.connect(DB_PATH)
 
 
-# 3. Boot the Node
+async def lancedb_search(query_vector: list) -> str:
+    """
+    Searches LanceDB using the incoming fused vector.
+    Returns the raw JSON metadata of the closest match.
+    """
+    try:
+        table = db.open_table(TABLE_NAME)
+        # Perform similarity search and grab the top 1 result
+        results = table.search(query_vector).limit(1).to_pandas()
+        if results.empty:
+            return ""
+
+        # Return the raw, highly sensitive clinical text (metadata)
+        return results.iloc[0]['metadata']
+    except Exception as e:
+        print(f"Database search failed: {e}")
+        return ""
+
+
 async def main():
+    print("Booting Hospital Node...")
+
+    # Initialize the Semantic Firewall using LiteLLM + Local Ollama
+    firewall = LiteLLMFirewall(
+        model="ollama/gemma:4b",
+        api_base="http://localhost:11434",
+        retriever_fn=lancedb_search,
+        temperature=0.05 # min temperature to max security
+    )
+
     transport = HttpxClientTransport(server_url="http://localhost:8000")
 
-    # The firewall's sanitize() method natively matches the required Callable signature!
-    node = HospitalNode(client_id="Hospital_A", transport=transport, search_fn=firewall.sanitize)
+    # The firewall's sanitize() method natively matches the search_fn requirement
+    node = HospitalNode(
+        client_id="Hospital_A",
+        transport=transport,
+        search_fn=firewall.sanitize
+    )
 
+    print("Listening for incoming federated queries...")
     await node.heartbeat_loop()
 
 

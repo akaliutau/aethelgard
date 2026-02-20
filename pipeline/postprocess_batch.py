@@ -3,6 +3,8 @@ import json
 import os
 import random
 import shutil
+import time  # Added for retry logic
+import re    # Added for robust JSON extraction
 from pathlib import Path
 
 import google.auth
@@ -71,21 +73,28 @@ def run_inference(endpoint_url: str):
     print(f"Starting inference for {len(payloads)} records...")
 
     with open(OUTPUT_JSONL, 'w', encoding='utf-8') as out_f:
-        # Wrap the loop with tqdm for a sleek progress bar
         for idx, payload in enumerate(tqdm(payloads, desc="Processing Patients", unit="req")):
-            try:
-                response = requests.post(endpoint_url, headers=headers, data=payload, timeout=60)
+            max_retries = 3
+            for attempt in range(max_retries):
+                try:
+                    response = requests.post(endpoint_url, headers=headers, data=payload, timeout=180)
 
-                # Check for HTTP errors or Vertex AI specific errors
-                if response.status_code != 200 or '"error"' in response.text:
-                    print(f"\n❌ Error on record {idx + 1}: {response.text}")
+                    if response.status_code != 200 or '"error"' in response.text:
+                        print(f"\n❌ Error on record {idx + 1}: {response.text}")
+                        break  # Don't retry client/auth errors, only timeouts
 
-                # Strip newlines to maintain strict JSONL format
-                clean_response = response.text.replace('\n', '')
-                out_f.write(clean_response + "\n")
+                    clean_response = response.text.replace('\n', '')
+                    out_f.write(clean_response + "\n")
+                    break  # Success, exit retry loop
 
-            except Exception as e:
-                print(f"\n❌ Network exception on record {idx + 1}: {e}")
+                except requests.exceptions.ReadTimeout as e:
+                    if attempt == max_retries - 1:
+                        print(f"\n❌ Timeout exception on record {idx + 1} after {max_retries} attempts.")
+                    else:
+                        time.sleep(2 ** attempt)  # Exponential backoff: 1s, 2s, 4s
+                except Exception as e:
+                    print(f"\n❌ Network exception on record {idx + 1}: {e}")
+                    break
 
     print(f"\n✅ Batch Inference Complete! Saved to: {OUTPUT_JSONL}")
 
@@ -94,15 +103,28 @@ def run_inference(endpoint_url: str):
 # 2. Post-Processing Helpers
 # ==========================================
 def _extract_json_from_text(text: str) -> dict:
-    """Helper to strip markdown and extract the raw JSON dictionary from the LLM output."""
+    """Helper to heavily strip markdown and extract the raw JSON dictionary."""
+    # 1. Try to find strictly the markdown JSON block
+    match = re.search(r'```json\s*(.*?)\s*```', text, re.DOTALL)
+
+    if match:
+        json_str = match.group(1)
+    else:
+        # 2. Fallback: find the absolute first and last curly braces
+        try:
+            start = text.find('{')
+            end = text.rfind('}') + 1
+            if start != -1 and end != 0:
+                json_str = text[start:end]
+            else:
+                return {"error": "No JSON braces found", "raw": text}
+        except Exception as error:
+            return {"error": f"Invalid format: {error}", "raw": text}
+
     try:
-        start = text.find('{')
-        end = text.rfind('}') + 1
-        if start != -1 and end != 0:
-            return json.loads(text[start:end])
-        return {"error": "Could not parse JSON", "raw": text}
+        return json.loads(json_str)
     except Exception as error:
-        return {"error": f"Invalid JSON generated: {error}", "raw": text}
+        return {"error": f"JSON decoding failed: {error}", "raw": text}
 
 
 def process_results(dataset_dir: str):

@@ -1,5 +1,5 @@
-Act as a senior attending physician.
-Generate a highly realistic admission note for a synthetic patient based on confirmed radiographic findings.
+You are an expert senior attending physician.
+Your task is to generate a highly realistic, detailed admission note for a synthetic patient based on the provided profile and confirmed radiographic findings.
 
 Patient Profile:
 - Age: {{ age }}
@@ -10,13 +10,28 @@ Chest X-Ray Ground Truth:
 - Confirmed Absent: {{ negative_findings | join(', ') }}
 - Uncertain/Borderline: {{ uncertain_findings | join(', ') }}
 
-First, use a Chain of Thought to reason through a realistic clinical presentation that would result in exactly this combination of X-ray findings.
-Include standard vitals that match the severity of the findings.
+Instructions:
+1. Think step-by-step about the underlying pathophysiology to construct a realistic clinical presentation (HPI, ROS, Physical Exam) that aligns perfectly with the X-ray findings.
+2. Vitals must directly reflect the severity of the pathology (e.g., severe tachycardia and hypoxia for a large pneumothorax or consolidation).
+3. Output your response STRICTLY as a valid JSON object. Do not include introductory text, conversational filler, or anything outside the JSON block.
 
-Finally, output the synthetic patient record strictly conforming to JSON. Do not include any markdown formatting outside of the JSON block.
-Must include:
-- demographics (age, sex)
-- clinical_history
-- vitals (HR, BP, SpO2, Temp)
-- radiographic_labels (positive, negative)
-- hidden_diagnosis_label
+REQUIRED JSON SCHEMA:
+{
+  "demographics": {
+    "age": <integer>,
+    "sex": "<string>"
+  },
+  "clinical_history": "<Detailed History of Present Illness and Past Medical History>",
+  "vitals": {
+    "HR": <integer>,
+    "BP": "<string>",
+    "SpO2": <integer>,
+    "Temp": <float>
+  },
+  "radiographic_labels": {
+    "positive": ["<array of strings>"],
+    "negative": ["<array of strings>"]
+  },
+  "hidden_diagnosis_label": "<String representing the definitive underlying diagnosis>",
+  "admission_note": "<Full text of the admission note including Physical Exam, Assessment, and Plan formatted in Markdown>"
+}
