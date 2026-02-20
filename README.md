@@ -75,20 +75,37 @@ conda activate aethelgard
 pip install -r requirements.txt
 ```
 
-4. (optional) **Run the Editable Install**
+4. **Install ollama and Gemma/CXR models**
+
+```bash
+curl -fsSL https://ollama.com/install.sh | sh
+ollama --version
+ollama pull embeddinggemma
+ollama pull gemma3:4b
+ollama run gemma3:4b "What is the capital of France?"
+```
+
+Auth for Gated Models (important since we are using CXR models - `google/cxr-foundation`!)
+
+* Accept the Terms: You cannot download this anonymously. You must log in to Hugging Face, navigate to the `google/cxr-foundation` page, 
+  and review the Health AI Developer Foundations terms of use. Once you click to agree, your access request is processed immediately.
+* Generate a Token: Go to your Hugging Face account settings and generate an Access Token (Read permission) and store in `.env` file under HF
+
+
+5. (optional) **Run the Editable Install**
 
 ```bash
 pip install -e .
 ```
 
-5. (optional) **When using GCP hosted models for tests/experiments - Deploy infra**
+6. (optional) **When using GCP hosted models for tests/experiments - Deploy infra**
 
 ```bash
 scripts/deploy_infra_old.sh
 gcloud ai models list --region=us-central1
 ```
 
-6. (optional) **Re-Generate datasets from scratch**
+7. (optional) **Re-Generate datasets from scratch**
 
 * Go to the Google Cloud Console in your browser.
 * Search for Quotas (IAM & Admin -> Quotas).
@@ -121,6 +138,27 @@ A cache folder will automatically appear in your project directory containing th
 3. **Local RAG:** The client executes a local vector search (e.g., LanceDB) and sanitizes the output.
 4. **Upload:** The client pushes the safe, sanitized insight back to the orchestrator.
 
+Text Embedding: Gemma 4B via Ollama
+
+* Installation: Download the installer from ollama.com for your specific OS.
+* Downloading the Model: Open your terminal and run ollama pull gemma:4b. This fetches the weights from the Ollama registry.
+* Execution: Ollama runs a background service automatically. When `get_text_embedding()` function uses LiteLLM to hit localhost:11434, 
+  Ollama dynamically loads the model into your RAM/VRAM, generates the 2048-dimensional vector, and unloads it after a period of inactivity.
+* Cache Location: The model weights (typically a .gguf file) are cached securely on local disk:
+** Linux: `/usr/share/ollama/.ollama/models`
+
+Image Embedding: Google's CXR Foundation Models
+
+The script currently mocks the 128-dimensional vision output using google/siglip-base-patch16-224. 
+To swap this out for a dedicated medical foundation model (like Google's CXR models or similar open-weights variants), 
+you utilize the transformers library which is already in your requirements.txt.
+
+* Downloading the Model: When `AutoModel.from_pretrained("model-name")` is called, the transformers library automatically 
+  connects to the Hugging Face Hub, downloads the model weights, and caches them locally.
+* Execution: The script explicitly forces the model to run on the CPU (DEVICE = "cpu"), which is highly compatible 
+  but slower than using a GPU. The transformers library handles tokenization and passes the tensors through the network to generate the embeddings.
+* Cache Location: By default, Hugging Face stores these large files in:
+** Linux/macOS: `~/.cache/huggingface/hub`
 
 
 ### 🔌 Extending the Framework

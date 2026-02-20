@@ -214,3 +214,5 @@ docs/
 *-key.json
 batch_input.jsonl
 batch_metadata.json
+file_state.db
+lancedb_store
