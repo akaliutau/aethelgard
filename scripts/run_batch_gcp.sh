@@ -84,7 +84,8 @@ gcloud ai model-garden models deploy \
   --use-dedicated-endpoint \
   --endpoint-display-name="$UNIQUE_ENDPOINT_NAME" \
   --machine-type="a2-ultragpu-1g" \
-  --accelerator-type="NVIDIA_A100_80GB"
+  --accelerator-type="NVIDIA_A100_80GB" \
+  --spot
 
 echo "✅ Model deployed successfully!"
 

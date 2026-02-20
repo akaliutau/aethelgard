@@ -22,11 +22,10 @@ DB_PATH = "./lancedb_store"
 TABLE_NAME = "patients"
 
 # LiteLLM config for local Ollama text embeddings
-TEXT_MODEL = "ollama/gemma3:4b"
 TEXT_MODEL_EMB = "ollama/embeddinggemma"
 API_BASE = "http://localhost:11434"
 
-# Vision Model (Mocking MedSigLIP for 128-d output)
+# Vision Model
 VISION_MODEL_NAME = "google/medsiglip-448"
 
 # Force the device to CPU explicitly
@@ -105,7 +104,7 @@ class LocalIntelligenceNode:
 
         # This loop acts exactly like a 'git add' diff
         for filepath, timestamp, size in self.tracker.get_changed_files(DATA_DIR):
-            #try:
+            try:
                 json_path = Path(filepath)
                 patient_id = json_path.stem
                 print(f"Detected new/changed data: {patient_id}")
@@ -124,9 +123,7 @@ class LocalIntelligenceNode:
 
                 # Generate Embeddings & Fuse
                 txt_vec = get_text_embedding(json.dumps(patient_record["admission_note"]))
-                print(f"  -> shape {txt_vec.shape}...")
                 img_vec = get_image_embedding(img_path)
-                print(f"  -> shape {img_vec.shape}...")
                 fused_vector = self._fuse_vectors(txt_vec, img_vec)
 
                 new_data.append({
@@ -137,8 +134,8 @@ class LocalIntelligenceNode:
 
                 # Queue the tracker update
                 processed_files.append((filepath, timestamp, size))
-            #except Exception as e:
-            #    print(e)
+            except Exception as e:
+                print(e)
 
         if new_data:
             print(f"Inserting {len(new_data)} new records into LanceDB...")

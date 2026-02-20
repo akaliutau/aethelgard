@@ -15,12 +15,30 @@ class RedisBroker(BaseTaskBroker):
 
     async def dequeue_queries(self, client_id: str) -> List[Dict[str, Any]]:
         tasks = []
+        source_queue = f"queue:{client_id}"
+        processing_queue = f"processing:{client_id}"
+
         while True:
-            task_data = await self.redis.rpop(f"queue:{client_id}")
+            # Atomically move from main queue to processing queue
+            task_data = await self.redis.lmove(source_queue, processing_queue, "RIGHT", "LEFT")
             if not task_data:
                 break
             tasks.append(json.loads(task_data))
         return tasks
+
+    async def ack(self, client_id: str, request_id: str) -> None:
+        """Removes the task from the processing queue once explicitly acknowledged."""
+        processing_queue = f"processing:{client_id}"
+
+        # We need to find and remove the specific task.
+        # In a high-throughput system, Redis Streams (XACK) is better,
+        # but for this list-based architecture, LREM works perfectly.
+        tasks = await self.redis.lrange(processing_queue, 0, -1)
+        for task_data in tasks:
+            task = json.loads(task_data)
+            if task["request_id"] == request_id:
+                await self.redis.lrem(processing_queue, 1, task_data)
+                break
 
     async def save_insight(self, request_id: str, client_id: str, insight: str) -> None:
         payload = {"client_id": client_id, "insight": insight}

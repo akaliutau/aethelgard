@@ -20,3 +20,7 @@ class BaseClientTransport(abc.ABC):
     @abc.abstractmethod
     async def submit_insight(self, client_id: str, request_id: str, insight: str) -> None:
         pass
+
+    @abc.abstractmethod
+    async def ack(self, client_id: str, request_id: str) -> None:
+        pass

@@ -10,7 +10,8 @@ DEFAULT_TEMPLATE = """
 You are a privacy preservation agent operating as a Semantic Firewall.
 Analyze the following clinical case retrieved from a local vector database.
 
-Extract the primary Diagnosis, Treatment, and Outcome.
+Extract the fields related to primary Diagnosis, Treatment, and Outcome:
+[demographics, clinical_history, vitals, radiographic_labels, hidden_diagnosis_label, admission_note]
 Format strictly as JSON. REMOVE ALL IDENTIFIERS (names, exact dates, specific locations).
 
 Case Text:
@@ -37,7 +38,7 @@ class LiteLLMFirewall:
             name="semantic-firewall",
             model=model,
             temperature=temperature,
-            retries=3
+            retries=2
         )
         self.metadata = {"api_base": api_base} if api_base else {}
 
@@ -61,7 +62,7 @@ class LiteLLMFirewall:
         raw_text = await self.retriever_fn(query_vector)
 
         if not raw_text:
-            return json.dumps({"error": "No local matches found."})
+            return json.dumps({"msg": "No local matches found."})
 
         # Step 2: Inject the raw, highly sensitive text into the Jinja prompt
         prompt_text = self.template.render(raw_clinical_text=raw_text)

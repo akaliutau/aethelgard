@@ -21,6 +21,11 @@ class BaseTaskBroker(abc.ABC):
         pass
 
     @abc.abstractmethod
+    async def ack(self, client_id: str, request_id: str) -> None:
+        """Acknowledges that a task was successfully processed, removing it from the queue."""
+        pass
+
+    @abc.abstractmethod
     async def get_consensus(self, request_id: str) -> List[Dict[str, Any]]:
         """Retrieves all aggregated insights for a specific query."""
         pass

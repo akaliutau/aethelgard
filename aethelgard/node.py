@@ -3,10 +3,10 @@ from typing import Callable, Awaitable
 from aethelgard.core.transport import BaseClientTransport
 
 
-class HospitalNode:
+class Node:
     """The localized edge node. Wakes up, works, sleeps."""
 
-    def __init__(self, client_id: str, transport: BaseClientTransport, search_fn: Callable[[list], Awaitable[str]]):
+    def __init__(self, client_id: str, transport: BaseClientTransport, search_fn: Callable[[list], Awaitable[str | None]]):
         self.client_id = client_id
         self.transport = transport
         self.search_fn = search_fn  # Dependency Injection of the specific Local ML logic
@@ -20,11 +20,23 @@ class HospitalNode:
                 req_id = task['request_id']
                 print(f"[{self.client_id}] Processing Task: {req_id}")
 
-                # Execute the Semantic Firewall (LanceDB + MedGemma)
-                insight = await self.search_fn(task['query_vector'])
+                try:
+                    # Execute the Semantic Firewall
+                    insight = await self.search_fn(task['query_vector'])
 
-                # Securely return insight
-                await self.transport.submit_insight(self.client_id, req_id, insight)
-                print(f"[{self.client_id}] ✅ Insight securely uploaded.")
+                    if insight is not None:
+                        await self.transport.submit_insight(self.client_id, req_id, insight)
+                        print(f"[{self.client_id}] ✅ Insight securely uploaded.")
+                    else:
+                        print(f"[{self.client_id}] ⚪ No relevant data found.")
+
+                except Exception as e:
+                    print(f"[{self.client_id}] ❌ Error processing task {req_id}: {e}")
+                    continue  # Do NOT ack if processing catastrophically failed
+
+                finally:
+                    # ALWAYS explicitly ACK after successful processing (even if no insight found)
+                    await self.transport.ack(self.client_id, req_id)
+                    print(f"[{self.client_id}] 🔒 Task {req_id} acknowledged.")
 
             await asyncio.sleep(self.polling_interval)

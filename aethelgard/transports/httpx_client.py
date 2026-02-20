@@ -20,3 +20,11 @@ class HttpxClientTransport(BaseClientTransport):
         url = f"{self.server_url}/api/v1/query/{request_id}/insight"
         payload = {"client_id": client_id, "sanitized_insight": insight}
         await self.http_client.post(url, json=payload)
+
+    async def ack(self, client_id: str, request_id: str) -> None:
+        url = f"{self.server_url}/api/v1/query/{request_id}/ack"
+        payload = {"client_id": client_id}
+        try:
+            await self.http_client.post(url, json=payload)
+        except httpx.RequestError as e:
+            print(f"Failed to send ACK for {request_id}: {e}")
