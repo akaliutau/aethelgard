@@ -10,9 +10,12 @@ from PIL import Image
 from dotenv import load_dotenv
 from transformers import AutoImageProcessor, AutoModel
 
+from aethelgard.core.config import get_logger
 from aethelgard.core.smartfolder import SmartFolder
 
 load_dotenv()
+
+logger = get_logger(__name__)
 
 # ==========================================
 # Configuration
@@ -66,7 +69,7 @@ def get_image_embedding(image_path: str) -> np.ndarray:
 
 class LocalIntelligenceNode:
     def __init__(self):
-        print("Connecting to LanceDB...")
+        logger.info("Connecting to LanceDB...")
         self.db = lancedb.connect(DB_PATH)
         self.tracker = SmartFolder()
 
@@ -100,14 +103,14 @@ class LocalIntelligenceNode:
         new_data = []
         processed_files = []
 
-        print("Scanning file system for changes...")
+        logger.info("Scanning file system for changes...")
 
         # This loop acts exactly like a 'git add' diff
         for filepath, timestamp, size in self.tracker.get_changed_files(DATA_DIR):
             try:
                 json_path = Path(filepath)
                 patient_id = json_path.stem
-                print(f"Detected new/changed data: {patient_id}")
+                logger.info(f"Detected new/changed data: {patient_id}")
 
                 with open(json_path, 'r') as f:
                     records = json.load(f)
@@ -115,10 +118,10 @@ class LocalIntelligenceNode:
 
                 img_path = DATA_DIR / patient_record.get("image_reference", "")
                 if not img_path.exists():
-                    print(f"  -> Skipping {patient_id}: Image missing.")
+                    logger.info(f"  -> Skipping {patient_id}: Image missing.")
                     continue
                 if 'error' in patient_record:
-                    print(f"  -> Skipping {patient_id}: {patient_record['error']}")
+                    logger.info(f"  -> Skipping {patient_id}: {patient_record['error']}")
                     continue
 
                 # Generate Embeddings & Fuse
@@ -138,7 +141,7 @@ class LocalIntelligenceNode:
                 print(e)
 
         if new_data:
-            print(f"Inserting {len(new_data)} new records into LanceDB...")
+            logger.info(f"Inserting {len(new_data)} new records into LanceDB...")
             self.table.add(new_data)
 
             # Commit the new state to SQLite ONLY if vector insertion succeeds
@@ -148,9 +151,9 @@ class LocalIntelligenceNode:
             #Check how many rows are in the table
             #num_rows = self.table.count_rows()
             #self.table.create_index(metric="cosine", vector_column_name="vector")
-            print("Sync complete!")
+            logger.info("Sync complete!")
         else:
-            print("No changes detected.")
+            logger.info("No changes detected.")
 
 if __name__ == "__main__":
     node = LocalIntelligenceNode()

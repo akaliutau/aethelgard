@@ -12,14 +12,16 @@ from pathlib import Path
 from typing import Dict, Any
 
 from jinja2 import Environment, FileSystemLoader
-
 from dotenv import load_dotenv
+from aethelgard.core.config import get_logger
 
 # ==========================================
 # Configuration
 # ==========================================
 
 load_dotenv()
+
+logger = get_logger(__name__)
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = ROOT_DIR / "templates"
@@ -106,7 +108,7 @@ def main(dataset_dir: str, limit: int):
     with open("batch_metadata.json", "w", encoding="utf-8") as meta_f:
         json.dump(metadata_map, meta_f, indent=4)
 
-    print(f"✅ Prepared {line_index} prompts for Vertex AI Batch Prediction.")
+    logger.info(f"✅ Prepared {line_index} prompts for Vertex AI Batch Prediction.")
 
 
 if __name__ == "__main__":

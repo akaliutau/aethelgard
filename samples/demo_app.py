@@ -2,8 +2,10 @@ import asyncio
 import json
 import base64
 from typing import Optional, Dict, Any, List
-
 from nicegui import ui, app, events
+from aethelgard.core.config import get_logger
+
+logger = get_logger(__name__)
 
 # ==========================================
 # 1. State & Constants
@@ -177,7 +179,7 @@ def build_ui():
         ui.label('🛡️ Aethelgard Local Intelligence Node').classes('text-2xl font-bold')
         with ui.row().classes('items-center gap-2'):
             ui.icon('verified_user', color='green-300')
-            ui.label('Status: Securely Isolated').classes('text-sm text-green-300 font-mono')
+            ui.label('Status: Online').classes('text-sm text-green-300 font-mono')
 
     with ui.column().classes('w-full max-w-5xl mx-auto mt-8 gap-8'):
         with ui.row().classes('w-full justify-between items-end'):

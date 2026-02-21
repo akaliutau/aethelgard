@@ -1,5 +1,7 @@
 import asyncio
 import lancedb
+
+from aethelgard.core.config import get_logger
 from aethelgard.node import Node
 from aethelgard.transports.httpx_client import HttpxClientTransport
 from aethelgard.firewall.litellm_firewall import LiteLLMFirewall
@@ -7,11 +9,13 @@ from aethelgard.firewall.litellm_firewall import LiteLLMFirewall
 # ==========================================
 # Connect to the local LanceDB store
 # ==========================================
+NODE_ID="LOCAL_NODE"
 DB_PATH = "./lancedb_store"
 TABLE_NAME = "patients"
 TEXT_MODEL = "ollama/gemma3:4b"
 db = lancedb.connect(DB_PATH)
 
+logger = get_logger(__name__)
 
 async def lancedb_search(query_vector: list) -> str | None:
     """
@@ -28,12 +32,12 @@ async def lancedb_search(query_vector: list) -> str | None:
         # Return the raw, highly sensitive clinical text (metadata)
         return results.iloc[0]['metadata']
     except Exception as e:
-        print(f"Database search failed: {e}")
+        logger.error(f"Database search failed: {e}")
         return None
 
 
 async def main():
-    print("Booting Hospital Node...")
+    logger.info(f"Booting Hospital Node: {NODE_ID}")
 
     # Initialize the Semantic Firewall using LiteLLM + Local Ollama
     firewall = LiteLLMFirewall(
@@ -52,7 +56,7 @@ async def main():
         search_fn=firewall.sanitize
     )
 
-    print("Listening for incoming federated queries...")
+    logger.info("Listening for incoming federated queries...")
     await node.heartbeat_loop()
 
 

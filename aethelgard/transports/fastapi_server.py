@@ -1,4 +1,3 @@
-import logging
 import uuid
 from typing import List
 
@@ -7,9 +6,10 @@ from fastapi import FastAPI
 from pydantic import BaseModel, Field
 
 from aethelgard.core.broker import BaseTaskBroker
+from aethelgard.core.config import get_logger
 
 # Configure module-level logger
-logger = logging.getLogger(__name__)
+logger = get_logger(__name__)
 
 
 # ==========================================
@@ -95,9 +95,9 @@ class FastAPIServer:
         logger.info(f"🛡️ Booting Aethelgard FastAPI Server on {host}:{port}")
 
         try:
-            config = uvicorn.Config(self.app, host=host, port=port, log_level="info")
-            server = uvicorn.Server(config)
-            await server.serve()
+            await uvicorn.Server(
+                config=uvicorn.Config(self.app, host=host, port=port, log_level="info")
+            ).serve()
         except Exception as e:
             logger.critical(f"Server encountered a fatal error: {e}", exc_info=True)
             raise

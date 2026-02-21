@@ -13,10 +13,14 @@ import requests
 from dotenv import load_dotenv
 from tqdm import tqdm
 
+from aethelgard.core.config import get_logger
+
 # ==========================================
 # Configuration
 # ==========================================
 load_dotenv()
+
+logger = get_logger(__name__)
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = ROOT_DIR / "templates"
@@ -47,10 +51,10 @@ def get_gcp_token() -> str:
 
 def run_inference(endpoint_url: str):
     """Reads the local JSONL input, fires HTTP POSTs to Vertex AI, and saves results."""
-    print(f"\n==========================================")
-    print(f"1. Submitting Requests to Deployed Endpoint")
-    print(f"==========================================")
-    print(f"🔗 Target URL: {endpoint_url}")
+    logger.info(f"\n==========================================")
+    logger.info(f"1. Submitting Requests to Deployed Endpoint")
+    logger.info(f"==========================================")
+    logger.info(f"🔗 Target URL: {endpoint_url}")
 
     if not INPUT_JSONL.exists():
         raise FileNotFoundError(f"❌ Input file {INPUT_JSONL} not found!")
@@ -70,7 +74,7 @@ def run_inference(endpoint_url: str):
         "Content-Type": "application/json; charset=utf-8"
     }
 
-    print(f"Starting inference for {len(payloads)} records...")
+    logger.info(f"Starting inference for {len(payloads)} records...")
 
     with open(OUTPUT_JSONL, 'w', encoding='utf-8') as out_f:
         for idx, payload in enumerate(tqdm(payloads, desc="Processing Patients", unit="req")):
@@ -80,23 +84,21 @@ def run_inference(endpoint_url: str):
                     response = requests.post(endpoint_url, headers=headers, data=payload, timeout=180)
 
                     if response.status_code != 200 or '"error"' in response.text:
-                        print(f"\n❌ Error on record {idx + 1}: {response.text}")
+                        logger.error(f"\n❌ Error on record {idx + 1}: {response.text}")
                         break  # Don't retry client/auth errors, only timeouts
-
                     clean_response = response.text.replace('\n', '')
                     out_f.write(clean_response + "\n")
                     break  # Success, exit retry loop
-
                 except requests.exceptions.ReadTimeout as e:
                     if attempt == max_retries - 1:
-                        print(f"\n❌ Timeout exception on record {idx + 1} after {max_retries} attempts.")
+                        logger.error(f"\n❌ Timeout exception on record {idx + 1} after {max_retries} attempts.")
                     else:
                         time.sleep(2 ** attempt)  # Exponential backoff: 1s, 2s, 4s
                 except Exception as e:
-                    print(f"\n❌ Network exception on record {idx + 1}: {e}")
+                    logger.error(f"\n❌ Network exception on record {idx + 1}: {e}")
                     break
 
-    print(f"\n✅ Batch Inference Complete! Saved to: {OUTPUT_JSONL}")
+    logger.info(f"\n✅ Batch Inference Complete! Saved to: {OUTPUT_JSONL}")
 
 
 # ==========================================
@@ -129,9 +131,9 @@ def _extract_json_from_text(text: str) -> dict:
 
 def process_results(dataset_dir: str):
     """Parses the generated JSONL and silos the data and images."""
-    print(f"\n==========================================")
-    print(f"2. Running Python Post-Processing")
-    print(f"==========================================")
+    logger.info(f"\n==========================================")
+    logger.info(f"2. Running Python Post-Processing")
+    logger.info(f"==========================================")
 
     for h in HOSPITALS:
         os.makedirs(DATA_DIR / h, exist_ok=True)
@@ -140,7 +142,7 @@ def process_results(dataset_dir: str):
         metadata = json.load(f)
 
     if not OUTPUT_JSONL.exists():
-        print(f"❌ No prediction JSONL file found at {OUTPUT_JSONL}")
+        logger.error(f"❌ No prediction JSONL file found at {OUTPUT_JSONL}")
         return
 
     patient_records = {}
@@ -186,7 +188,7 @@ def process_results(dataset_dir: str):
         if src_image.exists():
             shutil.copy(src_image, dst_image)
 
-        print(f"✅ Saved {pid} to {target_hospital}")
+        logger.info(f"✅ Saved {pid} to {target_hospital}")
 
 
 # ==========================================

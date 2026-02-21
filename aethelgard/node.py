@@ -1,7 +1,10 @@
 import asyncio
 from typing import Callable, Awaitable
+
+from aethelgard.core.config import get_logger
 from aethelgard.core.transport import BaseClientTransport
 
+logger = get_logger(__name__)
 
 class Node:
     """The localized edge node. Wakes up, works, sleeps."""
@@ -13,12 +16,12 @@ class Node:
         self.polling_interval = 5
 
     async def heartbeat_loop(self):
-        print(f"[{self.client_id}] Started secure outbound heartbeat...")
+        logger.info(f"[{self.client_id}] Started secure outbound heartbeat...")
         while True:
             tasks = await self.transport.poll_tasks(self.client_id)
             for task in tasks:
                 req_id = task['request_id']
-                print(f"[{self.client_id}] Processing Task: {req_id}")
+                logger.info(f"[{self.client_id}] Processing Task: {req_id}")
 
                 try:
                     # Execute the Semantic Firewall
@@ -26,17 +29,17 @@ class Node:
 
                     if insight is not None:
                         await self.transport.submit_insight(self.client_id, req_id, insight)
-                        print(f"[{self.client_id}] ✅ Insight securely uploaded.")
+                        logger.info(f"[{self.client_id}] ✅ Insight securely uploaded.")
                     else:
-                        print(f"[{self.client_id}] ⚪ No relevant data found.")
+                        logger.info(f"[{self.client_id}] ⚪ No relevant data found.")
 
                 except Exception as e:
-                    print(f"[{self.client_id}] ❌ Error processing task {req_id}: {e}")
+                    logger.error(f"[{self.client_id}] ❌ Error processing task {req_id}: {e}")
                     continue  # Do NOT ack if processing catastrophically failed
 
                 finally:
                     # ALWAYS explicitly ACK after successful processing (even if no insight found)
                     await self.transport.ack(self.client_id, req_id)
-                    print(f"[{self.client_id}] 🔒 Task {req_id} acknowledged.")
+                    logger.info(f"[{self.client_id}] 🔒 Task {req_id} acknowledged.")
 
             await asyncio.sleep(self.polling_interval)

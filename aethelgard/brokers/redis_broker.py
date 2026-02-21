@@ -3,11 +3,15 @@ from typing import List, Dict, Any
 from aethelgard.core.broker import BaseTaskBroker
 import redis.asyncio as redis
 
+from aethelgard.core.config import get_logger
+
+logger = get_logger(__name__)
+
 class RedisBroker(BaseTaskBroker):
     """Production broker using Redis for distributed state management."""
     def __init__(self, redis_url: str = "redis://localhost:6379"):
         self.redis = redis.from_url(redis_url, decode_responses=True)
-        print("starting redis broker")
+        logger.info("starting redis broker")
 
     async def enqueue_query(self, client_id: str, request_id: str, query_vector: List[float]) -> None:
         task = {"request_id": request_id, "query_vector": query_vector}
