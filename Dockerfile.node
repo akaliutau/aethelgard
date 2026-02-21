@@ -1,0 +1,26 @@
+# Use the official Python 3.12 slim image
+FROM python:3.12-slim
+
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PYTHONPATH=/app
+
+WORKDIR /app
+
+RUN pip install --upgrade pip
+
+# Copy and install ONLY the lightweight node dependencies
+COPY requirements-node.txt .
+RUN pip install --no-cache-dir -r requirements-node.txt
+
+# Selectively copy the framework and the specific node script
+COPY aethelgard/ ./aethelgard/
+COPY profiles/ ./profiles/
+COPY samples/03_hospital_node.py ./samples/03_hospital_node.py
+
+# Create a non-root user for security
+RUN useradd -m aetheluser && chown -R aetheluser /app
+USER aetheluser
+
+# Default command (can be overridden by docker-compose)
+CMD ["python", "samples/03_hospital_node.py", "--config", "profiles/node_a.env"]

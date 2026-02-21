@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  node_a:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    container_name: aethelgard_node_a
+    # Loads the specific configuration for Hospital A
+    env_file:
+      - profiles/node_a.env
+    # Critically maps 'host.docker.internal' to your physical machine's localhost
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      # Map the local Hospital A dataset into the container (Read-Only)
+      - ./dataset/Hospital_A:/app/dataset/Hospital_A:ro
+      # Map the local LanceDB vector store into the container (Read-Only)
+      - ./lancedb_store_A:/app/lancedb_store:ro
+    command: python samples/03_hospital_node.py --config profiles/node_a.env
+
+  node_b:
+    build:
+      context: .
+      dockerfile: Dockerfile.node
+    container_name: aethelgard_node_b
+    env_file:
+      - profiles/node_b.env
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - ./dataset/Hospital_B:/app/dataset/Hospital_B:ro
+      - ./lancedb_store_B:/app/lancedb_store:ro
+    command: python samples/03_hospital_node.py --config profiles/node_b.env

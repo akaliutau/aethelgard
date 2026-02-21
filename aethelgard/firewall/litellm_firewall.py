@@ -2,21 +2,15 @@ import json
 from pathlib import Path
 from typing import Callable, Awaitable, Optional
 
-from jinja2 import Environment, FileSystemLoader, Template
-from aethelgard.core.llm_middleware import call_llm, ModelConfig, coerce_to_simple_string
+from jinja2 import Environment, FileSystemLoader
 
-# Default fallback template if the user doesn't provide a .j2 file
-DEFAULT_TEMPLATE = """
-You are a privacy preservation agent operating as a Semantic Firewall.
-Analyze the following clinical case retrieved from a local vector database.
+from aethelgard.core.config import get_logger
+from aethelgard.core.llm_middleware import call_llm, ModelConfig, coerce_to_simple_string, LLMMetrics
 
-Extract the fields related to primary Diagnosis, Treatment, and Outcome:
-[demographics, clinical_history, vitals, radiographic_labels, hidden_diagnosis_label, admission_note]
-Format strictly as JSON. REMOVE ALL IDENTIFIERS (names, exact dates, specific locations).
+logger = get_logger(__name__)
 
-Case Text:
-{{ raw_clinical_text }}
-"""
+LOCAL_DIR = Path(__file__).resolve().parent
+LOCAL_TEMPLATE_DIR = LOCAL_DIR / "templates"
 
 
 class LiteLLMFirewall:
@@ -47,12 +41,15 @@ class LiteLLMFirewall:
 
         # 3. Initialize the Jinja2 Template Environment
         if template_path and Path(template_path).exists():
+            logger.info(f"Loading template: {template_path}")
             template_dir = Path(template_path).parent
             template_file = Path(template_path).name
             env = Environment(loader=FileSystemLoader(str(template_dir)))
             self.template = env.get_template(template_file)
         else:
-            self.template = Template(DEFAULT_TEMPLATE)
+            logger.info(f"Loading template from: {LOCAL_TEMPLATE_DIR}")
+            env = Environment(loader=FileSystemLoader(str(LOCAL_TEMPLATE_DIR)))
+            self.template = env.get_template("semantic_firewall.j2")
 
     async def sanitize(self, query_vector: list) -> str:
         """
@@ -69,11 +66,14 @@ class LiteLLMFirewall:
         messages = [{"role": "user", "content": prompt_text}]
 
         # Step 3: Generative Sanitization via LiteLLM Middleware
+        metrics = LLMMetrics()
         sanitized_json_string = await call_llm(
             messages=messages,
             config=self.model_config,
             transformer=coerce_to_simple_string,  # We want the raw JSON string back
-            metadata=self.metadata
+            metadata=self.metadata,
+            metrics=metrics
         )
+        logger.info(metrics)
 
         return sanitized_json_string
