@@ -98,14 +98,21 @@ Auth for Gated Models (important since we are using CXR models - `google/cxr-fou
 pip install -e .
 ```
 
-6. (optional) **When using GCP hosted models for tests/experiments - Deploy infra**
+6. Build all images
+
+```bash
+sudo docker build -t aethelgard-server:latest .
+sudo docker images
+```
+
+7. (optional) **When using GCP hosted models for tests/experiments - Deploy infra**
 
 ```bash
 scripts/deploy_infra_old.sh
 gcloud ai models list --region=us-central1
 ```
 
-7. (optional) **Re-Generate datasets from scratch**
+8. (optional) **Re-Generate datasets from scratch**
 
 * Go to the Google Cloud Console in your browser.
 * Search for Quotas (IAM & Admin -> Quotas).
@@ -114,19 +121,19 @@ gcloud ai models list --region=us-central1
 * Select the checkbox next to the quota, click Edit Quotas, and request a limit of 1
 
 
-### 🚀 Running examples (In-Memory Simulation)
+### 🚀 Running examples
+
+First, we have to validate all workflow via running integration test
 
 
-Want to see it in action without configuring Redis? Run the local simulation in 3 lines of code:
-```bash
-pip install aethelgard
-```
-
-Run the following command to build and start the persistent Redis broker: 
+Run the following command to build and start the persistent Redis broker and super-link (the latter is available at http://localhost:8010/docs): 
 
 ```bash
-sudo docker-compose up -d --build
+sudo docker-compose up --build
+sudo docker ps
 ```
+
+
 
 It will start a container with redis, exposing `redis://localhost:6379` for requests.
 A cache folder will automatically appear in your project directory containing the `/appendonlydir` data.
@@ -163,5 +170,9 @@ you utilize the transformers library which is already in your requirements.txt.
 
 ### 🔌 Extending the Framework
 
+Want to see it in action without configuring Redis? Run the local simulation in 3 lines of code:
+```bash
+pip install aethelgard
+```
 
 
