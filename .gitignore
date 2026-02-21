@@ -211,6 +211,7 @@ aggregated_dump.txt
 utils/
 cache/
 docs/
+.nicegui/
 *-key.json
 batch_input.jsonl
 batch_metadata.json
