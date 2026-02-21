@@ -1,13 +1,45 @@
 version: '3.8'
 
 services:
-  redis-broker:
-    build: .
-    container_name: aethelgard-redis
+  # ==========================================
+  # 1. The Central Task Broker (Redis)
+  # ==========================================
+  redis:
+    image: redis:7.2.0
+    container_name: aethelgard_redis
     ports:
-      # Exposes the default Redis port expected by 02_production_server.py
       - "6379:6379"
     volumes:
-      # Maps the local 'cache' folder to the container's '/data' directory
-      - ./cache:/data
-    restart: unless-stopped
+      - redis_data:/data
+    # Enabling appendonly creates the persistent /appendonlydir cache mentioned in your docs
+    command: redis-server --appendonly yes
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 5s
+      timeout: 3s
+      retries: 5
+
+  # ==========================================
+  # 2. The Global Orchestrator (FastAPI)
+  # ==========================================
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: aethelgard_server
+    ports:
+      - "8010:8010"
+    # Docker natively reads the profile we created to inject the environment variables
+    env_file:
+      - profiles/server.env
+    # We pass the same config file to the script so argparse can fall back on it if needed
+    command: python samples/02_production_server.py --config profiles/server.env
+    depends_on:
+      redis:
+        condition: service_healthy
+    # Ensure the server container can reach the redis container via Docker's internal DNS
+    environment:
+      - REDIS_URL=redis://redis:6379
+
+volumes:
+  redis_data:
