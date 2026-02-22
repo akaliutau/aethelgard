@@ -35,20 +35,18 @@ def get_precomputed_vector(patient_id: str) -> Optional[list]:
     """Fetches the pre-calculated embedding from the local LanceDB instance."""
     try:
         db = lancedb.connect(uri=os.getenv("DB_PATH"))
-        table = db.open_table(name=os.getenv("TABLE_NAME"))
-
         # Use DuckDB/Arrow syntax to filter for the specific patient ID
-        results = table.search().where(f"id = '{patient_id}'").limit(1).to_pandas()
+        results = db.open_table(name=os.getenv("TABLE_NAME")).search().where(f"id = '{patient_id}'").limit(1).to_pandas()
 
         if not results.empty:
-            logger.info(f"✅ Pre-computed vector found for {patient_id}")
+            logger.info(f"Pre-computed vector found for {patient_id}")
             return results.iloc[0]['vector'].tolist()
         else:
-            logger.warning(f"⚠️ Patient {patient_id} not found in LanceDB.")
+            logger.warning(f"Patient {patient_id} not found in LanceDB.")
             return None
 
     except Exception as e:
-        logger.error(f"❌ Failed to query LanceDB: {e}")
+        logger.error(f"Failed to query LanceDB: {e}")
         return None
 
 
@@ -197,7 +195,7 @@ def render_patient_area():
 
     else:
         patient = CURRENT_PATIENT
-        img_src = patient.get('image_base64', "https://placehold.co/400x600/1e293b/ffffff?text=Image+Not+Found")
+        img_src = patient.get('image_base64', "assets/not_found.svg")
 
         with ui.card().classes('w-full shadow-lg rounded-xl p-0 overflow-hidden relative bg-white'):
             content_classes = 'flex-row gap-6 p-6 w-full transition-all duration-500 ease-in-out'
@@ -215,9 +213,9 @@ def render_patient_area():
 
                     vitals = patient.get('vitals', {})
                     with ui.row().classes('gap-4 mt-2'):
-                        ui.badge(f"HR: {vitals.get('HR', '--')}").classes('bg-red-100 text-red-800')
-                        ui.badge(f"BP: {vitals.get('BP', '--')}").classes('bg-blue-100 text-blue-800')
-                        ui.badge(f"SpO2: {vitals.get('SpO2', '--')}%").classes('bg-gray-100 text-gray-800')
+                        ui.badge(f"HR: {vitals.get('HR', '--')}").classes('bg-red-300 text-white-800')
+                        ui.badge(f"BP: {vitals.get('BP', '--')}").classes('bg-blue-300 text-white-800')
+                        ui.badge(f"SpO2: {vitals.get('SpO2', '--')}%").classes('bg-gray-300 text-black-800')
 
                     ui.label(f"Local Diagnosis: {patient.get('hidden_diagnosis_label', 'Pending')}").classes(
                         'mt-4 font-bold text-green-700 bg-green-50 p-2 rounded self-start')

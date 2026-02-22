@@ -1,7 +1,10 @@
 # 🛡️ Aethelgard
 
-**Aethelgard** is a lightweight, pure-pull Federated Retrieval-Augmented Generation (FedRAG) framework. It allows you to query highly sensitive, distributed vector databases (like clinical patient data) without ever moving raw data or opening inbound corporate firewalls.
-Unlike traditional federated learning frameworks that focus on *training* models across silos, Aethelgard focuses strictly on *inference and routing*.
+**Aethelgard** is a lightweight, pure-pull Federated Retrieval-Augmented Generation (FedRAG) framework. 
+It allows you to query highly sensitive, distributed vector databases (like clinical patient data) without ever moving 
+raw data or opening inbound corporate firewalls.
+Unlike traditional federated learning frameworks that focus on *training* models across silos, 
+Aethelgard focuses strictly on *inference and routing*.
 
 ### ✨ Key Features
 
@@ -141,7 +144,7 @@ First, we have to validate all workflow via running integration test
 Run the following command to build and start the persistent Redis broker and super-link (the latter is available at http://localhost:8010/docs): 
 
 ```bash
-sudo docker-compose up --build
+sudo docker compose up --build --remove-orphans
 sudo docker ps
 ```
 
