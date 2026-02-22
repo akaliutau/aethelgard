@@ -8,7 +8,7 @@ load_dotenv()
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DATA_DIR = ROOT_DIR / "dataset"
-CACHE_DIR = ROOT_DIR / "cache"
+CACHE_DIR = ROOT_DIR / ".cache"
 
 LOG_LEVEL = "INFO"
 APP_VERSION = "0.1.0"

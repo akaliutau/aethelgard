@@ -25,7 +25,7 @@ logger = get_logger(__name__)
 ROOT_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = ROOT_DIR / "templates"
 DATA_DIR = ROOT_DIR / "dataset"
-CACHE_DIR = ROOT_DIR / "cache"
+CACHE_DIR = ROOT_DIR / ".cache"
 INPUT_JSONL = Path("batch_input.jsonl")
 OUTPUT_JSONL = CACHE_DIR / "batch_output" / "results.jsonl"
 

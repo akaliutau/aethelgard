@@ -16,7 +16,7 @@ RUN pip install --upgrade pip
 COPY requirements-server.txt .
 
 # Install core server dependencies (no ML libraries)
-RUN pip install --no-cache-dir -r requirements-server.txt
+RUN pip install --no-.cache-dir -r requirements-server.txt
 
 # Selectively copy only the necessary files/folders to run the Orchestrator
 COPY aethelgard/ ./aethelgard/

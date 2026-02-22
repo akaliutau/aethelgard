@@ -34,4 +34,8 @@ CheXpert: A Large Chest X-Ray Dataset And Competition
 
 https://stanfordmlgroup.github.io/competitions/chexpert/
 
+Subset:
+
+https://www.kaggle.com/datasets/ashery/chexpert
+
 Distributed under CC0 1.0 Universal license
