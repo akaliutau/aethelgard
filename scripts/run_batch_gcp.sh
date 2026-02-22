@@ -122,7 +122,7 @@ ENDPOINT_URL="https://${DEDICATED_DOMAIN}/v1/projects/${PROJECT_ID}/locations/${
 
 echo "🔗 Full inference URL ready!"
 
-mkdir -p ./cache/batch_output
+mkdir -p ./.cache/batch_output
 python pipeline/postprocess_batch.py --dataset_dir "$DATASET_DIR" --endpoint "$ENDPOINT_URL"
 
 echo -e "\n============================"

@@ -13,7 +13,8 @@ echo "Setting active GCP Project to $PROJECT_ID..."
 gcloud config set project $PROJECT_ID
 
 echo "Enabling APIs..."
-gcloud services enable aiplatform.googleapis.com compute.googleapis.com logging.googleapis.com cloudquotas.googleapis.com
+gcloud services enable aiplatform.googleapis.com compute.googleapis.com logging.googleapis.com cloudquotas.googleapis.com \
+       cloudresourcemanager.googleapis.com iam.googleapis.com
 
 
 # ==========================================

@@ -82,6 +82,7 @@ curl -fsSL https://ollama.com/install.sh | sh
 ollama --version
 ollama pull embeddinggemma
 ollama pull gemma3:4b
+# quick test
 ollama run gemma3:4b "What is the capital of France?"
 ```
 
@@ -105,21 +106,26 @@ sudo docker build -t aethelgard-server:latest .
 sudo docker images
 ```
 
-7. (optional) **When using GCP hosted models for tests/experiments - Deploy infra**
+7. (optional) **Re-Generate datasets from scratch**
 
-```bash
-scripts/deploy_infra_old.sh
-gcloud ai models list --region=us-central1
-```
-
-8. (optional) **Re-Generate datasets from scratch**
+A. First we need to lift the limitations for Spot GPUs and models, from 0 -> 1:
 
 * Go to the Google Cloud Console in your browser.
 * Search for Quotas (IAM & Admin -> Quotas).
-* In the Filter bar, paste exactly this metric: custom_model_serving_nvidia_a100_80gb_gpus.
+* In the Filter bar, paste exactly these metrics: custom_model_serving_nvidia_a100_80gb_gpus, CustomModelServingPreemptibleCPUsPerProjectPerRegion
+  and CustomModelServingPreemptibleA10080GBGPUsPerProjectPerRegion
 * Ensure the location is set to us-central1.
 * Select the checkbox next to the quota, click Edit Quotas, and request a limit of 1
 
+B. Generate a small dataset from CheXpert, using notebook `notebooks/dataset-small.ipynb` and unpack the archive to `.cache/`
+
+C. Deploy infra and run pipeline:
+
+```bash
+scripts/deploy_infra.sh
+gcloud ai models list --region=us-central1
+scripts/run_batch_gcp.sh .cache/cheXpert
+```
 
 ### 🚀 Running examples
 
