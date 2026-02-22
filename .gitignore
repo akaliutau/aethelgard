@@ -209,7 +209,7 @@ __marimo__/
 .idea/
 aggregated_dump.txt
 utils/
-.cache/
+#.cache/
 docs/
 .nicegui/
 *-key.json
