@@ -112,20 +112,26 @@ A. First we need to lift the limitations for Spot GPUs and models, from 0 -> 1:
 
 * Go to the Google Cloud Console in your browser.
 * Search for Quotas (IAM & Admin -> Quotas).
-* In the Filter bar, paste exactly these metrics: custom_model_serving_nvidia_a100_80gb_gpus, CustomModelServingPreemptibleCPUsPerProjectPerRegion
+* In the Filter bar, paste exactly these metrics: custom_model_serving_nvidia_a100_80gb_gpus, CustomModelServingPreemptibleCPUsPerProjectPerRegion.
   and CustomModelServingPreemptibleA10080GBGPUsPerProjectPerRegion
 * Ensure the location is set to us-central1.
-* Select the checkbox next to the quota, click Edit Quotas, and request a limit of 1
+* Select the checkbox next to the quota, click Edit Quotas, and request a limit of 1 (or 12 for CustomModelServingPreemptibleCPUsPerProjectPerRegion)
 
-B. Generate a small dataset from CheXpert, using notebook `notebooks/dataset-small.ipynb` and unpack the archive to `.cache/`
+B. Generate a small dataset from CheXpert, using notebook `notebooks/dataset-small.ipynb` and unpack the archive to `.cache/CheXpert`
 
 C. Deploy infra and run pipeline:
 
 ```bash
 scripts/deploy_infra.sh
 gcloud ai models list --region=us-central1
-scripts/run_batch_gcp.sh .cache/cheXpert
+scripts/run_batch_gcp.sh .cache/CheXpert
 ```
+
+The generated synthetic notes will be saved to /dataset.
+
+To complete the data preparation, we must generate the embeddings for data, using scripts 
+
+
 
 ### 🚀 Running examples
 

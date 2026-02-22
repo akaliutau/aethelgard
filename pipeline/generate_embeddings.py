@@ -1,4 +1,6 @@
+import argparse
 import json
+import os
 from pathlib import Path
 
 import lancedb
@@ -12,6 +14,7 @@ from transformers import AutoImageProcessor, AutoModel
 
 from aethelgard.core.config import get_logger
 from aethelgard.core.smartfolder import SmartFolder
+from aethelgard.core.config import DATA_DIR
 
 load_dotenv()
 
@@ -20,14 +23,9 @@ logger = get_logger(__name__)
 # ==========================================
 # Configuration
 # ==========================================
-DATA_DIR = Path("./dataset/Hospital_A")
-DB_PATH = "./lancedb_store"
-TABLE_NAME = "patients"
 
 # LiteLLM config for local Ollama text embeddings
 TEXT_MODEL_EMB = "ollama/embeddinggemma"
-API_BASE = "http://localhost:11434"
-
 # Vision Model
 VISION_MODEL_NAME = "google/medsiglip-448"
 
@@ -44,7 +42,7 @@ def get_text_embedding(text: str) -> np.ndarray:
     response = litellm.embedding(
         model=TEXT_MODEL_EMB,
         input=text,
-        api_base=API_BASE,
+        api_base=os.getenv("LLM_API_BASE"),
         caching=True
     )
     return np.array(response.data[0]['embedding'], dtype=np.float32)
@@ -57,11 +55,11 @@ def get_image_embedding(image_path: str) -> np.ndarray:
     inputs = image_processor(images=image, return_tensors="pt").to(DEVICE)
 
     with torch.no_grad():
-        # 1. Pass the inputs to the vision model (bypassing get_image_features)
+        # Pass the inputs to the vision model (bypassing get_image_features)
         outputs = vision_model.vision_model(**inputs)
-        # 2. Extract the actual 1152-d PyTorch tensor from the wrapper object
+        # Extract the actual 1152-d PyTorch tensor from the wrapper object
         embedding = outputs.pooler_output
-        # 3. Standard practice: L2 normalize the vector for LanceDB cosine similarity
+        # L2 normalize the vector for LanceDB cosine similarity
         embedding = torch.nn.functional.normalize(embedding, p=2, dim=-1)
 
     return embedding.squeeze().cpu().numpy().astype(np.float32)
@@ -70,8 +68,8 @@ def get_image_embedding(image_path: str) -> np.ndarray:
 class LocalIntelligenceNode:
     def __init__(self):
         logger.info("Connecting to LanceDB...")
-        self.db = lancedb.connect(DB_PATH)
-        self.tracker = SmartFolder()
+        self.db = lancedb.connect(uri=os.getenv("DB_PATH"))
+        self.tracker = SmartFolder(db_path=os.getenv("SQLITE_PATH"))
 
         # Define the schema: Fused vector, raw JSON string, and unique ID
         # Assume (768 from embeddinggemma + 1152 from MedSigLIP)
@@ -80,12 +78,12 @@ class LocalIntelligenceNode:
             pa.field("vector", pa.list_(pa.float32(), 1920)),
             pa.field("metadata", pa.string())
         ])
-
+        table_name = os.getenv("TABLE_NAME")
         have_tables = self.db.list_tables()
-        if have_tables and TABLE_NAME not in have_tables.tables:
-            self.table = self.db.create_table(TABLE_NAME, schema=self.schema)
+        if have_tables and table_name not in have_tables.tables:
+            self.table = self.db.create_table(table_name, schema=self.schema)
         else:
-            self.table = self.db.open_table(TABLE_NAME)
+            self.table = self.db.open_table(table_name)
 
 
     def _fuse_vectors(self, text_vec: np.ndarray, image_vec: np.ndarray) -> list:
@@ -104,9 +102,10 @@ class LocalIntelligenceNode:
         processed_files = []
 
         logger.info("Scanning file system for changes...")
+        doc_folder = DATA_DIR / os.getenv("NODE_ID")
 
         # This loop acts exactly like a 'git add' diff
-        for filepath, timestamp, size in self.tracker.get_changed_files(DATA_DIR):
+        for filepath, timestamp, size in self.tracker.get_changed_files(doc_folder):
             try:
                 json_path = Path(filepath)
                 patient_id = json_path.stem
@@ -116,7 +115,7 @@ class LocalIntelligenceNode:
                     records = json.load(f)
                     patient_record = records[0]
 
-                img_path = DATA_DIR / patient_record.get("image_reference", "")
+                img_path = doc_folder / patient_record.get("image_reference", "")
                 if not img_path.exists():
                     logger.info(f"  -> Skipping {patient_id}: Image missing.")
                     continue
@@ -156,5 +155,8 @@ class LocalIntelligenceNode:
             logger.info("No changes detected.")
 
 if __name__ == "__main__":
-    node = LocalIntelligenceNode()
-    node.sync_database()
+    parser = argparse.ArgumentParser(description="Embeddings Generator")
+    parser.add_argument("--config", type=str, default=".env", help="Path to the .env profile")
+    args = parser.parse_args()
+    load_dotenv(args.config)
+    LocalIntelligenceNode().sync_database()

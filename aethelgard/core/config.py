@@ -31,8 +31,6 @@ def get_logger(module_name: str):
     logger = colorlog.getLogger(module_name)
     logger.addHandler(handler)
     logger.setLevel(level=logging.DEBUG)
-
-    logger.debug("testing=====")
     return logger
 
 # logging.basicConfig(level=logging.WARNING, format='%(asctime)s - %(levelname)s - %(message)s')
