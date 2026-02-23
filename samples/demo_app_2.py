@@ -20,7 +20,7 @@ logger = get_logger(__name__)
 # ==========================================
 
 # Aethelgard Network Configuration
-TARGET_NODES = ["Hospital_A", "Hospital_B"]
+TARGET_NODES = ["Hospital_B"]
 VECTOR_DIMENSIONS = 1920  # Matches LanceDB (768 text + 1152 image)
 POLL_INTERVAL = 30
 MAX_ATTEMPTS = 8
