@@ -140,7 +140,6 @@ To complete the data preparation, we must generate the embeddings for data, usin
 
 First, we have to validate all workflow via running integration test
 
-
 Run the following command to build and start the persistent Redis broker and super-link (the latter is available at http://localhost:8010/docs): 
 
 ```bash
@@ -148,15 +147,22 @@ sudo docker compose up --build --remove-orphans
 sudo docker ps
 ```
 
-
-
 It will start a container with redis, exposing `redis://localhost:6379` for requests.
 A cache folder will automatically appear in your project directory containing the `/appendonlydir` data.
+
+The super-link that should be available at `http://localhost:8010/docs`
+
+If everything is green, run the demo app:
+
+```bash
+python samples/demo_app_2.py
+```
+Run
 
 ### 🏗️ How It Works (The Pure-Pull Workflow)
 
 1. **Broadcast:** The global orchestrator drops a vectorized query into a secure mailbox (Broker).
-2. **Pull:** The client node (behind a strict hospital firewall) wakes up on its 30-second heartbeat and asks, *"Do I have any mail?"*
+2. **Pull:** The client node (behind a strict hospital firewall) wakes up on its 10-second heartbeat and asks, *"Do I have any mail?"*
 3. **Local RAG:** The client executes a local vector search (e.g., LanceDB) and sanitizes the output.
 4. **Upload:** The client pushes the safe, sanitized insight back to the orchestrator.
 
@@ -164,20 +170,20 @@ Text Embedding: Gemma 4B via Ollama
 
 * Installation: Download the installer from ollama.com for your specific OS.
 * Downloading the Model: Open your terminal and run ollama pull gemma:4b. This fetches the weights from the Ollama registry.
-* Execution: Ollama runs a background service automatically. When `get_text_embedding()` function uses LiteLLM to hit localhost:11434, 
+* Execution: Ollama runs a background service automatically. When `get_text_embedding()` function uses LiteLLM to hit `localhost:11434`, 
   Ollama dynamically loads the model into your RAM/VRAM, generates the 2048-dimensional vector, and unloads it after a period of inactivity.
 * Cache Location: The model weights (typically a .gguf file) are cached securely on local disk:
 ** Linux: `/usr/share/ollama/.ollama/models`
 
 Image Embedding: Google's CXR Foundation Models
 
-The script currently mocks the 128-dimensional vision output using google/siglip-base-patch16-224. 
+The script currently mocks the 128-dimensional vision output using `google/siglip-base-patch16-224`. 
 To swap this out for a dedicated medical foundation model (like Google's CXR models or similar open-weights variants), 
-you utilize the transformers library which is already in your requirements.txt.
+you utilize the transformers library which is already in your `requirements.txt`.
 
 * Downloading the Model: When `AutoModel.from_pretrained("model-name")` is called, the transformers library automatically 
   connects to the Hugging Face Hub, downloads the model weights, and caches them locally.
-* Execution: The script explicitly forces the model to run on the CPU (DEVICE = "cpu"), which is highly compatible 
+* Execution: The script explicitly forces the model to run on the CPU (line DEVICE = "cpu"), which is highly compatible 
   but slower than using a GPU. The transformers library handles tokenization and passes the tensors through the network to generate the embeddings.
 * Cache Location: By default, Hugging Face stores these large files in:
 ** Linux/macOS: `~/.cache/huggingface/hub`

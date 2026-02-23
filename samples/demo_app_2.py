@@ -20,8 +20,9 @@ logger = get_logger(__name__)
 # Aethelgard Network Configuration
 TARGET_NODES = ["Hospital_A", "Hospital_B"]
 VECTOR_DIMENSIONS = 1920  # Matches LanceDB (768 text + 1152 image)
-POLL_INTERVAL = 10
+POLL_INTERVAL = 30
 MAX_ATTEMPTS = 4
+LDP_NOSE = 0.01
 
 # Holds the current patient data
 CURRENT_PATIENT: Optional[Dict[str, Any]] = None
@@ -58,17 +59,67 @@ async def sanitize_and_vectorize(record: Dict, question: str) -> list:
     if patient_id:
         vector = get_precomputed_vector(patient_id)
         if vector:
-            ui.notify(f"Loaded existing vector for {patient_id} from LanceDB!", type='positive')
+            ui.notify(f"Loaded existing vector for {patient_id} from LanceDB!", type='positive', position='bottom-left')
             return vector
 
     # Fallback if DB isn't populated or patient is purely synthetic
-    ui.notify("No DB entry found. Generating temporary mockup vector...", type='warning')
+    ui.notify("No DB entry found. Generating temporary mockup vector...", type='warning', position='bottom-left')
     return [random.uniform(-1.0, 1.0) for _ in range(VECTOR_DIMENSIONS)]
 
 
 # ==========================================
 # 3. Aethelgard Network Integration
 # ==========================================
+
+def format_medical_insight(insight_data) -> str:
+    """
+    Cleans raw LLM text/JSON strings, parses them, and converts
+    the resulting dictionary into a formatted Markdown string.
+    """
+    # 1. Clean and parse if the input is a string
+    if isinstance(insight_data, str):
+        start_idx = insight_data.find('{')
+        end_idx = insight_data.rfind('}')
+
+        if start_idx != -1 and end_idx != -1 and end_idx > start_idx:
+            clean_json_str = insight_data[start_idx:end_idx + 1]
+            try:
+                insight_data = json.loads(clean_json_str)
+            except json.JSONDecodeError as e:
+                # should not be here by design!
+                print(e)
+                # If parsing fails, just return the cleaned string as a fallback
+                return clean_json_str
+        else:
+            # If there are no curly braces, return the raw string
+            return insight_data
+
+    if not isinstance(insight_data, dict):
+        return str(insight_data)
+    formatted_blocks = []
+
+    for key, value in insight_data.items():
+        # 1. Format the key as a Markdown heading (Level 3)
+        # e.g., "primary_diagnosis" -> "### Primary Diagnosis"
+        section_title = str(key).replace('_', ' ').title()
+        formatted_blocks.append(f"### {section_title}")
+
+        # 2. Format the value based on its type
+        if isinstance(value, list):
+            # Create a Markdown bulleted list
+            bullet_points = "\n".join([f"* {item}" for item in value])
+            formatted_blocks.append(bullet_points)
+        elif isinstance(value, str):
+            # Append string as a normal text block
+            formatted_blocks.append(value)
+        else:
+            # Fallback for booleans, numbers, etc.
+            formatted_blocks.append(str(value))
+
+    # Join all blocks with double newlines for proper Markdown paragraph spacing
+    return "\n\n".join(formatted_blocks)
+
+
 async def broadcast_and_poll(query_text: str, query_vector: list, update_container) -> List[Dict]:
     """Broadcasts query to the Orchestrator and polls for global consensus."""
     payload = {
@@ -92,7 +143,7 @@ async def broadcast_and_poll(query_text: str, query_vector: list, update_contain
         data = []
         for attempt in range(1, MAX_ATTEMPTS + 1):
             with update_container:
-                ui.notify(f"Polling orchestrator... Attempt {attempt}/{MAX_ATTEMPTS}", type='info')
+                ui.notify(f"Polling orchestrator... Attempt {attempt}/{MAX_ATTEMPTS}", type='info', position='bottom-left')
 
             await asyncio.sleep(POLL_INTERVAL)
 
@@ -116,18 +167,20 @@ async def broadcast_and_poll(query_text: str, query_vector: list, update_contain
 
         for item in data:
             node_id = item.get("client_id", "Unknown")
-            insight_json_str = item.get("insight", "{}")
-
+            insight_json_str = item.get("insight", {})
+            print(insight_json_str)
             try:
-                parsed_insight = json.loads(insight_json_str)
-                formatted_insight = json.dumps(parsed_insight, indent=2)
-            except json.JSONDecodeError:
-                formatted_insight = insight_json_str
+                insight_json = json.loads(insight_json_str)
+                parsed_insight = format_medical_insight(insight_json.get("msg", "NA"))
+                match_confidence = float(insight_json.get("similarity", 0))
+            except json.JSONDecodeError as e:
+                logger.error(f"Error parsing insight: {e}")
+                continue
 
             formatted_results.append({
                 "node": node_id,
-                "match_confidence": "High",
-                "insight": f"```json\n{formatted_insight}\n```"
+                "match_confidence": f"{match_confidence:.5f}",
+                "insight": parsed_insight
             })
 
         return formatted_results
@@ -151,12 +204,12 @@ async def handle_upload(e: events.UploadEventArguments):
                 CURRENT_PATIENT['image_base64'] = PENDING_IMAGE_B64
                 PENDING_IMAGE_B64 = None
 
-            ui.notify(f'Patient record {filename} loaded!', type='positive')
+            ui.notify(f'Patient record {filename} loaded!', type='positive', position='bottom-left')
             ui_state.card_expanded = False
             await render_patient_area.refresh()
 
         except Exception as ex:
-            ui.notify(f'Invalid JSON format: {ex}', type='negative')
+            ui.notify(f'Invalid JSON format: {ex}', type='negative', position='bottom-left')
 
     elif filename.endswith(('.jpg', '.jpeg', '.png')):
         b64_str = base64.b64encode(content).decode('utf-8')
@@ -168,7 +221,7 @@ async def handle_upload(e: events.UploadEventArguments):
             await render_patient_area.refresh()
         else:
             PENDING_IMAGE_B64 = data_uri
-        ui.notify(f'Image {filename} attached.', type='info')
+        ui.notify(f'Image {filename} attached.', type='info', position='bottom-left')
 
 
 # ==========================================

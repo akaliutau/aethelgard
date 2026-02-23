@@ -1,6 +1,6 @@
 import json
 from pathlib import Path
-from typing import Callable, Awaitable, Optional
+from typing import Callable, Awaitable, Optional, Any
 
 from jinja2 import Environment, FileSystemLoader
 
@@ -22,7 +22,7 @@ class LiteLLMFirewall:
     def __init__(
             self,
             model: str,
-            retriever_fn: Callable[[list], Awaitable[str]],
+            retriever_fn: Callable[[list], Awaitable[Any]],
             template_path: Optional[str] = None,
             api_base: Optional[str] = None,
             temperature: float = 0.1,
@@ -56,14 +56,16 @@ class LiteLLMFirewall:
         The entry point that satisfies the HospitalNode's search_fn requirement.
         """
         # Step 1: Execute the local mathematical vector search
-        raw_text = await self.retriever_fn(query_vector)
+        res = await self.retriever_fn(query_vector)
 
-        if not raw_text:
-            return json.dumps({"msg": "No local matches found."})
+        if res is None:
+            return json.dumps({"msg": "No local matches found.", "similarity": "0.0"})
 
+        raw_text, similarity = res
         # Step 2: Inject the raw, highly sensitive text into the Jinja prompt
         prompt_text = self.template.render(raw_clinical_text=raw_text)
         messages = [{"role": "user", "content": prompt_text}]
+        #print(messages)
 
         # Step 3: Generative Sanitization via LiteLLM Middleware
         metrics = LLMMetrics()
@@ -76,4 +78,4 @@ class LiteLLMFirewall:
         )
         logger.info(metrics)
 
-        return sanitized_json_string
+        return json.dumps({"msg": sanitized_json_string, "similarity": str(similarity)})

@@ -138,7 +138,7 @@ async def call_llm(messages: List[Any],
             resp = await acompletion(
                 model=model_id,
                 messages=messages,
-                reasoning_effort='medium',
+                #reasoning_effort='medium',
                 **params,
             )
 

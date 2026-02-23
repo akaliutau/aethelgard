@@ -1,6 +1,8 @@
 import argparse
 import asyncio
 import os
+from typing import Tuple
+
 import lancedb
 
 from dotenv import load_dotenv
@@ -22,7 +24,7 @@ async def main(env_file: str):
 
     logger.info(f"Booting Hospital Node: {node_id}")
 
-    async def lancedb_search(query_vector: list) -> str | None:
+    async def lancedb_search(query_vector: list) -> Tuple[str,float] | None:
         """
         Searches LanceDB using the incoming fused vector.
         Returns the raw JSON metadata of the closest match.
@@ -30,12 +32,16 @@ async def main(env_file: str):
         try:
             table = db.open_table(table_name)
             # Perform similarity search and grab the top 1 result
+            logger.info(f"querying vector, shape = ({len(query_vector)})")
             results = table.search(query_vector).limit(1).to_pandas()
+            logger.info(f"found {len(results)} results")
             if results.empty:
                 return None
-
+            rec = results.iloc[0]
+            logger.info(f"patient_id= {rec['id']} , _distance= {rec['_distance']}")
+            #logger.info(rec['metadata'])
             # Return the raw, highly sensitive clinical text (metadata)
-            return results.iloc[0]['metadata']
+            return rec['metadata'], rec['_distance']
         except Exception as e:
             logger.error(f"Database search failed: {e}")
             return None
@@ -63,6 +69,6 @@ async def main(env_file: str):
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Aethelgard Hospital Node")
-    parser.add_argument("--config", type=str, default=".env", help="Path to the .env profile")
+    parser.add_argument("--config", type=str, required=True, help="Path to the .env profile")
     args = parser.parse_args()
     asyncio.run(main(args.config))

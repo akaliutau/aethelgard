@@ -1,5 +1,5 @@
 import asyncio
-from typing import Callable, Awaitable
+from typing import Callable, Awaitable, Any
 
 from aethelgard.core.config import get_logger
 from aethelgard.core.transport import BaseClientTransport
