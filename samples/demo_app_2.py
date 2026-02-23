@@ -1,14 +1,16 @@
 import argparse
 import asyncio
-import json
 import base64
-import random
+import json
 import os
+from typing import Optional, Dict, Any, List
+
 import httpx
 import lancedb
-from typing import Optional, Dict, Any, List
+import numpy as np
 from dotenv import load_dotenv
 from nicegui import ui, app, events
+
 from aethelgard.core.config import get_logger
 
 logger = get_logger(__name__)
@@ -21,13 +23,34 @@ logger = get_logger(__name__)
 TARGET_NODES = ["Hospital_A", "Hospital_B"]
 VECTOR_DIMENSIONS = 1920  # Matches LanceDB (768 text + 1152 image)
 POLL_INTERVAL = 30
-MAX_ATTEMPTS = 4
-LDP_NOSE = 0.01
+MAX_ATTEMPTS = 8
+NOISE_SIGMA = 0.15
 
 # Holds the current patient data
 CURRENT_PATIENT: Optional[Dict[str, Any]] = None
 PENDING_IMAGE_B64: Optional[str] = None
 
+
+# ==========================================
+# 1. LDP Noise Generation
+# ==========================================
+def add_empirical_noise(raw_vector: list, noise_std_dev: float = 0.05) -> list:
+    """
+    Adds empirical Gaussian noise to a vector to defend against model inversion,
+    then L2-renormalizes the vector for cosine similarity search.
+    """
+    vec_np = np.array(raw_vector, dtype=np.float32)
+
+    # 1. Generate and add Gaussian noise
+    noise = np.random.normal(loc=0.0, scale=noise_std_dev, size=vec_np.shape)
+    noisy_vec = vec_np + noise
+
+    # 2. L2-Normalize the vector (Crucial for external search engines)
+    norm = np.linalg.norm(noisy_vec)
+    if norm > 0:
+        noisy_vec = noisy_vec / norm
+
+    return noisy_vec.tolist()
 
 # ==========================================
 # 2. Local LanceDB Retrieval
@@ -41,7 +64,8 @@ def get_precomputed_vector(patient_id: str) -> Optional[list]:
 
         if not results.empty:
             logger.info(f"Pre-computed vector found for {patient_id}")
-            return results.iloc[0]['vector'].tolist()
+            raw_vector = results.iloc[0]['vector'].tolist()
+            return add_empirical_noise(raw_vector, noise_std_dev=NOISE_SIGMA)
         else:
             logger.warning(f"Patient {patient_id} not found in LanceDB.")
             return None
@@ -62,9 +86,10 @@ async def sanitize_and_vectorize(record: Dict, question: str) -> list:
             ui.notify(f"Loaded existing vector for {patient_id} from LanceDB!", type='positive', position='bottom-left')
             return vector
 
-    # Fallback if DB isn't populated or patient is purely synthetic
-    ui.notify("No DB entry found. Generating temporary mockup vector...", type='warning', position='bottom-left')
-    return [random.uniform(-1.0, 1.0) for _ in range(VECTOR_DIMENSIONS)]
+    # Fallback if lance DB isn't populated yet
+    # In real prod we should stop workflow here and vectorize data, in demo we will never be here
+    ui.notify("No DB entry found!", type='negative', position='bottom-left')
+    return []
 
 
 # ==========================================
