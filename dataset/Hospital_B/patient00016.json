@@ -1,0 +1,25 @@
+[
+    {
+        "demographics": {
+            "age": 54,
+            "sex": "Female"
+        },
+        "clinical_history": "Patient is a 54-year-old female presenting to the emergency department with a 3-day history of worsening cough, shortness of breath, and pleuritic chest pain on the right side. The cough is productive of thick, yellow sputum. She reports feeling feverish and experiencing chills. She denies recent travel or sick contacts, but mentions she had a mild upper respiratory infection about a week ago. Past medical history includes hypertension, well-controlled with lisinopril, and seasonal allergies. She is a non-smoker and denies alcohol or illicit drug use. She works as a teacher.",
+        "vitals": {
+            "HR": 115,
+            "BP": "110/70 mmHg",
+            "SpO2": 90,
+            "Temp": 38.5
+        },
+        "radiographic_labels": {
+            "positive": [
+                "Consolidation"
+            ],
+            "negative": []
+        },
+        "hidden_diagnosis_label": "Community-Acquired Pneumonia",
+        "admission_note": "# Admission Note\n\n**Patient:** Jane Doe\n**Age:** 54\n**Sex:** Female\n**Date:** 2024-02-29\n**Admitting Physician:** Dr. [Your Name]\n\n## History of Present Illness (HPI):\n\nMs. Doe is a 54-year-old female presenting with a 3-day history of worsening cough, shortness of breath, and right-sided pleuritic chest pain. The cough is productive of thick, yellow sputum. She reports subjective fever and chills. Symptoms began insidiously after a mild upper respiratory infection approximately one week prior. She denies recent travel, sick contacts, or known exposures. She denies hemoptysis.\n\n## Review of Systems (ROS):\n\n*   **Constitutional:** Fever, chills, malaise.\n*   **Respiratory:** Cough (productive, yellow sputum), shortness of breath, pleuritic chest pain.\n*   **Cardiovascular:** Denies chest pain (other than pleuritic), palpitations, edema.\n*   **Gastrointestinal:** Denies nausea, vomiting, diarrhea, abdominal pain.\n*   **Neurological:** Denies headache, dizziness, focal weakness.\n\n## Past Medical History (PMH):\n\n*   Hypertension (well-controlled on lisinopril)\n*   Seasonal allergies\n\n## Social History:\n\n*   Non-smoker\n*   Denies alcohol or illicit drug use\n*   Works as a teacher\n\n## Medications:\n\n*   Lisinopril\n*   Over-the-counter allergy medication (as needed)\n\n## Allergies:\n\n*   NKDA\n\n## Physical Examination:\n\n*   **General:** Appears acutely ill, slightly diaphoretic.\n*   **Vitals:** HR 115 bpm, BP 110/70 mmHg, SpO2 90% on room air, Temp 38.5\u00b0C (101.3\u00b0F).\n*   **HEENT:** Oropharynx clear, no exudates. Mucous membranes slightly dry.\n*   **Neck:** Supple, no lymphadenopathy.\n*   **Lungs:** Decreased breath sounds and increased tactile fremitus over the right lower lobe. Crackles auscultated over the right lower lobe. Egophony present over the right lower lobe.\n*   **Cardiovascular:** Tachycardic, regular rhythm. No murmurs, rubs, or gallops.\n*   **Abdomen:** Soft, non-tender, non-distended. Bowel sounds present.\n*   **Skin:** Warm, dry, no rashes.\n*   **Neurological:** Alert and oriented x3. Grossly intact motor and sensory function.\n\n## Investigations:\n\n*   **Chest X-ray:** Shows consolidation in the right lower lobe.\n*   **CBC:** Pending.\n*   **BMP:** Pending.\n*   **Influenza/COVID testing:** Pending.\n*   **Sputum culture:** Pending.\n\n## Assessment:\n\n1.  **Community-Acquired Pneumonia (CAP), likely bacterial:** Based on the clinical presentation (fever, productive cough, pleuritic chest pain, shortness of breath) and physical exam findings (decreased breath sounds, crackles, increased tactile fremitus, egophony) localized to the right lower lobe, confirmed by chest X-ray showing consolidation. The patient is hypoxic (SpO2 90% on RA) and tachycardic (HR 115), indicating moderate severity.\n\n## Plan:\n\n1.  **Admit to inpatient medical service.**\n2.  **Oxygen therapy:** Start supplemental oxygen via nasal cannula to maintain SpO2 > 92%.\n3.  **IV fluids:** Start IV fluids (e.g., Normal Saline) for hydration.\n4.  **Antibiotics:** Initiate empiric antibiotic therapy for CAP. Given the likely bacterial etiology and moderate severity, start with a combination regimen such as ceftriaxone and azithromycin, or a respiratory fluoroquinolone (e.g., levofloxacin) if allergies preclude the former. Adjust based on sputum culture results and clinical response.\n5.  **Antipyretics:** Administer acetaminophen or ibuprofen for fever and discomfort.\n6.  **Monitor:** Closely monitor vital signs, respiratory status, and oxygen saturation. Repeat chest X-ray in 48-72 hours to assess response to treatment.\n7.  **Labs:** Review pending CBC, BMP, influenza/COVID tests, and sputum culture results.\n8.  **Consider:** If patient fails to improve or worsens, consider further investigations such as CT chest to rule out complications (e.g., empyema, abscess).\n9.  **Consult:** Pulmonary consult if needed.\n",
+        "patient_id": "patient00016",
+        "image_reference": "patient00016_study1_view1_frontal.jpg"
+    }
+]

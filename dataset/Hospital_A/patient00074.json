@@ -1,0 +1,31 @@
+[
+    {
+        "demographics": {
+            "age": 44,
+            "sex": "Male"
+        },
+        "clinical_history": "Patient is a 44-year-old male presenting to the emergency department with a 3-day history of worsening cough, shortness of breath, and pleuritic chest pain on the right side. He reports a low-grade fever and chills for the past 2 days. He denies any recent travel, sick contacts, or known exposure to tuberculosis. He has a history of well-controlled hypertension managed with lisinopril. He is a non-smoker and denies illicit drug use. He reports occasional alcohol consumption. Symptoms started insidiously but have progressed significantly over the last 24 hours, making it difficult for him to breathe comfortably at rest. He denies hemoptysis or recent trauma.",
+        "vitals": {
+            "HR": 115,
+            "BP": "110/70 mmHg",
+            "SpO2": 90,
+            "Temp": 38.5
+        },
+        "radiographic_labels": {
+            "positive": [
+                "Consolidation"
+            ],
+            "negative": [
+                "Pneumothorax",
+                "Pleural Effusion",
+                "Mass",
+                "Cardiomegaly",
+                "Fracture"
+            ]
+        },
+        "hidden_diagnosis_label": "Community-Acquired Pneumonia",
+        "admission_note": "# Admission Note\n\n**Patient:** John Doe\n**Age:** 44\n**Sex:** Male\n**Date:** 2024-02-29\n**Time:** 14:35\n\n## Chief Complaint\n\nShortness of breath, cough, and right-sided chest pain.\n\n## History of Present Illness (HPI)\n\nMr. Doe is a 44-year-old male presenting with a 3-day history of worsening cough, shortness of breath, and pleuritic chest pain localized to the right side. He describes the cough as initially dry but now productive of yellowish sputum. He reports associated low-grade fever (measured at home up to 101\u00b0F) and chills for the past 2 days. Symptoms began insidiously but have progressively worsened, particularly over the last 24 hours, leading to significant dyspnea even at rest. He denies hemoptysis, recent travel, sick contacts, or known TB exposure. He denies recent trauma.\n\n## Past Medical History (PMH)\n\nHypertension (well-controlled on lisinopril).\n\n## Social History\n\nNon-smoker, denies illicit drug use, occasional alcohol consumption.\n\n## Allergies\n\nNKDA (No Known Drug Allergies).\n\n## Medications\n\nLisinopril 10mg daily.\n\n## Review of Systems (ROS)\n\n*   **Constitutional:** Fever, chills, malaise.\n*   **Respiratory:** Cough (productive), shortness of breath, pleuritic chest pain.\n*   **Cardiovascular:** Denies chest pain (other than pleuritic), palpitations, edema.\n*   **Gastrointestinal:** Denies nausea, vomiting, diarrhea, abdominal pain.\n*   **Genitourinary:** Denies dysuria, frequency, urgency.\n*   **Neurological:** Denies headache, dizziness, focal weakness.\n\n## Physical Examination\n\n*   **General:** Appears moderately distressed, sitting upright, using accessory muscles to breathe.\n*   **Vitals:** HR 115 bpm, BP 110/70 mmHg, SpO2 90% on room air, Temp 38.5\u00b0C (101.3\u00b0F).\n*   **HEENT:** Normocephalic, atraumatic. Mucous membranes slightly dry. Pharynx clear.\n*   **Neck:** Supple, no lymphadenopathy or meningismus.\n*   **Lungs:** Auscultation reveals decreased breath sounds and bronchial breath sounds over the right lower lobe. Crackles are present in the right lower lobe. Egophony is noted over the right lower lobe. Left lung is clear to auscultation.\n*   **Cardiovascular:** Tachycardic, regular rhythm. No murmurs, rubs, or gallops. No peripheral edema.\n*   **Abdomen:** Soft, non-tender, non-distended. Bowel sounds present.\n*   **Skin:** Warm, dry, no rashes or lesions noted.\n*   **Neurological:** Alert and oriented x3. Gross motor and sensory function intact.\n\n## Investigations\n\n*   **Chest X-ray (CXR):** Shows consolidation in the right lower lobe.\n*   **CBC:** Pending.\n*   **BMP:** Pending.\n*   **Influenza/COVID PCR:** Pending.\n*   **Blood Cultures:** Pending.\n*   **Sputum Gram Stain and Culture:** Pending.\n\n## Assessment\n\n1.  **Community-Acquired Pneumonia (CAP), likely bacterial:** Based on the clinical presentation (fever, chills, productive cough, pleuritic chest pain, shortness of breath), physical exam findings (tachypnea, tachycardia, hypoxia, decreased breath sounds, crackles, egophony in the right lower lobe), and radiographic evidence of consolidation in the right lower lobe.\n\n## Plan\n\n1.  **Admit to inpatient medical service:** Due to hypoxia (SpO2 90% on RA), tachycardia (HR 115), fever, and radiographic evidence of pneumonia.\n2.  **Oxygen therapy:** Initiate supplemental oxygen via nasal cannula to maintain SpO2 > 92%.\n3.  **IV fluids:** Start IV fluids (e.g., Normal Saline) for hydration.\n4.  **Antibiotics:** Initiate empiric antibiotic therapy for CAP. Given the likely bacterial etiology and severity, start with a combination regimen covering typical and atypical pathogens (e.g., Ceftriaxone + Azithromycin or Levofloxacin).\n5.  **Labs:** Monitor CBC, BMP, inflammatory markers (CRP, ESR), and blood cultures.\n6.  **Respiratory support:** Monitor respiratory status closely. Consider non-invasive ventilation (NIV) or intubation if respiratory distress worsens or hypoxia persists despite oxygen therapy.\n7.  **Pain control:** Administer analgesics (e.g., acetaminophen or NSAIDs) for fever and pleuritic chest pain.\n8.  **Sputum culture:** Obtain sputum sample for Gram stain and culture to guide antibiotic therapy.\n9.  **Influenza/COVID testing:** Await results to guide isolation precautions and potential antiviral therapy.\n10. **Monitor:** Frequent vital sign monitoring, respiratory assessment, and oxygen saturation monitoring.\n",
+        "patient_id": "patient00074",
+        "image_reference": "patient00074_study1_view1_frontal.jpg"
+    }
+]

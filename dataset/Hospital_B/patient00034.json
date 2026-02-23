@@ -1,0 +1,29 @@
+[
+    {
+        "demographics": {
+            "age": 45,
+            "sex": "Male"
+        },
+        "clinical_history": "Patient is a 45-year-old male presenting to the emergency department with a 3-day history of worsening shortness of breath, productive cough with yellowish sputum, and pleuritic chest pain on the right side. He reports feeling feverish and experiencing chills over the past 2 days. He denies any recent travel, sick contacts, or known exposure to tuberculosis. He has a history of hypertension, well-controlled with lisinopril, and is a current smoker (1 pack per day for 20 years). He denies any history of asthma, COPD, or previous pneumonia. He reports feeling generally unwell and fatigued. He denies any recent trauma or surgery. He denies lower extremity swelling or orthopnea.",
+        "vitals": {
+            "HR": 115,
+            "BP": "130/80",
+            "SpO2": 90,
+            "Temp": 38.5
+        },
+        "radiographic_labels": {
+            "positive": [],
+            "negative": [
+                "Pneumothorax",
+                "Pleural Effusion",
+                "Mass",
+                "Fracture",
+                "Foreign Body"
+            ]
+        },
+        "hidden_diagnosis_label": "Community-Acquired Pneumonia",
+        "admission_note": "# Admission Note\n\n**Patient:** John Doe\n**Age:** 45\n**Sex:** Male\n**Date:** 2024-02-29\n**Time:** 14:35\n\n## Chief Complaint\n\nShortness of breath, cough, chest pain.\n\n## History of Present Illness\n\nMr. Doe is a 45-year-old male presenting with a 3-day history of worsening shortness of breath, productive cough with yellowish sputum, and right-sided pleuritic chest pain. He reports feeling feverish and experiencing chills over the past 2 days. Symptoms have progressively worsened, making it difficult for him to perform daily activities. He denies recent travel, sick contacts, or known TB exposure. He denies recent trauma.\n\n## Past Medical History\n\nHypertension (controlled with lisinopril).\n\n## Social History\n\nCurrent smoker (1 pack per day for 20 years).\n\n## Allergies\n\nNKDA.\n\n## Medications\n\nLisinopril.\n\n## Review of Systems\n\n*   **Constitutional:** Fever, chills, fatigue.\n*   **Respiratory:** Shortness of breath, productive cough (yellowish sputum), pleuritic chest pain (right side).\n*   **Cardiovascular:** Denies chest pain (other than pleuritic), palpitations, edema.\n*   **Gastrointestinal:** Denies nausea, vomiting, diarrhea, abdominal pain.\n*   **Genitourinary:** Denies dysuria, frequency, urgency.\n*   **Neurological:** Denies headache, dizziness, weakness, numbness.\n*   **Musculoskeletal:** Denies joint pain, muscle aches (other than general malaise).\n\n## Physical Examination\n\n*   **General:** Appears ill, diaphoretic.\n*   **Vitals:** HR 115 bpm, BP 130/80 mmHg, SpO2 90% on room air, Temp 38.5\u00b0C (101.3\u00b0F).\n*   **HEENT:** Normal.\n*   **Neck:** Supple, no lymphadenopathy.\n*   **Lungs:** Auscultation reveals decreased breath sounds and crackles in the right lower lobe. Increased tactile fremitus over the right lower lobe. Egophony present over the right lower lobe.\n*   **Cardiovascular:** Regular rate and rhythm, no murmurs, rubs, or gallops. No JVD.\n*   **Abdomen:** Soft, non-tender, non-distended. Bowel sounds present.\n*   **Extremities:** No edema, cyanosis, or clubbing.\n*   **Skin:** Warm, dry, diaphoretic.\n\n## Investigations\n\n*   Chest X-ray: Ordered. (Findings pending, but clinical suspicion high for pneumonia)\n*   CBC, CMP, Blood Cultures, Sputum Gram Stain and Culture: Ordered.\n*   Influenza and COVID-19 testing: Ordered.\n\n## Assessment\n\n1.  **Probable Community-Acquired Pneumonia (CAP):** Based on the patient's presentation with fever, chills, productive cough, pleuritic chest pain, shortness of breath, and physical exam findings of decreased breath sounds, crackles, increased tactile fremitus, and egophony in the right lower lobe. Hypoxia (SpO2 90%) and tachycardia (HR 115) suggest moderate severity.\n2.  **Hypoxia:** Secondary to likely pneumonia.\n3.  **Tachycardia:** Likely secondary to fever, hypoxia, and infection.\n\n## Plan\n\n1.  **Admit to Medicine:** Due to hypoxia, tachycardia, fever, and clinical suspicion for pneumonia requiring further workup and treatment.\n2.  **Oxygen Therapy:** Initiate supplemental oxygen via nasal cannula to maintain SpO2 > 92%.\n3.  **IV Fluids:** Start IV fluids (e.g., Normal Saline) for hydration.\n4.  **Antibiotics:** Initiate empiric antibiotic therapy for CAP (e.g., Ceftriaxone and Azithromycin) after obtaining cultures.\n5.  **Antipyretics:** Administer acetaminophen or ibuprofen for fever and discomfort.\n6.  **Monitor:** Closely monitor vital signs, respiratory status, and oxygen saturation.\n7.  **Further Workup:** Await results of chest X-ray, CBC, CMP, blood cultures, sputum studies, and viral testing to guide further management.\n8.  **Consider:** If CXR shows consolidation, consider CT chest if diagnosis is unclear or complications are suspected.\n\n**Attending Physician:** Dr. [Your Name]\n**Signature:**\n",
+        "patient_id": "patient00034",
+        "image_reference": "patient00034_study1_view1_frontal.jpg"
+    }
+]

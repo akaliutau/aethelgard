@@ -1,0 +1,32 @@
+[
+    {
+        "demographics": {
+            "age": 60,
+            "sex": "Male"
+        },
+        "clinical_history": "Patient is a 60-year-old male with a history of hypertension and hyperlipidemia, presenting to the emergency department with a 3-day history of worsening shortness of breath and a non-productive cough. He reports feeling generally unwell and experiencing mild pleuritic chest pain on the right side, exacerbated by deep breathing. He denies fever, chills, or recent travel. He is a former smoker, having quit 10 years ago after a 20 pack-year history. He denies any recent trauma or immobilization. His symptoms began gradually and have progressively worsened over the past 72 hours. He has noticed decreased exercise tolerance and feels lightheaded occasionally. He denies any known exposure to tuberculosis or other respiratory illnesses.",
+        "vitals": {
+            "HR": 110,
+            "BP": "130/80",
+            "SpO2": 92,
+            "Temp": 37.2
+        },
+        "radiographic_labels": {
+            "positive": [],
+            "negative": [
+                "Pneumonia",
+                "Pneumothorax",
+                "Pleural Effusion",
+                "Mass",
+                "Fracture"
+            ],
+            "uncertain/borderline": [
+                "Atelectasis"
+            ]
+        },
+        "hidden_diagnosis_label": "Atelectasis",
+        "admission_note": "# Admission Note\n\n**Patient:** John Doe\n**Age:** 60\n**Sex:** Male\n**Date:** 2024-02-29\n**Chief Complaint:** Shortness of breath\n\n## History of Present Illness (HPI):\n60-year-old male presents with a 3-day history of progressive shortness of breath and a non-productive cough. He also reports mild, right-sided pleuritic chest pain, worse with deep inspiration. He denies fever, chills, recent travel, or trauma. Symptoms started gradually and have worsened over the past 3 days. He notes decreased exercise tolerance and occasional lightheadedness.\n\n## Past Medical History (PMH):\n- Hypertension\n- Hyperlipidemia\n- Former smoker (quit 10 years ago, 20 pack-year history)\n\n## Social History:\n- Former smoker\n- Denies alcohol or illicit drug use\n\n## Family History:\n- Non-contributory\n\n## Review of Systems (ROS):\n- **Constitutional:** Reports feeling unwell, decreased exercise tolerance.\n- **Respiratory:** Shortness of breath, non-productive cough, pleuritic chest pain (right side).\n- **Cardiovascular:** Occasional lightheadedness.\n- **Other systems:** Denies fever, chills, night sweats, weight loss, recent travel, trauma, or sick contacts.\n\n## Physical Examination:\n- **General:** Alert and oriented, appears mildly distressed due to shortness of breath.\n- **Vitals:** HR 110 bpm, BP 130/80 mmHg, SpO2 92% on room air, Temp 37.2\u00b0C (99.0\u00b0F).\n- **HEENT:** Normal.\n- **Neck:** Supple, no lymphadenopathy.\n- **Lungs:** Decreased breath sounds at the right lung base. Mild crackles auscultated in the same area. No wheezing or rhonchi noted elsewhere.\n- **Cardiovascular:** Regular rate and rhythm, no murmurs, rubs, or gallops. No peripheral edema.\n- **Abdomen:** Soft, non-tender, non-distended. Bowel sounds present.\n- **Neurologic:** Grossly intact.\n- **Skin:** Warm, dry, no rashes.\n\n## Investigations:\n- Chest X-ray (CXR): Shows findings consistent with atelectasis, specifically decreased volume and increased opacity in the right lower lobe. No evidence of pneumonia, pneumothorax, pleural effusion, or mass.\n- CBC: Pending\n- BMP: Pending\n- ABG: Pending (likely to show mild hypoxemia and possibly respiratory alkalosis due to hyperventilation)\n\n## Assessment:\n1.  **Right Lower Lobe Atelectasis:** Likely secondary to shallow breathing due to pain (pleuritic chest pain) or possibly mucous plugging. The patient's symptoms (dyspnea, cough, pleuritic pain) and physical exam findings (decreased breath sounds, crackles at the right base) are consistent with this. The CXR confirms the presence of atelectasis.\n2.  **Hypoxemia:** SpO2 of 92% on room air indicates mild hypoxemia, likely related to the atelectasis.\n3.  **Tachycardia:** HR of 110 bpm could be due to hypoxemia, pain, or anxiety.\n\n## Plan:\n1.  **Oxygen Therapy:** Initiate supplemental oxygen via nasal cannula to maintain SpO2 > 94%.\n2.  **Pain Management:** Administer analgesics (e.g., NSAIDs or acetaminophen) for pleuritic chest pain to encourage deep breathing and coughing.\n3.  **Respiratory Therapy:** Consult respiratory therapy for incentive spirometry and chest physiotherapy to help re-expand the affected lung segment and clear potential secretions.\n4.  **Monitoring:** Continuous monitoring of vital signs, including heart rate, blood pressure, respiratory rate, and oxygen saturation.\n5.  **Further Investigations:** Review pending lab results (CBC, BMP, ABG). Consider D-dimer if pulmonary embolism is suspected, although the presentation is less typical.\n6.  **Disposition:** Admit to the hospital for monitoring and treatment of atelectasis and hypoxemia. Reassess response to therapy. If no improvement or worsening, consider bronchoscopy for possible mucous plug removal.\n",
+        "patient_id": "patient00035",
+        "image_reference": "patient00035_study2_view1_frontal.jpg"
+    }
+]

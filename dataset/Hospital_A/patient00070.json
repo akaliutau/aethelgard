@@ -1,0 +1,26 @@
+[
+    {
+        "demographics": {
+            "age": 42,
+            "sex": "Male"
+        },
+        "clinical_history": "Patient is a 42-year-old male presenting to the emergency department with acute onset of sharp, pleuritic chest pain on the right side, which started approximately 2 hours ago while he was walking his dog. He denies any preceding trauma, cough, fever, or recent illness. He has a history of well-controlled hypertension, managed with lisinopril. He is a non-smoker and denies illicit drug use. He reports no significant family history of pulmonary disease. He denies recent travel or prolonged immobilization. He states the pain is worse with deep inspiration and movement. He denies shortness of breath at rest but reports mild dyspnea on exertion. He denies palpitations, dizziness, or syncope.",
+        "vitals": {
+            "HR": 110,
+            "BP": "110/70 mmHg",
+            "SpO2": 92,
+            "Temp": 37.0
+        },
+        "radiographic_labels": {
+            "positive": [],
+            "negative": [
+                "Consolidation",
+                "Pleural Effusion"
+            ]
+        },
+        "hidden_diagnosis_label": "Spontaneous Pneumothorax",
+        "admission_note": "# Admission Note\n\n**Patient:** John Doe\n**Age:** 42\n**Sex:** Male\n**Date:** 2024-02-29\n**Time:** 14:35\n\n## Chief Complaint\nAcute onset right-sided pleuritic chest pain.\n\n## History of Present Illness\nPatient is a 42-year-old male with no significant past medical history other than well-controlled hypertension, presenting with acute onset of sharp, stabbing right-sided chest pain that began approximately 2 hours ago while walking. The pain is pleuritic in nature, worsening with deep inspiration and movement. He denies any trauma, recent illness, cough, fever, or sputum production. He denies shortness of breath at rest but reports mild dyspnea on exertion. He denies palpitations, dizziness, or syncope. He is a non-smoker.\n\n## Past Medical History\nHypertension (well-controlled on lisinopril).\n\n## Medications\nLisinopril 10mg daily.\n\n## Allergies\nNKDA.\n\n## Social History\nNon-smoker, denies illicit drug use, occasional alcohol use.\n\n## Family History\nNon-contributory.\n\n## Review of Systems\nAs per HPI. Denies fever, chills, cough, sputum, palpitations, dizziness, syncope, lower extremity swelling.\n\n## Physical Examination\n**General:** Alert and oriented, appears anxious but in no acute distress.\n**Vitals:** HR 110 bpm, BP 110/70 mmHg, RR 22 breaths/min, SpO2 92% on room air, Temp 37.0\u00b0C (98.6\u00b0F).\n**HEENT:** Atraumatic, normocephalic.\n**Neck:** Supple, no JVD.\n**Lungs:** Decreased breath sounds on the right side compared to the left. No wheezes, rales, or rhonchi auscultated bilaterally. Percussion reveals hyperresonance on the right side.\n**Cardiovascular:** Regular rate and rhythm, no murmurs, rubs, or gallops. S1 and S2 normal.\n**Abdomen:** Soft, non-tender, non-distended. Bowel sounds present in all four quadrants.\n**Neurologic:** Grossly intact.\n**Skin:** Warm, dry, no rashes or lesions.\n\n## Investigations\nChest X-ray (CXR) ordered and obtained.\n\n## Assessment\n42-year-old male presenting with acute onset right-sided pleuritic chest pain, dyspnea on exertion, tachycardia, and hypoxia. Physical exam reveals decreased breath sounds and hyperresonance on the right side. These findings are highly suggestive of a right-sided spontaneous pneumothorax.\n\n## Plan\n1.  **STAT Chest X-ray:** To confirm the diagnosis of pneumothorax and assess its size.\n2.  **Supplemental Oxygen:** Apply via nasal cannula to maintain SpO2 > 94%.\n3.  **IV Access:** Establish peripheral IV access.\n4.  **Pain Management:** Administer IV analgesia (e.g., morphine or fentanyl) for chest pain.\n5.  **Consult Thoracic Surgery:** For evaluation and management of the pneumothorax. Management will depend on the size of the pneumothorax and the patient's clinical status. Options include observation, needle aspiration, or chest tube placement.\n6.  **Continuous Monitoring:** Monitor vital signs, respiratory status, and pain level closely.\n7.  **Labs:** Obtain CBC, BMP, and coagulation studies.\n\n## Prognosis\nPrognosis is generally good with appropriate management. Recurrence is possible.\n\n**Attending Physician:** Dr. [Your Name]\n**Signature:**\n",
+        "patient_id": "patient00070",
+        "image_reference": "patient00070_study1_view1_frontal.jpg"
+    }
+]

@@ -1,0 +1,27 @@
+[
+    {
+        "demographics": {
+            "age": 35,
+            "sex": "Male"
+        },
+        "clinical_history": "Patient is a 35-year-old male presenting to the Emergency Department with acute onset of sharp, pleuritic chest pain on the right side, which started approximately 2 hours ago while he was lifting heavy boxes at home. He denies any preceding trauma, cough, fever, or recent illness. He has no significant past medical history, no known allergies, and is not currently taking any medications. He is a non-smoker and denies illicit drug use. He reports occasional alcohol consumption. Family history is unremarkable for cardiac or pulmonary disease. Social history is significant for his occupation as a warehouse worker involving heavy lifting.",
+        "vitals": {
+            "HR": 110,
+            "BP": "100/60 mmHg",
+            "SpO2": 92,
+            "Temp": 37.0
+        },
+        "radiographic_labels": {
+            "positive": [],
+            "negative": [
+                "Cardiomegaly",
+                "Consolidation",
+                "Pleural Effusion"
+            ]
+        },
+        "hidden_diagnosis_label": "Spontaneous Pneumothorax",
+        "admission_note": "# Admission Note\n\n**Patient:** John Doe\n**Age:** 35\n**Sex:** Male\n**Date:** 2024-02-29\n**Time:** 14:35\n\n## Chief Complaint\nAcute onset right-sided chest pain.\n\n## History of Present Illness (HPI)\nPatient is a 35-year-old male presenting with acute onset of sharp, pleuritic right-sided chest pain that began approximately 2 hours ago. The pain started suddenly while he was lifting heavy boxes at home. He describes the pain as worsening with deep inspiration and movement. He denies any associated trauma, cough, fever, chills, shortness of breath at rest, or recent upper respiratory infection. He denies any history of smoking or lung disease.\n\n## Past Medical History (PMH)\nNone significant.\n\n## Medications\nNone.\n\n## Allergies\nNKDA.\n\n## Social History\nNon-smoker, denies illicit drug use, occasional alcohol use. Works as a warehouse worker involving heavy lifting.\n\n## Family History\nNon-contributory.\n\n## Review of Systems (ROS)\n*   **General:** Denies fever, chills, weight loss.\n*   **HEENT:** Denies headache, vision changes, hearing loss, sore throat.\n*   **Cardiovascular:** Denies palpitations, chest pain (other than current complaint), edema.\n*   **Respiratory:** Denies cough, sputum production, wheezing, history of asthma or COPD. Reports current pleuritic chest pain.\n*   **Gastrointestinal:** Denies nausea, vomiting, diarrhea, abdominal pain.\n*   **Genitourinary:** Denies dysuria, frequency, hematuria.\n*   **Neurological:** Denies headache, dizziness, weakness, numbness.\n*   **Musculoskeletal:** Denies joint pain, muscle weakness (other than related to pain).\n*   **Psychiatric:** Denies depression, anxiety.\n\n## Physical Examination\n*   **General:** Alert and oriented, appears anxious, in moderate distress due to pain.\n*   **Vitals:** HR 110 bpm, BP 100/60 mmHg, SpO2 92% on room air, Temp 37.0\u00b0C (98.6\u00b0F).\n*   **HEENT:** Normocephalic, atraumatic. Mucous membranes moist. No JVD.\n*   **Cardiovascular:** Tachycardic, regular rhythm. No murmurs, rubs, or gallops. No peripheral edema.\n*   **Respiratory:** Tachypneic (RR ~24). Decreased breath sounds on the right side compared to the left. Hyperresonance to percussion on the right side. No wheezes or crackles auscultated on the left. Right-sided chest wall tenderness to palpation.\n*   **Abdomen:** Soft, non-tender, non-distended. Bowel sounds present in all four quadrants.\n*   **Neurological:** Grossly intact. Strength 5/5 bilaterally in upper and lower extremities.\n*   **Skin:** Warm, dry, no rashes or lesions.\n\n## Investigations\n*   Chest X-ray (CXR): Ordered stat. (Note: Based on the provided ground truth, the CXR is expected to show a pneumothorax, although the specific size/location is not detailed in the prompt. The negative findings provided in the prompt are consistent with a pneumothorax without other significant pathology like consolidation or effusion, and without cardiomegaly).\n\n## Assessment\n1.  **Suspected Right-sided Spontaneous Pneumothorax:** Based on acute onset pleuritic chest pain, decreased breath sounds, hyperresonance to percussion on the right side, tachycardia, and mild hypoxia. The patient's occupation involving heavy lifting may have precipitated this event.\n\n## Plan\n1.  **Obtain Stat Chest X-ray:** To confirm the diagnosis of pneumothorax and assess its size.\n2.  **Supplemental Oxygen:** Apply via nasal cannula to maintain SpO2 > 94%.\n3.  **IV Access:** Establish peripheral IV access.\n4.  **Pain Management:** Administer IV analgesia (e.g., morphine or fentanyl) for chest pain.\n5.  **Consult Thoracic Surgery:** Based on CXR findings (size of pneumothorax) and clinical status, determine the need for chest tube placement versus observation. If the pneumothorax is large or the patient is symptomatic/unstable, chest tube insertion is indicated.\n6.  **Continuous Monitoring:** Monitor vital signs, respiratory status, and pain level closely.\n7.  **Labs:** Obtain CBC, BMP, coagulation studies.\n8.  **ECG:** Obtain to rule out cardiac etiology for chest pain, although less likely given the presentation.\n",
+        "patient_id": "patient00071",
+        "image_reference": "patient00071_study1_view1_frontal.jpg"
+    }
+]

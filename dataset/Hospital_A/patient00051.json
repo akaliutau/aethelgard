@@ -1,0 +1,31 @@
+[
+    {
+        "demographics": {
+            "age": 63,
+            "sex": "Male"
+        },
+        "clinical_history": "Patient is a 63-year-old male with a history of COPD (diagnosed 5 years ago, uses albuterol PRN) and hypertension (controlled with lisinopril). He presents to the emergency department today complaining of worsening shortness of breath that started approximately 2 days ago. He initially attributed it to his usual COPD exacerbation, but it has progressively worsened, now occurring even at rest. He denies fever, chills, cough productive of purulent sputum, or chest pain. He reports increased use of his albuterol inhaler with minimal relief. He denies recent travel, sick contacts, or known exposure to tuberculosis. He is a former smoker with a 40 pack-year history, having quit 10 years ago. He denies recent falls or trauma.",
+        "vitals": {
+            "HR": 115,
+            "BP": "130/80",
+            "SpO2": 88,
+            "Temp": 37.0
+        },
+        "radiographic_labels": {
+            "positive": [
+                "Hyperinflation",
+                "Flattened Diaphragms",
+                "Increased AP Diameter",
+                "Bullae"
+            ],
+            "negative": [
+                "Consolidation",
+                "Pleural Effusion"
+            ]
+        },
+        "hidden_diagnosis_label": "COPD Exacerbation",
+        "admission_note": "# Admission Note\n\n**Patient:** John Doe\n**Age:** 63\n**Sex:** Male\n**Date:** 2024-02-29\n\n## History of Present Illness (HPI):\n\n63-year-old male with a known history of COPD and hypertension presents with worsening shortness of breath over the past 2 days. The dyspnea has progressed from exertional to occurring at rest. He denies fever, chills, productive cough (especially purulent), or chest pain. He reports increased use of his albuterol inhaler with minimal improvement. He denies recent travel, sick contacts, or trauma.\n\n## Past Medical History (PMH):\n\n*   COPD (diagnosed 5 years ago)\n*   Hypertension (controlled with lisinopril)\n*   Former smoker (40 pack-years, quit 10 years ago)\n\n## Medications:\n\n*   Albuterol inhaler PRN\n*   Lisinopril\n\n## Allergies:\n\nNKDA\n\n## Social History:\n\nFormer smoker. Denies alcohol or illicit drug use.\n\n## Family History:\n\nNon-contributory.\n\n## Review of Systems (ROS):\n\n*   **General:** No fever, chills, weight loss.\n*   **HEENT:** No headache, vision changes, hearing loss, sore throat.\n*   **Respiratory:** Worsening shortness of breath, no cough, no wheezing reported by patient (though may be present on exam).\n*   **Cardiovascular:** No chest pain, palpitations, edema.\n*   **Gastrointestinal:** No nausea, vomiting, diarrhea, abdominal pain.\n*   **Genitourinary:** No dysuria, frequency, hematuria.\n*   **Neurological:** No focal weakness, numbness, tingling, headache.\n*   **Musculoskeletal:** No joint pain, muscle weakness.\n*   **Skin:** No rash, lesions.\n\n## Physical Examination:\n\n*   **General:** Anxious appearing male, sitting upright, using accessory muscles of respiration.\n*   **Vitals:** HR 115 bpm, BP 130/80 mmHg, RR 28 breaths/min, SpO2 88% on room air, Temp 37.0\u00b0C.\n*   **HEENT:** Normocephalic, atraumatic. Mucous membranes slightly dry. No JVD.\n*   **Lungs:** Diffuse wheezing bilaterally, decreased breath sounds in bases. Prolonged expiratory phase. No crackles or rhonchi.\n*   **Cardiovascular:** Tachycardic, regular rhythm. No murmurs, rubs, or gallops. No peripheral edema.\n*   **Abdomen:** Soft, non-tender, non-distended. Bowel sounds present.\n*   **Neurological:** Alert and oriented x3. No focal deficits.\n*   **Extremities:** No edema, cyanosis, or clubbing.\n\n## Investigations:\n\n*   **Chest X-ray:** Shows signs consistent with COPD, including hyperinflation, flattened diaphragms, increased anteroposterior (AP) diameter, and possible bullae. No evidence of consolidation or pleural effusion.\n*   **ABG (on room air):** pH 7.32, PaCO2 58 mmHg, PaO2 55 mmHg, HCO3 28 mEq/L (consistent with acute on chronic respiratory acidosis).\n*   **CBC:** WBC 12,000 (mild leukocytosis).\n*   **BMP:** Within normal limits.\n\n## Assessment:\n\n1.  **Acute Exacerbation of COPD:** Patient presents with worsening dyspnea, increased work of breathing, accessory muscle use, tachypnea, tachycardia, and hypoxemia, consistent with an acute exacerbation of his underlying COPD. Chest X-ray findings support chronic COPD changes. ABG shows acute on chronic respiratory acidosis. Mild leukocytosis may suggest an infectious component, but clinical picture is primarily respiratory failure.\n\n## Plan:\n\n1.  **Oxygen Therapy:** Initiate supplemental oxygen via nasal cannula, titrating to maintain SpO2 88-92%.\n2.  **Bronchodilators:** Administer nebulized albuterol and ipratropium every 20 minutes for the first hour, then reassess. Consider continuous nebulization if needed.\n3.  **Systemic Corticosteroids:** Administer IV methylprednisolone 125 mg.\n4.  **Antibiotics:** Start empiric antibiotics (e.g., azithromycin, doxycycline, or amoxicillin/clavulanate) given the possibility of bacterial infection contributing to the exacerbation, especially with leukocytosis.\n5.  **Non-Invasive Ventilation (NIV):** Given the respiratory acidosis (pH 7.32, PaCO2 58) and significant work of breathing, initiate BiPAP or CPAP. Monitor closely for response and potential need for intubation.\n6.  **Monitoring:** Continuous cardiac monitoring, frequent vital signs, serial ABGs, and pulse oximetry.\n7.  **Further Management:** Consider chest physiotherapy, hydration, and nutritional support. Consult respiratory therapy for optimal bronchodilator delivery and NIV management. Evaluate for underlying triggers (infection, environmental factors) once stabilized.\n8.  **Disposition:** Admit to the medical floor or potentially ICU depending on response to initial therapy and severity of respiratory failure.",
+        "patient_id": "patient00051",
+        "image_reference": "patient00051_study1_view1_frontal.jpg"
+    }
+]

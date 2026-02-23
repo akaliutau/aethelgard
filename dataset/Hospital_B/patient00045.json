@@ -1,0 +1,27 @@
+[
+    {
+        "demographics": {
+            "age": 69,
+            "sex": "Female"
+        },
+        "clinical_history": "The patient is a 69-year-old female with a history of hypertension, hyperlipidemia, and osteoarthritis presenting to the emergency department with a 3-day history of worsening shortness of breath and a non-productive cough. She denies fever, chills, or chest pain. Symptoms began gradually after a recent prolonged period of bed rest following a minor fall at home, during which she reports limited mobility and deep breathing due to pain. She has no known history of asthma, COPD, or smoking. She denies recent travel or sick contacts. Her medications include lisinopril, atorvastatin, and acetaminophen as needed. She is alert and oriented but appears mildly distressed due to her respiratory symptoms.",
+        "vitals": {
+            "HR": 98,
+            "BP": "130/80 mmHg",
+            "SpO2": 92,
+            "Temp": 37.0
+        },
+        "radiographic_labels": {
+            "positive": [
+                "Atelectasis"
+            ],
+            "negative": [
+                "Consolidation"
+            ]
+        },
+        "hidden_diagnosis_label": "Postoperative/Post-traumatic Atelectasis",
+        "admission_note": "# Admission Note\n\n**Patient:** Jane Doe\n**Age:** 69\n**Sex:** Female\n**Date:** 2024-02-29\n**Time:** 14:35\n\n## History of Present Illness (HPI):\n\n69-year-old female presents with a 3-day history of progressive shortness of breath and a non-productive cough. Symptoms started gradually after a fall at home approximately one week ago, leading to a period of limited mobility and reduced deep breathing due to pain. She denies fever, chills, chest pain, wheezing, or sputum production. She reports feeling more fatigued than usual.\n\n## Past Medical History (PMH):\n\n*   Hypertension\n*   Hyperlipidemia\n*   Osteoarthritis\n\n## Medications:\n\n*   Lisinopril\n*   Atorvastatin\n*   Acetaminophen PRN\n\n## Allergies:\n\nNKDA\n\n## Social History:\n\nNon-smoker. Denies alcohol or illicit drug use. Lives at home alone.\n\n## Family History:\n\nNon-contributory.\n\n## Review of Systems (ROS):\n\n*   **Constitutional:** Reports fatigue.\n*   **Respiratory:** Shortness of breath, non-productive cough.\n*   **Cardiovascular:** Denies chest pain, palpitations, edema.\n*   **Gastrointestinal:** Denies nausea, vomiting, diarrhea, abdominal pain.\n*   **Neurological:** Denies headache, dizziness, focal weakness.\n\n## Physical Examination:\n\n*   **General:** Alert and oriented, appears mildly distressed, sitting upright in chair.\n*   **Vitals:** HR 98 bpm, BP 130/80 mmHg, SpO2 92% on room air, Temp 37.0\u00b0C (98.6\u00b0F).\n*   **HEENT:** Normocephalic, atraumatic. Mucous membranes moist. Oropharynx clear.\n*   **Neck:** Supple, no lymphadenopathy, no JVD.\n*   **Lungs:** Auscultation reveals decreased breath sounds at the right lung base. No wheezes, rhonchi, or crackles noted. Mild tachypnea observed.\n*   **Cardiovascular:** Regular rate and rhythm, no murmurs, rubs, or gallops. Peripheral pulses 2+ bilaterally.\n*   **Abdomen:** Soft, non-tender, non-distended. Bowel sounds present in all four quadrants.\n*   **Extremities:** No edema. Full range of motion in upper extremities. Limited range of motion in lower extremities due to pain from recent fall (patient reports).\n*   **Skin:** Warm, dry, intact. No rashes or lesions.\n\n## Investigations:\n\n*   **Chest X-ray (CXR):** Shows atelectasis in the right lower lobe. No evidence of consolidation, pleural effusion, or pneumothorax.\n*   **CBC:** Pending.\n*   **BMP:** Pending.\n*   **ABG:** Pending (if SpO2 does not improve with supplemental O2).\n\n## Assessment:\n\n1.  **Atelectasis (Right Lower Lobe):** Likely secondary to decreased deep breathing and mobility following a recent fall. This is causing hypoxemia (SpO2 92%) and shortness of breath.\n2.  **Hypoxemia:** Secondary to atelectasis.\n\n## Plan:\n\n1.  **Oxygen Therapy:** Apply supplemental oxygen via nasal cannula to maintain SpO2 > 94%.\n2.  **Respiratory Therapy:** Consult respiratory therapy for incentive spirometry and chest physiotherapy to help re-expand the collapsed lung tissue.\n3.  **Pain Management:** Ensure adequate pain control for the patient's fall-related pain to encourage deeper breathing and mobilization.\n4.  **Monitoring:** Continuous pulse oximetry monitoring. Monitor respiratory status closely.\n5.  **Further Investigations:** Review pending labs (CBC, BMP). Consider ABG if hypoxemia persists despite oxygen therapy.\n6.  **Disposition:** Admit to the hospital for management of atelectasis and hypoxemia. Encourage ambulation and deep breathing exercises as tolerated.\n\n**Attending Physician:** Dr. [Your Name]\n**Signature:**\n",
+        "patient_id": "patient00045",
+        "image_reference": "patient00045_study1_view1_frontal.jpg"
+    }
+]

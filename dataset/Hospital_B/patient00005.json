@@ -1,0 +1,27 @@
+[
+    {
+        "demographics": {
+            "age": 33,
+            "sex": "Male"
+        },
+        "clinical_history": "The patient is a 33-year-old male presenting to the emergency department with acute onset of sharp, pleuritic chest pain on the right side, which started approximately 2 hours ago while he was lifting heavy boxes at home. He denies any preceding trauma or illness. The pain is described as 8/10 in severity and worsens with deep inspiration or coughing. He also reports shortness of breath, which has progressively worsened since the onset of pain. He denies fever, chills, cough, sputum production, or recent travel. Past medical history is unremarkable. He is a non-smoker and denies any history of asthma, COPD, or previous pneumothorax. Family history is non-contributory. Social history: denies alcohol or illicit drug use.",
+        "vitals": {
+            "HR": 110,
+            "BP": "100/65 mmHg",
+            "SpO2": 92,
+            "Temp": 37.0
+        },
+        "radiographic_labels": {
+            "positive": [],
+            "negative": [
+                "Cardiomegaly",
+                "Consolidation",
+                "Pleural Effusion"
+            ]
+        },
+        "hidden_diagnosis_label": "Spontaneous Pneumothorax",
+        "admission_note": "# Admission Note\n\n**Patient:** John Doe\n**Age:** 33\n**Sex:** Male\n**Date:** 2024-02-29\n**Time:** 14:35\n\n## Chief Complaint\nAcute onset right-sided chest pain and shortness of breath.\n\n## History of Present Illness\n33-year-old male presents with sudden onset of sharp, pleuritic right-sided chest pain that began approximately 2 hours ago while lifting heavy boxes. The pain is rated 8/10, exacerbated by deep breathing and coughing. He also reports progressive shortness of breath since the onset of pain. He denies fever, chills, cough, sputum, recent illness, trauma, or travel. He denies any history of smoking, asthma, COPD, or prior pneumothorax.\n\n## Past Medical History\nUnremarkable.\n\n## Medications\nNone.\n\n## Allergies\nNKDA.\n\n## Social History\nNon-smoker, denies alcohol or illicit drug use.\n\n## Family History\nNon-contributory.\n\n## Review of Systems\nConstitutional: Denies fever, chills, weight loss.\nCardiovascular: Denies palpitations, chest pain (prior).\nRespiratory: Reports acute onset shortness of breath and pleuritic chest pain.\nGI: Denies nausea, vomiting, diarrhea, abdominal pain.\nGU: Denies dysuria, frequency, hematuria.\nNeurological: Denies headache, dizziness, focal weakness.\nMusculoskeletal: Denies joint pain, muscle weakness (except related to pain).\nSkin: Denies rash, lesions.\nPsychiatric: Denies anxiety, depression.\n\n## Physical Examination\n**General:** Anxious appearing male in moderate respiratory distress.\n**Vitals:** HR 110 bpm, BP 100/65 mmHg, SpO2 92% on room air, Temp 37.0\u00b0C (98.6\u00b0F).\n**HEENT:** Normocephalic, atraumatic. Mucous membranes slightly dry. Sclerae anicteric.\n**Neck:** Supple, no JVD, no lymphadenopathy.\n**Lungs:** Decreased breath sounds on the right side compared to the left. Hyperresonance to percussion on the right side. No wheezes or crackles appreciated on the left. No crackles on the right.\n**Cardiovascular:** Tachycardic, regular rhythm. No murmurs, rubs, or gallops. No peripheral edema.\n**Abdomen:** Soft, non-tender, non-distended. Bowel sounds present in all four quadrants.\n**Neurological:** Alert and oriented x3. Gross motor and sensory function intact.\n**Skin:** Warm, dry, diaphoretic.\n\n## Investigations\nChest X-ray ordered and reviewed. Findings: No cardiomegaly, consolidation, or pleural effusion identified. (Note: The specific finding of pneumothorax is not explicitly stated in the negative list, but the clinical picture and physical exam strongly suggest it, which would be the positive finding not listed in the negative list). Pulse oximetry shows SpO2 92% on room air.\n\n## Assessment\n1.  **Suspected Right-sided Spontaneous Pneumothorax:** Based on acute onset pleuritic chest pain, shortness of breath, decreased breath sounds, and hyperresonance on the right side. The patient's vital signs (tachycardia, borderline hypotension, hypoxia) are consistent with this diagnosis.\n\n## Plan\n1.  **STAT Chest X-ray:** To confirm the diagnosis of pneumothorax. (Assuming the provided ground truth is that the X-ray is negative for consolidation, effusion, and cardiomegaly, but positive for pneumothorax, which is not explicitly listed in either positive or negative findings in the JSON, this implies the X-ray *will* show the pneumothorax). \n2.  **Oxygen Supplementation:** Apply high-flow nasal cannula or non-rebreather mask to maintain SpO2 > 94%.\n3.  **Cardiac Monitoring:** Continuous monitoring due to tachycardia and potential hemodynamic instability.\n4.  **IV Access:** Establish two large-bore IVs.\n5.  **Pain Management:** Administer IV analgesics (e.g., morphine) for chest pain.\n6.  **Consult Thoracic Surgery:** For evaluation and management of the pneumothorax, likely requiring chest tube placement.\n7.  **Serial Vital Signs and Respiratory Assessment:** Monitor closely for any deterioration.\n8.  **Labs:** Obtain CBC, BMP, ABG.\n\n## Disposition\nAdmit to the hospital for management of suspected/confirmed pneumothorax.",
+        "patient_id": "patient00005",
+        "image_reference": "patient00005_study1_view1_frontal.jpg"
+    }
+]

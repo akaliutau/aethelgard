@@ -1,0 +1,25 @@
+[
+    {
+        "demographics": {
+            "age": 63,
+            "sex": "Male"
+        },
+        "clinical_history": "Patient is a 63-year-old male with a history of hypertension and hyperlipidemia, presenting to the emergency department with acute onset shortness of breath and pleuritic chest pain that started approximately 4 hours ago while gardening. He denies any recent trauma, fever, chills, cough, or sputum production. He reports feeling well prior to the onset of symptoms. He is a former smoker, having quit 15 years ago (20 pack-year history). He denies any known allergies. He takes lisinopril and atorvastatin daily.",
+        "vitals": {
+            "HR": 115,
+            "BP": "105/68 mmHg",
+            "SpO2": 90,
+            "Temp": 37.0
+        },
+        "radiographic_labels": {
+            "positive": [],
+            "negative": [
+                "Consolidation"
+            ]
+        },
+        "hidden_diagnosis_label": "Spontaneous Pneumothorax",
+        "admission_note": "# Admission Note\n\n**Patient:** John Doe\n**Age:** 63\n**Sex:** Male\n**Date:** 2024-02-29\n**Time:** 14:35\n\n## Chief Complaint\nAcute onset shortness of breath and pleuritic chest pain.\n\n## History of Present Illness\nPatient is a 63-year-old male with a history of hypertension and hyperlipidemia who presents with acute onset shortness of breath and sharp, pleuritic chest pain on the right side. Symptoms began approximately 4 hours ago while he was gardening. He denies any preceding trauma, cough, fever, chills, or sputum production. He describes the pain as worsening with deep inspiration and movement. He denies any recent illness or travel.\n\n## Past Medical History\n- Hypertension\n- Hyperlipidemia\n- Former smoker (quit 15 years ago, 20 pack-year history)\n\n## Medications\n- Lisinopril\n- Atorvastatin\n\n## Allergies\nNKDA\n\n## Social History\nFormer smoker. Denies alcohol or illicit drug use.\n\n## Family History\nNon-contributory.\n\n## Review of Systems\n- General: Denies fever, chills, weight loss.\n- HEENT: Denies headache, vision changes, hearing loss, nasal congestion.\n- Cardiovascular: Denies palpitations, edema.\n- Respiratory: Reports acute onset shortness of breath and pleuritic chest pain.\n- Gastrointestinal: Denies nausea, vomiting, diarrhea, abdominal pain.\n- Genitourinary: Denies dysuria, frequency, hematuria.\n- Neurological: Denies weakness, numbness, tingling.\n- Musculoskeletal: Denies joint pain, muscle aches.\n- Psychiatric: Denies depression, anxiety.\n\n## Physical Examination\n**Vitals:** HR 115 bpm, BP 105/68 mmHg, SpO2 90% on room air, Temp 37.0\u00b0C (98.6\u00b0F).\n**General:** Anxious appearing male in moderate respiratory distress.\n**HEENT:** Normocephalic, atraumatic. Mucous membranes slightly dry. No JVD.\n**Lungs:** Decreased breath sounds on the right side compared to the left. Hyperresonance to percussion on the right side. No wheezes or crackles appreciated on the left. No egophony.\n**Cardiovascular:** Tachycardic, regular rhythm. No murmurs, rubs, or gallops. Peripheral pulses 2+ bilaterally.\n**Abdomen:** Soft, non-tender, non-distended. Bowel sounds present in all four quadrants.\n**Neurological:** Alert and oriented to person, place, and time. Gross motor and sensory function intact.\n**Skin:** Warm, dry, no rashes or lesions.\n\n## Investigations\n- Chest X-ray (CXR) ordered and reviewed. Findings: Right-sided pneumothorax, moderate in size. No evidence of consolidation, effusion, or mediastinal shift.\n- EKG ordered.\n- CBC, BMP, Troponin ordered.\n\n## Assessment\n1.  **Right-sided Spontaneous Pneumothorax:** Acute onset pleuritic chest pain and shortness of breath, decreased breath sounds, hyperresonance to percussion on the right side, and confirmed by CXR. The patient is tachycardic and hypoxic, indicating moderate severity.\n\n## Plan\n1.  **Oxygen:** Apply supplemental oxygen via nasal cannula to maintain SpO2 > 92%.\n2.  **IV Access:** Establish intravenous access.\n3.  **Pain Management:** Administer IV pain medication (e.g., morphine) for pleuritic chest pain.\n4.  **Chest Tube Placement:** Consult Thoracic Surgery for urgent placement of a right-sided chest tube for drainage of air and lung re-expansion. Given the patient's respiratory distress and hypoxia, this is the definitive treatment.\n5.  **Monitoring:** Continuous cardiac monitoring, pulse oximetry, and frequent reassessment of respiratory status.\n6.  **Labs:** Review results of CBC, BMP, Troponin, EKG.\n7.  **Disposition:** Admit to the hospital for management of pneumothorax and monitoring post-chest tube placement.\n",
+        "patient_id": "patient00049",
+        "image_reference": "patient00049_study1_view1_frontal.jpg"
+    }
+]

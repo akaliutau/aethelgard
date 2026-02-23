@@ -1,0 +1,25 @@
+[
+    {
+        "demographics": {
+            "age": 44,
+            "sex": "Female"
+        },
+        "clinical_history": "Patient is a 44-year-old female presenting to the emergency department with acute onset shortness of breath and pleuritic chest pain that started approximately 2 hours ago while gardening. She denies any recent trauma, fever, cough, or sputum production. She has a history of well-controlled asthma, for which she uses an albuterol inhaler as needed. She denies smoking history. She reports feeling lightheaded and dizzy upon exertion. Family history is non-contributory. Social history includes occasional alcohol use.",
+        "vitals": {
+            "HR": 115,
+            "BP": "105/68 mmHg",
+            "SpO2": 92,
+            "Temp": 37.0
+        },
+        "radiographic_labels": {
+            "positive": [],
+            "negative": [
+                "Pleural Effusion"
+            ]
+        },
+        "hidden_diagnosis_label": "Spontaneous Pneumothorax",
+        "admission_note": "# Admission Note\n\n**Patient:** Jane Doe\n**Age:** 44\n**Sex:** Female\n**Date:** 2024-02-29\n**Time:** 14:35\n\n## Chief Complaint\n\nAcute onset shortness of breath and right-sided pleuritic chest pain.\n\n## History of Present Illness\n\nPatient is a 44-year-old female with a history of well-controlled asthma who presents to the ED today with acute onset shortness of breath and sharp, right-sided pleuritic chest pain. The symptoms began approximately 2 hours ago while she was gardening. She denies any preceding trauma, fever, cough, or sputum production. The pain is exacerbated by deep inspiration and movement. She reports feeling lightheaded and dizzy, especially with exertion. She denies any recent travel, sick contacts, or changes in medications.\n\n## Past Medical History\n\n- Asthma (well-controlled, uses albuterol PRN)\n\n## Medications\n\n- Albuterol inhaler (PRN)\n\n## Allergies\n\n- NKDA\n\n## Social History\n\n- Occasional alcohol use.\n- Denies smoking.\n\n## Family History\n\n- Non-contributory.\n\n## Review of Systems\n\n- **Constitutional:** Denies fever, chills, weight loss.\n- **Respiratory:** Positive for acute onset shortness of breath and pleuritic chest pain. Denies cough, sputum, wheezing (other than baseline asthma).\n- **Cardiovascular:** Denies chest pain (other than pleuritic), palpitations, edema.\n- **Gastrointestinal:** Denies nausea, vomiting, diarrhea, abdominal pain.\n- **Neurological:** Reports lightheadedness and dizziness.\n\n## Physical Examination\n\n**General:** Anxious female in moderate respiratory distress.\n**Vitals:** HR 115 bpm, BP 105/68 mmHg, SpO2 92% on room air, Temp 37.0\u00b0C (98.6\u00b0F).\n**HEENT:** Atraumatic. Mucous membranes slightly dry.\n**Neck:** Supple, no JVD.\n**Lungs:** Decreased breath sounds over the right hemithorax, particularly in the upper lobe. Hyperresonance to percussion over the right hemithorax. No wheezing or crackles appreciated on the left.\n**Cardiovascular:** Tachycardic, regular rhythm. No murmurs, rubs, or gallops. Peripheral pulses 2+ bilaterally.\n**Abdomen:** Soft, non-tender, non-distended. Bowel sounds present.\n**Skin:** Warm, dry, diaphoretic.\n**Neurological:** Alert and oriented x3. Grossly intact motor and sensory function.\n\n## Investigations\n\n- Chest X-ray (CXR) ordered and obtained.\n\n## Assessment\n\n1.  **Right-sided Spontaneous Pneumothorax:** Based on the acute onset of pleuritic chest pain and shortness of breath, physical exam findings of decreased breath sounds and hyperresonance on the right, and likely confirmation on CXR (pending formal read, but highly suspected clinically). The patient's vital signs (tachycardia, borderline hypotension, hypoxia) indicate moderate respiratory compromise.\n\n## Plan\n\n1.  **Immediate Management:**\n    - Place patient on supplemental oxygen via nasal cannula to maintain SpO2 > 94%.\n    - Establish IV access (2 large bore).\n    - Obtain stat repeat vital signs.\n    - Obtain stat portable CXR (if not already done).\n    - Consult Thoracic Surgery.\n2.  **Definitive Management:**\n    - Based on CXR findings and clinical stability, determine the need for chest tube placement (likely required given symptoms and hypoxia).\n    - If pneumothorax is large or patient is unstable, proceed with needle decompression followed by chest tube insertion.\n    - If pneumothorax is small and patient is stable, consider observation with supplemental oxygen and serial CXRs, but given the patient's symptoms and hypoxia, intervention is likely needed.\n3.  **Further Workup:**\n    - CBC, BMP, Coags.\n    - EKG (to rule out cardiac etiology, although less likely given presentation).\n4.  **Monitoring:**\n    - Continuous cardiac monitoring.\n    - Frequent reassessment of respiratory status, pain level, and vital signs.\n\n## Disposition\n\nAdmit to the hospital for management of spontaneous pneumothorax. Likely ICU admission initially depending on stability and need for intervention.",
+        "patient_id": "patient00060",
+        "image_reference": "patient00060_study1_view1_frontal.jpg"
+    }
+]

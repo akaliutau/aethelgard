@@ -1,0 +1,25 @@
+[
+    {
+        "demographics": {
+            "age": 55,
+            "sex": "Female"
+        },
+        "clinical_history": "Patient is a 55-year-old female presenting with progressive shortness of breath over the past 3 weeks, initially exertional but now present at rest. She also reports a non-productive cough and fatigue. She denies fever, chills, chest pain, or recent travel. Past medical history is significant for hypertension, well-controlled with lisinopril, and hyperlipidemia, treated with atorvastatin. She is a former smoker, having quit 10 years ago after a 20 pack-year history. Family history is non-contributory. Social history includes moderate alcohol consumption. She denies illicit drug use.",
+        "vitals": {
+            "HR": 110,
+            "BP": "130/80",
+            "SpO2": 92,
+            "Temp": 37.0
+        },
+        "radiographic_labels": {
+            "positive": [
+                "Pleural Effusion"
+            ],
+            "negative": []
+        },
+        "hidden_diagnosis_label": "Malignant Pleural Effusion (likely metastatic adenocarcinoma)",
+        "admission_note": "# Admission Note\n\n**Patient:** Jane Doe\n**Age:** 55\n**Sex:** Female\n**Date:** 2024-02-29\n\n## Chief Complaint\nProgressive shortness of breath.\n\n## History of Present Illness\nMs. Doe is a 55-year-old female presenting with a 3-week history of worsening shortness of breath. The dyspnea initially occurred with exertion (e.g., climbing stairs) but has progressed to occur even at rest. She also reports a persistent, non-productive cough and increasing fatigue over the same period. She denies any associated chest pain, fever, chills, night sweats, or weight loss. She denies recent travel or sick contacts.\n\n## Past Medical History\n- Hypertension (controlled with lisinopril)\n- Hyperlipidemia (treated with atorvastatin)\n\n## Social History\n- Former smoker (quit 10 years ago, 20 pack-year history)\n- Moderate alcohol consumption\n- Denies illicit drug use\n\n## Family History\nNon-contributory.\n\n## Medications\n- Lisinopril\n- Atorvastatin\n\n## Allergies\nNKDA\n\n## Review of Systems\n- **Constitutional:** Reports fatigue.\n- **Respiratory:** Reports progressive shortness of breath and non-productive cough.\n- **Cardiovascular:** Denies chest pain, palpitations, or edema.\n- **Gastrointestinal:** Denies nausea, vomiting, diarrhea, or abdominal pain.\n- **Neurological:** Denies headache, dizziness, weakness, or numbness.\n\n## Physical Examination\n**General:** Alert and oriented, appears fatigued.\n**Vitals:** HR 110 bpm, BP 130/80 mmHg, RR 24 breaths/min, SpO2 92% on room air, Temp 37.0\u00b0C (98.6\u00b0F).\n**HEENT:** Normocephalic, atraumatic. Mucous membranes moist. No JVD.\n**Lungs:** Decreased breath sounds at the right lung base. Dullness to percussion at the right lung base. No wheezes or crackles appreciated elsewhere.\n**Cardiovascular:** Regular rate and rhythm, no murmurs, rubs, or gallops. No peripheral edema.\n**Abdomen:** Soft, non-tender, non-distended. Bowel sounds present in all four quadrants.\n**Neurological:** Grossly intact.\n\n## Investigations\n- Chest X-ray: Shows a moderate-sized right pleural effusion.\n- CBC: Pending.\n- CMP: Pending.\n- BNP: Pending.\n- D-dimer: Pending.\n\n## Assessment\n1.  **Right Pleural Effusion:** Moderate-sized effusion causing dyspnea and decreased breath sounds/dullness to percussion at the right base. Etiology unclear at this time, but given the patient's age, smoking history, and progressive symptoms, malignancy is a significant concern. Other possibilities include infection (parapneumonic effusion), heart failure, or pulmonary embolism, although the presentation is less typical for these.\n\n## Plan\n1.  **Admit to hospital:** For further evaluation and management of the pleural effusion and underlying cause.\n2.  **Oxygen supplementation:** Maintain SpO2 > 92%.\n3.  **Thoracentesis:** Diagnostic and potentially therapeutic thoracentesis planned for tomorrow morning. Fluid will be sent for cell count and differential, protein, LDH, glucose, cytology, Gram stain, culture, and possibly cytology for malignant cells.\n4.  **Labs:** Repeat CBC, CMP, BNP, D-dimer. Consider coagulation studies prior to thoracentesis.\n5.  **Imaging:** Consider CT scan of the chest with contrast after thoracentesis to evaluate the pleura, lung parenchyma, and mediastinum for underlying malignancy or other pathology.\n6.  **Consultations:** Pulmonary consultation requested for management of pleural effusion and potential underlying lung pathology. Cardiology consult if heart failure is suspected based on BNP or clinical picture.\n7.  **Monitor:** Closely monitor respiratory status, vital signs, and oxygen saturation.\n",
+        "patient_id": "patient00022",
+        "image_reference": "patient00022_study2_view1_frontal.jpg"
+    }
+]

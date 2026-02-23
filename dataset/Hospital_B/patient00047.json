@@ -1,0 +1,26 @@
+[
+    {
+        "demographics": {
+            "age": 64,
+            "sex": "Male"
+        },
+        "clinical_history": "Patient is a 64-year-old male with a history of hypertension and hyperlipidemia, presenting today with worsening shortness of breath over the past week. He reports orthopnea (needing 2 pillows to sleep) and paroxysmal nocturnal dyspnea (waking up gasping for air). He denies chest pain, fever, chills, or productive cough. He notes bilateral lower extremity edema that has increased in severity over the past few days. He states he has been less compliant with his lisinopril and atorvastatin recently. He denies recent travel or sick contacts. Social history is significant for smoking 1 pack per day for 40 years, quit 5 years ago. Family history is positive for coronary artery disease.",
+        "vitals": {
+            "HR": 110,
+            "BP": "145/90",
+            "SpO2": 90,
+            "Temp": 37.0
+        },
+        "radiographic_labels": {
+            "positive": [
+                "Cardiomegaly",
+                "Edema"
+            ],
+            "negative": []
+        },
+        "hidden_diagnosis_label": "Congestive Heart Failure Exacerbation",
+        "admission_note": "# Admission Note\n\n**Patient:** John Doe\n**Age:** 64\n**Sex:** Male\n**Date:** 2024-02-29\n\n## History of Present Illness (HPI):\n\n64-year-old male with a history of hypertension and hyperlipidemia presents with worsening dyspnea on exertion and at rest over the past week. He reports orthopnea (requiring two pillows) and paroxysmal nocturnal dyspnea (PND). He denies chest pain, fever, chills, or productive cough. He notes increasing bilateral lower extremity edema over the past few days. He admits to poor medication adherence (lisinopril, atorvastatin).\n\n## Review of Systems (ROS):\n\n*   **Constitutional:** Denies fever, chills, weight loss.\n*   **Cardiovascular:** Denies chest pain, palpitations. Reports orthopnea, PND.\n*   **Respiratory:** Reports worsening dyspnea, denies cough.\n*   **Gastrointestinal:** Denies nausea, vomiting, diarrhea, abdominal pain.\n*   **Genitourinary:** Denies dysuria, frequency, hematuria.\n*   **Neurological:** Denies headache, dizziness, focal weakness.\n*   **Musculoskeletal:** Reports bilateral lower extremity edema.\n\n## Past Medical History (PMH):\n\n*   Hypertension\n*   Hyperlipidemia\n*   Former smoker (40 pack-years, quit 5 years ago)\n\n## Medications:\n\n*   Lisinopril (poor adherence)\n*   Atorvastatin (poor adherence)\n\n## Allergies:\n\n*   NKDA\n\n## Social History:\n\n*   Former smoker (40 pack-years, quit 5 years ago)\n*   Drinks alcohol occasionally.\n\n## Family History:\n\n*   Father with coronary artery disease.\n\n## Physical Examination:\n\n*   **General:** Appears anxious, diaphoretic, in moderate respiratory distress.\n*   **Vitals:** HR 110 bpm, BP 145/90 mmHg, RR 24 breaths/min, SpO2 90% on room air, Temp 37.0\u00b0C.\n*   **HEENT:** Normocephalic, atraumatic. Mucous membranes slightly dry. JVP elevated to 8 cm.\n*   **Lungs:** Bilateral crackles auscultated in the lower lobes, decreased breath sounds at the bases. No wheezing noted.\n*   **Cardiovascular:** Tachycardic, regular rhythm. S1 and S2 present. No murmurs, rubs, or gallops appreciated.\n*   **Abdomen:** Soft, non-tender, non-distended. Bowel sounds present in all four quadrants.\n*   **Extremities:** 2+ pitting edema bilaterally up to the mid-shins.\n*   **Skin:** Warm, dry, no rashes.\n\n## Assessment:\n\n1.  **Acute decompensated heart failure (ADHF) exacerbation:** Likely secondary to medication non-adherence and possibly underlying ischemic heart disease given risk factors. Clinical presentation includes worsening dyspnea, orthopnea, PND, elevated JVP, bilateral crackles, and peripheral edema. Tachycardia and hypoxia are also present.\n2.  **Hypertension:** BP is elevated.\n3.  **Hyperlipidemia:** History of, likely non-adherent to treatment.\n\n## Plan:\n\n1.  **Immediate:**\n    *   Place patient on supplemental oxygen via nasal cannula to maintain SpO2 > 92%.\n    *   Administer intravenous furosemide (e.g., 40-80 mg IV) for diuresis.\n    *   Administer intravenous nitroglycerin for preload/afterload reduction if BP allows.\n    *   Obtain ECG to rule out acute coronary syndrome.\n    *   Obtain troponin levels.\n    *   Obtain BNP level.\n    *   Obtain basic metabolic panel (BMP) and complete blood count (CBC).\n    *   Chest X-ray (already obtained, shows cardiomegaly and edema).\n2.  **Further Management:**\n    *   Continuous cardiac monitoring.\n    *   Strict intake and output monitoring.\n    *   Daily weights.\n    *   Consider non-invasive positive pressure ventilation (NIPPV) if respiratory distress worsens or oxygenation does not improve.\n    *   Consult cardiology.\n    *   Address medication adherence and optimize guideline-directed medical therapy (GDMT) for heart failure upon discharge.\n    *   Consider echocardiogram to assess left ventricular function and valvular disease.\n\n## Prognosis:\n\nPrognosis depends on response to treatment and underlying etiology. Prompt treatment of ADHF can improve symptoms and reduce morbidity/mortality.",
+        "patient_id": "patient00047",
+        "image_reference": "patient00047_study1_view1_frontal.jpg"
+    }
+]

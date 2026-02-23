@@ -1,0 +1,28 @@
+[
+    {
+        "demographics": {
+            "age": 39,
+            "sex": "Female"
+        },
+        "clinical_history": "Patient is a 39-year-old female presenting to the emergency department with acute onset of shortness of breath and pleuritic chest pain on the right side, which began approximately 4 hours ago while she was walking her dog. She denies any recent trauma, cough, fever, or recent illness. She has no significant past medical history, no known allergies, and is not currently taking any medications. She is a non-smoker and denies illicit drug use. She reports feeling slightly lightheaded and dizzy upon exertion. Family history is non-contributory. Social history is unremarkable.",
+        "vitals": {
+            "HR": 110,
+            "BP": "110/70 mmHg",
+            "SpO2": 92,
+            "Temp": 37.0
+        },
+        "radiographic_labels": {
+            "positive": [],
+            "negative": [
+                "Pneumothorax",
+                "Consolidation",
+                "Mass",
+                "Fracture"
+            ]
+        },
+        "hidden_diagnosis_label": "Pleural Effusion",
+        "admission_note": "# Admission Note\n\n**Patient:** Jane Doe\n**Age:** 39\n**Sex:** Female\n**Date:** 2024-02-29\n**Time:** 14:35\n\n## Chief Complaint\nAcute onset shortness of breath and right-sided pleuritic chest pain.\n\n## History of Present Illness\nPatient is a 39-year-old female presenting with acute onset of shortness of breath and sharp, pleuritic chest pain localized to the right side. Symptoms began approximately 4 hours ago while walking. The pain is exacerbated by deep inspiration and coughing. She denies any preceding trauma, fever, cough, recent illness, or known risk factors for pulmonary embolism (e.g., recent surgery, immobilization, oral contraceptive use, family history). She reports feeling slightly lightheaded and dizzy with exertion. She denies any lower extremity swelling or redness.\n\n## Past Medical History\nNone reported.\n\n## Medications\nNone reported.\n\n## Allergies\nNone known.\n\n## Social History\nNon-smoker, denies illicit drug use. Works as an accountant.\n\n## Family History\nNon-contributory.\n\n## Review of Systems\n*   **General:** Denies fever, chills, weight loss.\n*   **HEENT:** Denies headache, vision changes, hearing loss, nasal congestion, sore throat.\n*   **Cardiovascular:** Denies palpitations, chest pain (other than described), edema.\n*   **Respiratory:** Reports shortness of breath and pleuritic chest pain (as above). Denies cough, wheezing, sputum production.\n*   **Gastrointestinal:** Denies nausea, vomiting, diarrhea, abdominal pain.\n*   **Genitourinary:** Denies dysuria, frequency, urgency, hematuria.\n*   **Neurological:** Denies headache, dizziness (except as related to exertion/SOB), weakness, numbness, tingling.\n*   **Musculoskeletal:** Denies joint pain, muscle weakness.\n*   **Psychiatric:** Denies anxiety, depression.\n\n## Physical Examination\n*   **General:** Alert and oriented, appears anxious, in mild respiratory distress.\n*   **Vitals:** HR 110 bpm, BP 110/70 mmHg, SpO2 92% on room air, Temp 37.0\u00b0C (98.6\u00b0F).\n*   **HEENT:** Normocephalic, atraumatic. Mucous membranes moist. No JVD.\n*   **Cardiovascular:** Regular rate and rhythm, no murmurs, rubs, or gallops. No peripheral edema.\n*   **Respiratory:** Tachypneic (RR 24). Auscultation reveals decreased breath sounds at the right lung base. No wheezes or crackles appreciated. Percussion reveals dullness to percussion at the right lung base.\n*   **Abdomen:** Soft, non-tender, non-distended. Bowel sounds present in all four quadrants.\n*   **Neurological:** Grossly intact. No focal deficits.\n*   **Skin:** Warm, dry, no rashes or lesions.\n\n## Investigations\n*   **Chest X-ray:** Ordered and pending. (Note: Based on the provided ground truth, the X-ray shows uncertain/borderline pleural effusion, but no pneumothorax, consolidation, mass, or fracture.)\n\n## Assessment\n1.  Acute onset right-sided pleuritic chest pain and shortness of breath.\n2.  Possible causes include pleural effusion, pleurisy, pulmonary embolism, musculoskeletal pain, pericarditis. Given the decreased breath sounds and dullness to percussion at the right base, pleural effusion is high on the differential.\n\n## Plan\n1.  Obtain chest X-ray (already ordered). Review results upon availability.\n2.  Administer supplemental oxygen via nasal cannula to maintain SpO2 > 94%.\n3.  Obtain EKG to rule out cardiac etiology (e.g., pericarditis, ischemia).\n4.  Obtain CBC, CMP, D-dimer, BNP, troponin.\n5.  Consider CT angiography of the chest if pulmonary embolism is suspected based on clinical presentation and D-dimer results.\n6.  Consider thoracentesis if significant pleural effusion is confirmed on imaging and etiology is unclear.\n7.  Continuous cardiac monitoring.\n8.  Pain management with NSAIDs or acetaminophen.\n9.  Admit to observation unit or inpatient ward pending further workup and management.\n",
+        "patient_id": "patient00076",
+        "image_reference": "patient00076_study1_view1_frontal.jpg"
+    }
+]

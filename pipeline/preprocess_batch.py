@@ -46,6 +46,7 @@ def main(dataset_dir: str, limit: int):
     patients_dict: Dict[str, Any] = defaultdict(new_entry)
 
     # 1. Parse CSV
+    seen = set()
     with open(csv_path, mode='r', encoding='utf-8') as f:
         reader = csv.DictReader(f)
         for row in reader:
@@ -54,6 +55,8 @@ def main(dataset_dir: str, limit: int):
 
             pid = parts[2]
             pict_name = f"{parts[3]}_{parts[4].replace('.jpg', '')}"
+            if pid in seen: continue
+            seen.add(pid)
 
             pos, neg, unc = [], [], []
             for path in TARGET_PATHOLOGIES:

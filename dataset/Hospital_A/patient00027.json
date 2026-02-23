@@ -1,0 +1,28 @@
+[
+    {
+        "demographics": {
+            "age": 56,
+            "sex": "Male"
+        },
+        "clinical_history": "Patient is a 56-year-old male with a history of hypertension and hyperlipidemia, presenting with a 3-day history of worsening shortness of breath and a non-productive cough. He denies fever, chills, or chest pain. Symptoms began gradually after a recent upper respiratory infection. He reports feeling generally weak and fatigued. He denies any recent travel, sick contacts (other than the initial URI), or known exposure to tuberculosis. He is a former smoker (quit 10 years ago, 20 pack-year history). He denies any history of asthma, COPD, or recent surgery. He takes lisinopril and atorvastatin daily.",
+        "vitals": {
+            "HR": 98,
+            "BP": "130/80 mmHg",
+            "SpO2": 92,
+            "Temp": 37.2
+        },
+        "radiographic_labels": {
+            "positive": [
+                "Atelectasis"
+            ],
+            "negative": [
+                "Consolidation",
+                "Pleural Effusion"
+            ]
+        },
+        "hidden_diagnosis_label": "Post-obstructive Atelectasis (likely due to mucus plugging secondary to recent URI)",
+        "admission_note": "# Admission Note\n\n**Patient:** John Doe\n**Age:** 56\n**Sex:** Male\n**Date:** 2024-02-29\n\n## History of Present Illness (HPI):\n\nMr. Doe is a 56-year-old male presenting with a 3-day history of progressive shortness of breath and a non-productive cough. Symptoms began insidiously following a recent upper respiratory infection (URI) approximately one week ago. He denies fever, chills, chest pain, or sputum production. He reports increasing dyspnea on exertion and some difficulty breathing while lying flat (orthopnea). He also notes generalized weakness and fatigue. He denies any recent travel, sick contacts (besides the initial URI), or known exposure to tuberculosis.\n\n## Past Medical History (PMH):\n\n*   Hypertension\n*   Hyperlipidemia\n*   Former smoker (quit 10 years ago, 20 pack-year history)\n\n## Medications:\n\n*   Lisinopril\n*   Atorvastatin\n\n## Allergies:\n\n*   NKDA (No Known Drug Allergies)\n\n## Social History:\n\n*   Former smoker (quit 10 years ago)\n*   Denies alcohol or illicit drug use.\n\n## Family History:\n\n*   Non-contributory\n\n## Review of Systems (ROS):\n\n*   **General:** Weakness, fatigue.\n*   **HEENT:** Denies headache, visual changes, hearing loss, nasal congestion (resolved from URI).\n*   **Respiratory:** Shortness of breath, non-productive cough.\n*   **Cardiovascular:** Denies chest pain, palpitations, edema.\n*   **Gastrointestinal:** Denies nausea, vomiting, diarrhea, abdominal pain.\n*   **Genitourinary:** Denies dysuria, frequency, hematuria.\n*   **Neurological:** Denies headache, dizziness, weakness, numbness.\n*   **Musculoskeletal:** Denies joint pain, muscle pain.\n*   **Skin:** Denies rash, itching.\n*   **Psychiatric:** Denies depression, anxiety.\n\n## Physical Examination:\n\n*   **General:** Alert and oriented, appears mildly distressed due to shortness of breath.\n*   **Vitals:** HR 98 bpm, BP 130/80 mmHg, SpO2 92% on room air, Temp 37.2\u00b0C (99.0\u00b0F).\n*   **HEENT:** Normocephalic, atraumatic. Mucous membranes moist. No pharyngeal erythema or exudates.\n*   **Neck:** Supple, no lymphadenopathy or thyroid enlargement.\n*   **Lungs:** Auscultation reveals decreased breath sounds at the right lung base. No wheezes, rhonchi, or crackles are heard. Percussion is dull over the right lower lobe.\n*   **Cardiovascular:** Regular rate and rhythm, no murmurs, rubs, or gallops. No peripheral edema.\n*   **Abdomen:** Soft, non-tender, non-distended. Bowel sounds present in all four quadrants.\n*   **Neurological:** Grossly intact.\n*   **Skin:** Warm, dry, no rashes or lesions.\n\n## Investigations:\n\n*   **Chest X-ray:** Shows evidence of atelectasis in the right lower lobe. No evidence of consolidation or pleural effusion.\n\n## Assessment:\n\n1.  **Atelectasis (Right Lower Lobe):** Likely post-obstructive secondary to mucus plugging following a recent URI. This explains the decreased breath sounds, dullness to percussion, and shortness of breath. The patient's SpO2 of 92% suggests some degree of ventilation-perfusion mismatch.\n\n## Plan:\n\n1.  **Oxygen Therapy:** Initiate supplemental oxygen via nasal cannula to maintain SpO2 > 94%.\n2.  **Respiratory Therapy:** Consult respiratory therapy for chest physiotherapy (percussion and postural drainage) and incentive spirometry to help mobilize secretions and re-expand the collapsed lung tissue.\n3.  **Bronchodilators:** Consider nebulized albuterol/ipratropium if there is any suspicion of underlying bronchospasm, although wheezing was not noted on exam.\n4.  **Hydration:** Encourage oral fluids to help thin secretions.\n5.  **Monitoring:** Continuous pulse oximetry monitoring. Frequent reassessment of respiratory status and vital signs.\n6.  **Further Investigations:** If symptoms do not improve with initial management, consider CT chest to rule out other causes of obstruction (e.g., foreign body, tumor) or complications.\n7.  **Disposition:** Admit to the hospital for monitoring and treatment of atelectasis.",
+        "patient_id": "patient00027",
+        "image_reference": "patient00027_study1_view1_frontal.jpg"
+    }
+]

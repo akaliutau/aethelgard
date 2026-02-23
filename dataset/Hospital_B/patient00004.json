@@ -1,0 +1,26 @@
+[
+    {
+        "demographics": {
+            "age": 20,
+            "sex": "Female"
+        },
+        "clinical_history": "Patient is a 20-year-old female presenting to the emergency department with acute onset of sharp, pleuritic chest pain on the right side, which started approximately 2 hours ago while she was walking. She denies any preceding trauma, cough, fever, or recent illness. She reports feeling short of breath, especially with exertion. She has no significant past medical history and takes no medications. She is a non-smoker and denies illicit drug use. She has no known allergies. Family history is non-contributory.",
+        "vitals": {
+            "HR": 110,
+            "BP": "100/65 mmHg",
+            "SpO2": 92,
+            "Temp": 37.0
+        },
+        "radiographic_labels": {
+            "positive": [],
+            "negative": [
+                "Consolidation",
+                "Pleural Effusion"
+            ]
+        },
+        "hidden_diagnosis_label": "Spontaneous Pneumothorax",
+        "admission_note": "# Admission Note\n\n**Patient:** [Patient Name - Synthetic]\n**Age:** 20\n**Sex:** Female\n**Date:** 2024-02-29\n**Time:** 14:35\n\n## Chief Complaint\n\nAcute onset right-sided chest pain and shortness of breath.\n\n## History of Present Illness (HPI)\n\nThe patient is a 20-year-old female with no significant past medical history who presents with acute onset of sharp, pleuritic right-sided chest pain that began approximately 2 hours ago while walking. The pain is described as 7/10 in severity and is exacerbated by deep breathing. She also reports associated shortness of breath, which is worse with exertion. She denies any recent trauma, cough, fever, chills, sputum production, or recent travel. She denies any history of smoking or known lung disease.\n\n## Review of Systems (ROS)\n\n*   **Constitutional:** Denies fever, chills, weight loss.\n*   **Respiratory:** Reports shortness of breath, denies cough, sputum, wheezing.\n*   **Cardiovascular:** Denies chest pain (other than described), palpitations, edema.\n*   **Gastrointestinal:** Denies nausea, vomiting, diarrhea, abdominal pain.\n*   **Neurological:** Denies headache, dizziness, focal weakness.\n\n## Past Medical History (PMH)\n\nNone reported.\n\n## Medications\n\nNone.\n\n## Allergies\n\nNo known drug allergies (NKDA).\n\n## Social History\n\nNon-smoker, denies illicit drug use, denies alcohol use.\n\n## Family History\n\nNon-contributory.\n\n## Physical Examination\n\n*   **General:** Alert and oriented, appears anxious, in mild respiratory distress.\n*   **Vitals:** HR 110 bpm, BP 100/65 mmHg, SpO2 92% on room air, Temp 37.0\u00b0C (98.6\u00b0F).\n*   **HEENT:** Normocephalic, atraumatic. Mucous membranes moist. No JVD.\n*   **Lungs:** Decreased breath sounds on the right side compared to the left. No wheezes or crackles auscultated on the left. Hyperresonance to percussion on the right side.\n*   **Cardiovascular:** Tachycardic, regular rhythm. No murmurs, rubs, or gallops. Peripheral pulses 2+ bilaterally.\n*   **Abdomen:** Soft, non-tender, non-distended. Bowel sounds present in all four quadrants.\n*   **Skin:** Warm, dry, no rashes or lesions.\n*   **Extremities:** No edema, cyanosis, or clubbing.\n\n## Investigations\n\n*   Chest X-ray (CXR): Ordered stat. (Note: CXR findings are assumed based on the prompt, showing a pneumothorax, but consolidation and pleural effusion are absent).\n\n## Assessment\n\n1.  **Right-sided Spontaneous Pneumothorax:** Based on the acute onset of pleuritic chest pain, shortness of breath, decreased breath sounds, hyperresonance to percussion on the right side, tachycardia, and hypoxia. The CXR is expected to confirm this diagnosis.\n\n## Plan\n\n1.  **Immediate Management:**\n    *   Place patient on supplemental oxygen via nasal cannula to maintain SpO2 > 94%.\n    *   Establish IV access.\n    *   Obtain stat CXR to confirm diagnosis and assess size of pneumothorax.\n    *   Continuous cardiac monitoring.\n2.  **Definitive Management (pending CXR confirmation and size):**\n    *   If large pneumothorax (>2-3 cm from apex to cupola) or patient is symptomatic/unstable: Chest tube insertion (e.g., pigtail catheter) for drainage.\n    *   If small pneumothorax (<2-3 cm) and patient is stable: Observation with supplemental oxygen and serial CXRs to monitor for progression or resolution.\n3.  **Consultations:**\n    *   Thoracic Surgery consult if pneumothorax is large, recurrent, or persistent.\n4.  **Further Workup:**\n    *   Consider CT chest if underlying lung pathology is suspected (e.g., bullae) or if diagnosis is uncertain.\n5.  **Disposition:** Admission for management of pneumothorax.\n\n## Prognosis\n\nPrognosis is generally good with appropriate management. Risk of recurrence exists, especially with primary spontaneous pneumothorax.\n\n**Attending Physician:** [Your Name - Synthetic]",
+        "patient_id": "patient00004",
+        "image_reference": "patient00004_study1_view1_frontal.jpg"
+    }
+]

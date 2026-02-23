@@ -1,0 +1,25 @@
+[
+    {
+        "demographics": {
+            "age": 27,
+            "sex": "Male"
+        },
+        "clinical_history": "Patient is a 27-year-old male presenting to the Emergency Department with acute onset of sharp, pleuritic chest pain on the right side, which started approximately 2 hours ago while he was lifting weights at the gym. He denies any preceding trauma, cough, fever, or recent illness. He reports the pain worsens with deep inspiration and movement. He has no significant past medical history, no known allergies, and does not take any regular medications. He is a non-smoker and denies illicit drug use. He drinks alcohol occasionally. Family history is unremarkable for respiratory or cardiac disease. Social history is significant for weightlifting 3-4 times per week.",
+        "vitals": {
+            "HR": 110,
+            "BP": "110/70 mmHg",
+            "SpO2": 94,
+            "Temp": 37.0
+        },
+        "radiographic_labels": {
+            "positive": [],
+            "negative": [
+                "Consolidation"
+            ]
+        },
+        "hidden_diagnosis_label": "Spontaneous Pneumothorax",
+        "admission_note": "# Admission Note\n\n**Patient:** John Doe\n**Age:** 27\n**Sex:** Male\n**Date:** 2024-02-29\n**Time:** 14:35\n\n## Chief Complaint\nAcute onset right-sided chest pain.\n\n## History of Present Illness\nPatient is a 27-year-old male presenting with acute onset of sharp, pleuritic right-sided chest pain that began approximately 2 hours ago while lifting weights. The pain is exacerbated by deep inspiration and movement. He denies any trauma, cough, fever, recent illness, or shortness of breath at rest, although he notes some mild dyspnea with exertion. He denies any history of smoking or lung disease.\n\n## Past Medical History\nNone significant.\n\n## Medications\nNone.\n\n## Allergies\nNKDA.\n\n## Social History\nNon-smoker, occasional alcohol use, weightlifter (3-4 times/week).\n\n## Family History\nNon-contributory.\n\n## Review of Systems\nConstitutional: Denies fever, chills, weight loss.\nCardiovascular: Denies palpitations, chest pain (other than current complaint).\nRespiratory: Denies cough, wheezing, sputum production, history of asthma or COPD. Reports current pleuritic chest pain and mild dyspnea on exertion.\nNeurological: Denies headache, dizziness, weakness, numbness.\n\n## Physical Examination\n**General:** Alert and oriented, appears anxious but in no acute distress.\n**Vitals:** HR 110 bpm, BP 110/70 mmHg, RR 20 breaths/min, SpO2 94% on room air, Temp 37.0\u00b0C (98.6\u00b0F).\n**HEENT:** Normocephalic, atraumatic. Mucous membranes moist. No JVD.\n**Lungs:** Auscultation reveals decreased breath sounds on the right side compared to the left. No wheezes or crackles appreciated. Percussion is hyperresonant on the right side.\n**Cardiovascular:** Regular rate and rhythm, no murmurs, rubs, or gallops. No peripheral edema.\n**Abdomen:** Soft, non-tender, non-distended. Bowel sounds present in all four quadrants.\n**Neurological:** Grossly intact.\n**Skin:** No rashes, lesions, or signs of trauma.\n\n## Investigations\nChest X-ray (CXR) ordered and reviewed. CXR shows a visible pleural line with absence of lung markings peripheral to the line on the right side, consistent with a pneumothorax. No evidence of consolidation is seen.\n\n## Assessment\n1.  **Right-sided Spontaneous Pneumothorax:** Based on the acute onset of pleuritic chest pain, decreased breath sounds, hyperresonance to percussion on the right, and radiographic findings of a pleural line with absent peripheral lung markings. The patient's activity (weightlifting) may have precipitated this.\n\n## Plan\n1.  **Admit to Hospital:** Given the symptomatic nature of the pneumothorax (chest pain, mild dyspnea, tachycardia, borderline hypoxia) and the size (to be determined by radiology report, but clinically significant), admission is warranted.\n2.  **Oxygen:** Administer supplemental oxygen via nasal cannula to maintain SpO2 > 92%.\n3.  **Pain Management:** Administer IV analgesics (e.g., morphine or fentanyl) for chest pain.\n4.  **Chest Tube Placement:** Consult Thoracic Surgery for evaluation and likely placement of a right-sided chest tube for drainage of air and lung re-expansion. This is the definitive treatment for a symptomatic pneumothorax.\n5.  **Serial CXRs:** Obtain serial chest radiographs after chest tube placement to monitor for lung re-expansion and resolution of the pneumothorax.\n6.  **Monitoring:** Continuous cardiac monitoring and frequent vital sign checks.\n7.  **Education:** Educate the patient on the diagnosis, treatment plan, and risks associated with pneumothorax and chest tube placement.\n8.  **Smoking Cessation Counseling:** Although the patient is a non-smoker, provide general information about risk factors for pneumothorax.\n\n**Attending Physician:** Dr. [Your Name]\n**Signature:**\n",
+        "patient_id": "patient00059",
+        "image_reference": "patient00059_study1_view1_frontal.jpg"
+    }
+]

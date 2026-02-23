@@ -1,0 +1,28 @@
+[
+    {
+        "demographics": {
+            "age": 74,
+            "sex": "Male"
+        },
+        "clinical_history": "Patient is a 74-year-old male with a history of hypertension, hyperlipidemia, and COPD (on home oxygen 2L NC) who presents to the emergency department today with worsening shortness of breath and cough productive of yellow sputum for the past 3 days. He reports feeling feverish and experiencing chills. His symptoms started gradually but have significantly worsened over the last 24 hours, making it difficult for him to speak in full sentences. He denies chest pain, recent travel, or sick contacts. He has been compliant with his COPD medications (albuterol PRN, tiotropium daily). He has a history of smoking 40 pack-years, quitting 10 years ago. He denies recent falls or trauma.",
+        "vitals": {
+            "HR": 115,
+            "BP": "130/80",
+            "SpO2": 88,
+            "Temp": 38.5
+        },
+        "radiographic_labels": {
+            "positive": [
+                "Consolidation"
+            ],
+            "negative": [
+                "Edema",
+                "Pleural Effusion"
+            ]
+        },
+        "hidden_diagnosis_label": "Community-Acquired Pneumonia",
+        "admission_note": "# Admission Note\n\n**Patient:** John Doe\n**Age:** 74\n**Sex:** Male\n**Date:** 2024-02-29\n\n## History of Present Illness (HPI):\n\nMr. Doe is a 74-year-old male with a history of hypertension, hyperlipidemia, and COPD (on home O2 2L NC) presenting with worsening shortness of breath, cough productive of yellow sputum, fever, and chills for the past 3 days. Symptoms have progressively worsened over the last 24 hours, significantly impacting his ability to breathe comfortably and speak. He denies chest pain, recent travel, or known sick contacts.\n\n## Past Medical History (PMH):\n\n*   Hypertension\n*   Hyperlipidemia\n*   COPD (on home O2 2L NC)\n*   40 pack-year smoking history (quit 10 years ago)\n\n## Medications:\n\n*   Albuterol PRN\n*   Tiotropium daily\n*   Lisinopril\n*   Atorvastatin\n\n## Allergies:\n\nNKDA\n\n## Social History:\n\nFormer smoker, lives at home with wife.\n\n## Family History:\n\nNon-contributory.\n\n## Review of Systems (ROS):\n\n*   **Constitutional:** Fever, chills, malaise.\n*   **Respiratory:** Worsening shortness of breath, productive cough (yellow sputum).\n*   **Cardiovascular:** Denies chest pain, palpitations.\n*   **Gastrointestinal:** Denies nausea, vomiting, diarrhea, abdominal pain.\n*   **Neurological:** Denies headache, dizziness, focal weakness.\n\n## Physical Examination:\n\n*   **General:** Elderly male, appears acutely ill, diaphoretic.\n*   **Vitals:** HR 115 bpm, BP 130/80 mmHg, SpO2 88% on room air, Temp 38.5\u00b0C (101.3\u00b0F).\n*   **HEENT:** Mucous membranes slightly dry. Pharynx clear.\n*   **Neck:** Supple, no lymphadenopathy.\n*   **Lungs:** Auscultation reveals decreased breath sounds and coarse crackles in the right lower lobe. Increased work of breathing with accessory muscle use.\n*   **Cardiovascular:** Tachycardic, regular rhythm. No murmurs, rubs, or gallops.\n*   **Abdomen:** Soft, non-tender, non-distended. Bowel sounds present.\n*   **Extremities:** No edema, cyanosis, or clubbing.\n*   **Neurological:** Alert and oriented x3. Grossly intact motor and sensory function.\n\n## Investigations:\n\n*   **Chest X-ray:** Shows consolidation in the right lower lobe.\n*   **Labs:** Pending (CBC, CMP, ABG, Blood Cultures, Sputum Gram Stain/Culture).\n\n## Assessment:\n\n1.  **Community-Acquired Pneumonia (CAP):** Based on the patient's presentation (fever, chills, productive cough, shortness of breath), physical exam findings (crackles, decreased breath sounds in RLL), and chest X-ray showing consolidation in the right lower lobe. His COPD and age are risk factors for severe disease.\n2.  **Hypoxemia:** Secondary to pneumonia and underlying COPD.\n3.  **Tachycardia:** Likely secondary to fever, hypoxemia, and underlying illness.\n\n## Plan:\n\n1.  **Admit to Medicine:** For management of CAP.\n2.  **Oxygen Therapy:** Titrate to maintain SpO2 >90% (likely requiring supplemental O2 >2L NC, possibly non-rebreather or BiPAP if needed).\n3.  **Antibiotics:** Initiate empiric antibiotic therapy for CAP (e.g., Ceftriaxone + Azithromycin or Levofloxacin), pending culture results.\n4.  **IV Fluids:** Administer IV fluids for hydration.\n5.  **Bronchodilators:** Continue home regimen (albuterol/ipratropium) as needed for COPD exacerbation component.\n6.  **Corticosteroids:** Consider systemic corticosteroids for COPD exacerbation component, especially given severity.\n7.  **Monitoring:** Continuous cardiac monitoring, frequent vital sign checks, serial SpO2 monitoring, respiratory status assessment.\n8.  **Labs:** Obtain CBC, CMP, ABG, Blood Cultures, Sputum Gram Stain/Culture.\n9.  **Consults:** Consider Pulmonary consult if respiratory status deteriorates or fails to improve.\n10. **Incentive Spirometry:** Encourage use.\n",
+        "patient_id": "patient00030",
+        "image_reference": "patient00030_study1_view1_frontal.jpg"
+    }
+]

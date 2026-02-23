@@ -14,7 +14,7 @@ source .env
 echo "=========================================="
 echo "1. Running Python Pre-Processing"
 echo "=========================================="
-python pipeline/preprocess_batch.py --dataset_dir "$DATASET_DIR" --limit 2
+python pipeline/preprocess_batch.py --dataset_dir "$DATASET_DIR" --limit 120
 
 # ==========================================
 # Configuration Variables
@@ -84,8 +84,7 @@ gcloud ai model-garden models deploy \
   --use-dedicated-endpoint \
   --endpoint-display-name="$UNIQUE_ENDPOINT_NAME" \
   --machine-type="a2-ultragpu-1g" \
-  --accelerator-type="NVIDIA_A100_80GB" \
-  --spot
+  --accelerator-type="NVIDIA_A100_80GB"
 
 echo "✅ Model deployed successfully!"
 

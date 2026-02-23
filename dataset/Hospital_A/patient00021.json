@@ -1,0 +1,25 @@
+[
+    {
+        "demographics": {
+            "age": 36,
+            "sex": "Female"
+        },
+        "clinical_history": "Patient is a 36-year-old female presenting to the emergency department with acute onset shortness of breath and pleuritic chest pain, which began approximately 2 hours ago while she was resting at home. She denies any recent trauma, fever, cough, or sputum production. She has no significant past medical history, no known allergies, and is not currently taking any medications. She is a non-smoker and denies illicit drug use. She reports feeling well until the sudden onset of symptoms. Family history is non-contributory. Social history is unremarkable.",
+        "vitals": {
+            "HR": 110,
+            "BP": "110/70 mmHg",
+            "SpO2": 92,
+            "Temp": 37.0
+        },
+        "radiographic_labels": {
+            "positive": [],
+            "negative": [
+                "Consolidation"
+            ]
+        },
+        "hidden_diagnosis_label": "Spontaneous Pneumothorax",
+        "admission_note": "# Admission Note\n\n**Patient:** Jane Doe\n**Age:** 36\n**Sex:** Female\n**Date:** 2024-02-29\n**Time:** 14:35\n\n## Chief Complaint\n\nAcute onset shortness of breath and pleuritic chest pain.\n\n## History of Present Illness (HPI)\n\nPatient is a 36-year-old female with no significant past medical history who presents to the ED with acute onset shortness of breath and sharp, pleuritic chest pain on the right side. Symptoms began approximately 2 hours ago while she was resting at home. The pain is exacerbated by deep inspiration and movement. She denies any preceding trauma, fever, cough, sputum production, or recent illness. She denies any history of smoking or known lung disease.\n\n## Review of Systems (ROS)\n\n*   **Constitutional:** Denies fever, chills, weight loss.\n*   **Respiratory:** Positive for acute onset shortness of breath and pleuritic chest pain. Denies cough, wheezing, or sputum.\n*   **Cardiovascular:** Denies chest pain (other than pleuritic), palpitations, or edema.\n*   **Gastrointestinal:** Denies nausea, vomiting, diarrhea, or abdominal pain.\n*   **Neurological:** Denies headache, dizziness, weakness, or numbness.\n\n## Past Medical History (PMH)\n\nNone reported.\n\n## Medications\n\nNone reported.\n\n## Allergies\n\nNo known drug allergies (NKDA).\n\n## Social History\n\nNon-smoker, denies illicit drug use, denies alcohol use.\n\n## Family History\n\nNon-contributory.\n\n## Physical Examination\n\n*   **General:** Alert and oriented, appears anxious, in moderate respiratory distress.\n*   **Vitals:** HR 110 bpm, BP 110/70 mmHg, SpO2 92% on room air, Temp 37.0\u00b0C (98.6\u00b0F).\n*   **Respiratory:** Tachypneic (RR 24). Auscultation reveals decreased breath sounds on the right side compared to the left. No wheezes or crackles appreciated. Percussion reveals hyperresonance on the right side.\n*   **Cardiovascular:** Tachycardic, regular rhythm. No murmurs, rubs, or gallops.\n*   **Abdomen:** Soft, non-tender, non-distended. Bowel sounds present.\n*   **Neurological:** Grossly intact.\n*   **Skin:** Warm, dry, no rashes or lesions.\n\n## Investigations\n\n*   **Chest X-ray (CXR):** Ordered and pending. (Note: Based on the provided ground truth, the CXR will show a pneumothorax, specifically absence of consolidation).\n\n## Assessment\n\n1.  **Suspected Spontaneous Pneumothorax:** Based on acute onset pleuritic chest pain, shortness of breath, decreased breath sounds, and hyperresonance on the right side. The patient's age and lack of smoking history suggest a primary spontaneous pneumothorax.\n\n## Plan\n\n1.  **Obtain CXR:** Confirm diagnosis of pneumothorax and assess its size.\n2.  **Supplemental Oxygen:** Administer oxygen via nasal cannula to maintain SpO2 > 92%.\n3.  **Cardiac Monitor:** Place patient on cardiac monitor.\n4.  **IV Access:** Establish intravenous access.\n5.  **Pain Management:** Administer analgesics (e.g., NSAIDs or opioids) for chest pain.\n6.  **Consult Thoracic Surgery/Pulmonary:** Depending on the size of the pneumothorax on CXR and the patient's clinical status, consider chest tube placement or observation.\n7.  **Serial Exams:** Monitor vital signs and respiratory status closely.\n\n## Disposition\n\nAdmit to hospital for management of suspected pneumothorax.",
+        "patient_id": "patient00021",
+        "image_reference": "patient00021_study1_view1_frontal.jpg"
+    }
+]

@@ -1,0 +1,26 @@
+[
+    {
+        "demographics": {
+            "age": 42,
+            "sex": "Female"
+        },
+        "clinical_history": "Patient is a 42-year-old female presenting to the Emergency Department with a 3-day history of worsening cough, shortness of breath, and pleuritic chest pain on the right side. The cough is productive of thick, yellow sputum. She reports chills and subjective fever over the past 24 hours. She denies recent travel, sick contacts, or known exposure to tuberculosis. Past medical history is significant for well-controlled hypertension and seasonal allergies. She is a non-smoker and denies illicit drug use. She works as a teacher. She reports feeling generally unwell and fatigued.",
+        "vitals": {
+            "HR": 115,
+            "BP": "110/70 mmHg",
+            "SpO2": 90,
+            "Temp": 38.5
+        },
+        "radiographic_labels": {
+            "positive": [
+                "Atelectasis",
+                "Consolidation"
+            ],
+            "negative": []
+        },
+        "hidden_diagnosis_label": "Community-Acquired Pneumonia",
+        "admission_note": "# Admission Note\n\n**Patient:** Jane Doe\n**Age:** 42\n**Sex:** Female\n**Date:** 2024-02-29\n**Time:** 14:35\n\n## Chief Complaint\n\nShortness of breath, cough, and chest pain.\n\n## History of Present Illness\n\nMs. Doe is a 42-year-old female presenting with a 3-day history of worsening cough, shortness of breath, and right-sided pleuritic chest pain. The cough is productive of thick, yellow sputum. She reports chills and subjective fever over the past 24 hours. Symptoms began gradually but have progressed significantly in the last day. She denies recent travel, sick contacts, or known exposure to tuberculosis. She denies smoking.\n\n## Past Medical History\n\nHypertension (well-controlled), Seasonal Allergies.\n\n## Medications\n\nLisinopril, Loratadine (PRN).\n\n## Allergies\n\nNKDA.\n\n## Social History\n\nNon-smoker, denies illicit drug use. Works as a teacher.\n\n## Family History\n\nNon-contributory.\n\n## Review of Systems\n\n*   **Constitutional:** Reports fever, chills, fatigue, malaise.\n*   **Respiratory:** Productive cough (yellow sputum), shortness of breath, pleuritic chest pain (right side).\n*   **Cardiovascular:** Denies chest pain (other than pleuritic), palpitations, edema.\n*   **Gastrointestinal:** Denies nausea, vomiting, diarrhea, abdominal pain.\n*   **Neurological:** Denies headache, dizziness, focal weakness.\n\n## Physical Examination\n\n*   **General:** Appears acutely ill, slightly diaphoretic.\n*   **Vitals:** HR 115 bpm, BP 110/70 mmHg, SpO2 90% on room air, Temp 38.5\u00b0C (101.3\u00b0F).\n*   **HEENT:** Oropharynx clear, no exudates. Mucous membranes slightly dry.\n*   **Neck:** Supple, no lymphadenopathy or meningismus.\n*   **Lungs:** Auscultation reveals decreased breath sounds and crackles/rales in the right lower lobe. Egophony is present in the same area. Percussion is dull over the right lower lobe.\n*   **Cardiovascular:** Tachycardic, regular rhythm. No murmurs, rubs, or gallops. No JVD.\n*   **Abdomen:** Soft, non-tender, non-distended. Bowel sounds present.\n*   **Skin:** Warm, dry, no rashes or lesions noted.\n*   **Neurological:** Alert and oriented x3. Gross motor and sensory function intact.\n\n## Investigations\n\n*   **Chest X-ray:** Shows consolidation in the right lower lobe and associated atelectasis.\n*   **CBC:** Pending.\n*   **BMP:** Pending.\n*   **Influenza/COVID PCR:** Pending.\n*   **Blood Cultures:** Pending.\n\n## Assessment\n\n1.  **Community-Acquired Pneumonia (CAP), likely bacterial:** Clinical presentation (fever, chills, productive cough, pleuritic chest pain, shortness of breath) and physical exam findings (decreased breath sounds, crackles, egophony, dullness to percussion in the right lower lobe) are highly suggestive of pneumonia. Chest X-ray confirms consolidation and atelectasis in the right lower lobe.\n2.  **Hypoxia:** SpO2 of 90% on room air indicates significant respiratory compromise.\n3.  **Tachycardia:** Likely secondary to fever, hypoxia, and infection.\n\n## Plan\n\n1.  **Admit to Medicine service:** Given hypoxia, fever, tachycardia, and radiographic evidence of pneumonia.\n2.  **Oxygen Therapy:** Start supplemental oxygen via nasal cannula to maintain SpO2 > 92%.\n3.  **IV Fluids:** Initiate IV fluids (e.g., Normal Saline) for hydration.\n4.  **Antibiotics:** Start empiric IV antibiotics for CAP (e.g., Ceftriaxone + Azithromycin) after obtaining blood cultures.\n5.  **Antipyretics:** Administer acetaminophen or ibuprofen for fever and discomfort.\n6.  **Sputum Culture:** Obtain sputum culture and sensitivity.\n7.  **Monitor:** Closely monitor vital signs, respiratory status, and oxygen saturation.\n8.  **Further Investigations:** Review pending lab results (CBC, BMP, PCR, Blood Cultures).\n9.  **Consider:** If patient does not respond to initial therapy or clinical status worsens, consider CT chest to rule out complications (e.g., empyema, abscess).\n",
+        "patient_id": "patient00026",
+        "image_reference": "patient00026_study1_view1_frontal.jpg"
+    }
+]

@@ -1,0 +1,29 @@
+[
+    {
+        "demographics": {
+            "age": 37,
+            "sex": "Female"
+        },
+        "clinical_history": "The patient is a 37-year-old female presenting to the emergency department with a 2-day history of worsening shortness of breath and pleuritic chest pain, particularly on the right side. The pain started insidiously and has gradually increased in intensity, exacerbated by deep inspiration and coughing. She denies any recent trauma, fever, chills, or productive cough. She reports feeling generally unwell and fatigued. Past medical history is significant for well-controlled asthma, for which she uses an albuterol inhaler as needed. She denies smoking history. She works as a teacher and reports no known exposures to infectious diseases. Family history is non-contributory.",
+        "vitals": {
+            "HR": 110,
+            "BP": "110/70 mmHg",
+            "SpO2": 92,
+            "Temp": 37.2
+        },
+        "radiographic_labels": {
+            "positive": [],
+            "negative": [
+                "Pneumonia",
+                "Pneumothorax",
+                "Pleural Effusion",
+                "Mass",
+                "Fracture"
+            ]
+        },
+        "hidden_diagnosis_label": "Atelectasis",
+        "admission_note": "# Admission Note\n\n**Patient:** [Patient Name - Synthetic]\n**Age:** 37\n**Sex:** Female\n**Date:** 2024-02-29\n**Time:** 14:35\n\n## HPI\n\n37-year-old female presents with a 2-day history of progressive shortness of breath and right-sided pleuritic chest pain. Pain is worse with deep breaths and coughing. Denies fever, chills, productive cough, or recent trauma. Reports fatigue.\n\n## Past Medical History\n\nWell-controlled asthma (uses albuterol PRN).\n\n## Social History\n\nNon-smoker. Teacher.\n\n## Family History\n\nNon-contributory.\n\n## Review of Systems\n\n*   **Constitutional:** Fatigue.\n*   **Respiratory:** Shortness of breath, pleuritic chest pain.\n*   **Cardiovascular:** Denies palpitations, chest tightness (other than pleuritic pain).\n*   **GI:** Denies nausea, vomiting, diarrhea, abdominal pain.\n*   **GU:** Denies dysuria, frequency, urgency.\n*   **Neurologic:** Denies headache, dizziness, focal weakness.\n*   **Skin:** Denies rash, lesions.\n\n## Physical Examination\n\n*   **General:** Alert and oriented, appears uncomfortable due to shortness of breath.\n*   **Vitals:** HR 110 bpm, BP 110/70 mmHg, SpO2 92% on room air, Temp 37.2\u00b0C (99.0\u00b0F).\n*   **Respiratory:** Tachypneic (RR 24). Lungs clear to auscultation bilaterally, but decreased breath sounds noted in the right lower lobe. No wheezing or crackles appreciated. Mild intercostal retractions noted.\n*   **Cardiovascular:** Regular rate and rhythm, no murmurs, rubs, or gallops.\n*   **Abdomen:** Soft, non-tender, non-distended. Bowel sounds present.\n*   **Neurologic:** Grossly intact.\n*   **Skin:** Warm, dry, no rashes.\n\n## Investigations\n\n*   **Chest X-ray:** Ordered. (Findings pending, but clinical suspicion is high for atelectasis given the presentation and physical exam findings of decreased breath sounds in the right lower lobe without signs of consolidation or effusion). *Note: Based on the provided ground truth, the X-ray shows atelectasis.* \n*   **CBC:** Ordered.\n*   **BMP:** Ordered.\n*   **D-dimer:** Ordered (to rule out PE, although less likely given presentation).\n*   **ABG:** Ordered (due to hypoxia).\n\n## Assessment\n\n1.  **Shortness of breath and pleuritic chest pain:** Likely secondary to right lower lobe atelectasis, given decreased breath sounds on exam. Asthma exacerbation is less likely given lack of wheezing and clear lung sounds elsewhere. Pneumonia is less likely given absence of fever, chills, and productive cough, and clear lung sounds except for decreased breath sounds. Pneumothorax is less likely given lack of hyperresonance and clear lung sounds elsewhere. Pulmonary embolism is possible but less likely given the insidious onset and lack of risk factors.\n2.  **Hypoxia (SpO2 92%):** Consistent with underlying pulmonary pathology (atelectasis).\n3.  **Tachycardia (HR 110):** Likely compensatory response to hypoxia and discomfort.\n\n## Plan\n\n1.  **Admit to Medicine:** For further evaluation and management of shortness of breath and hypoxia.\n2.  **Oxygen Therapy:** Titrate to maintain SpO2 > 94%.\n3.  **Chest Physiotherapy:** Encourage deep breathing and coughing exercises to help re-expand the affected lung segment.\n4.  **Pain Management:** Provide analgesia for pleuritic chest pain (e.g., NSAIDs or acetaminophen).\n5.  **Monitor:** Closely monitor vital signs, respiratory status, and oxygen saturation.\n6.  **Further Investigations:** Review results of CBC, BMP, D-dimer, ABG, and Chest X-ray (confirming atelectasis). Consider CT chest if etiology of atelectasis remains unclear or if there is concern for underlying obstruction or mass.\n7.  **Consult Respiratory Therapy:** For potential incentive spirometry or other airway clearance techniques.\n8.  **Consider Bronchodilators:** Although asthma exacerbation is less likely, a trial of albuterol may be considered if there is any component of bronchospasm.\n\n**Prognosis:** Generally good with appropriate management. Atelectasis often resolves with conservative measures, but underlying cause needs to be identified and addressed.",
+        "patient_id": "patient00029",
+        "image_reference": "patient00029_study1_view1_frontal.jpg"
+    }
+]

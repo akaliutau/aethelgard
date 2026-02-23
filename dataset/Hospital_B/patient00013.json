@@ -1,0 +1,25 @@
+[
+    {
+        "demographics": {
+            "age": 36,
+            "sex": "Male"
+        },
+        "clinical_history": "Patient is a 36-year-old male presenting to the emergency department with acute onset of sharp, pleuritic chest pain on the right side, which started approximately 2 hours ago while he was walking his dog. He denies any trauma. The pain is described as 8/10 in severity and is exacerbated by deep breathing and coughing. He also reports shortness of breath, which has progressively worsened since the onset of pain. He denies fever, chills, cough, sputum production, recent illness, or travel. Past medical history is significant for well-controlled hypertension, managed with lisinopril. He denies smoking history. Family history is non-contributory. Social history includes occasional alcohol use.",
+        "vitals": {
+            "HR": 115,
+            "BP": "100/65 mmHg",
+            "SpO2": 90,
+            "Temp": 37.0
+        },
+        "radiographic_labels": {
+            "positive": [],
+            "negative": [
+                "Pleural Effusion"
+            ]
+        },
+        "hidden_diagnosis_label": "Spontaneous Pneumothorax",
+        "admission_note": "# Admission Note\n\n**Patient:** John Doe\n**Age:** 36\n**Sex:** Male\n**Date:** 2024-02-29\n**Time:** 14:35\n\n## Chief Complaint\nAcute onset right-sided chest pain and shortness of breath.\n\n## History of Present Illness\nPatient is a 36-year-old male presenting with acute onset of sharp, pleuritic right-sided chest pain that began approximately 2 hours ago while walking. The pain is rated 8/10, worsens with deep inspiration and coughing. He also reports progressive shortness of breath since the onset of pain. He denies any trauma, fever, chills, cough, sputum production, recent illness, or travel. He denies smoking.\n\n## Past Medical History\nHypertension (well-controlled on lisinopril).\n\n## Social History\nOccasional alcohol use. Denies smoking.\n\n## Family History\nNon-contributory.\n\n## Medications\nLisinopril\n\n## Allergies\nNKDA\n\n## Review of Systems\nConstitutional: Denies fever, chills, weight loss.\nCardiovascular: Denies palpitations, edema.\nRespiratory: Reports shortness of breath, pleuritic chest pain. Denies cough, sputum.\nGI: Denies nausea, vomiting, diarrhea, abdominal pain.\nGU: Denies dysuria, frequency, hematuria.\nNeurological: Denies headache, dizziness, focal weakness.\nMusculoskeletal: Denies joint pain, muscle weakness.\nSkin: Denies rash, itching.\nPsychiatric: Denies anxiety, depression.\n\n## Physical Examination\n**General:** Anxious appearing male in moderate respiratory distress.\n**Vitals:** HR 115 bpm, BP 100/65 mmHg, SpO2 90% on room air, Temp 37.0\u00b0C (98.6\u00b0F).\n**HEENT:** Normocephalic, atraumatic. Mucous membranes slightly dry. Pupils equal, round, reactive to light and accommodation.\n**Neck:** Supple, no JVD, no lymphadenopathy.\n**Lungs:** Decreased breath sounds on the right side compared to the left. Hyperresonance to percussion on the right side. No wheezes or crackles auscultated on the left. Absent breath sounds in the right upper lobe.\n**Cardiovascular:** Tachycardic, regular rhythm. No murmurs, rubs, or gallops. No peripheral edema.\n**Abdomen:** Soft, non-tender, non-distended. Bowel sounds present in all four quadrants.\n**Neurological:** Alert and oriented x3. Gross motor and sensory function intact.\n**Skin:** Warm, dry, diaphoretic.\n\n## Investigations\nChest X-ray (CXR) ordered and reviewed. CXR shows a right-sided pneumothorax, likely spontaneous given the lack of trauma history. No pleural effusion is identified. ECG shows sinus tachycardia.\n\n## Assessment\n1.  **Right-sided Spontaneous Pneumothorax:** Acute onset pleuritic chest pain, shortness of breath, decreased breath sounds, hyperresonance, and absent breath sounds on the right side, confirmed by CXR. Patient is tachycardic and hypoxic.\n\n## Plan\n1.  **Oxygen:** Apply high-flow oxygen via non-rebreather mask to maintain SpO2 > 92%.\n2.  **IV Access:** Establish two large-bore IVs.\n3.  **Pain Management:** Administer IV morphine for pain control.\n4.  **Chest Tube Placement:** Consult thoracic surgery for urgent placement of a right-sided chest tube (likely a small-bore catheter or pigtail catheter) to re-expand the lung.\n5.  **Monitoring:** Continuous cardiac monitoring and pulse oximetry.\n6.  **Labs:** Obtain CBC, BMP, ABG.\n7.  **Imaging:** Repeat CXR after chest tube placement to assess lung re-expansion.\n8.  **Disposition:** Admit to the hospital for monitoring and management of pneumothorax. Discuss potential underlying causes (e.g., blebs) and recurrence risk.\n",
+        "patient_id": "patient00013",
+        "image_reference": "patient00013_study1_view1_frontal.jpg"
+    }
+]

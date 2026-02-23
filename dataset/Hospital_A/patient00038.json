@@ -1,0 +1,26 @@
+[
+    {
+        "demographics": {
+            "age": 78,
+            "sex": "Male"
+        },
+        "clinical_history": "Patient is a 78-year-old male with a history of hypertension, hyperlipidemia, and atrial fibrillation (on warfarin) who presents to the emergency department with worsening shortness of breath over the past 3 days. He reports a non-productive cough and denies fever, chills, or chest pain. He notes decreased exercise tolerance and increased fatigue. He denies recent travel or sick contacts. He lives at home with his wife and is independent in activities of daily living prior to this illness. He denies smoking history. He reports occasional alcohol use (1-2 beers per week).",
+        "vitals": {
+            "HR": 115,
+            "BP": "130/80",
+            "SpO2": 90,
+            "Temp": 37.0
+        },
+        "radiographic_labels": {
+            "positive": [
+                "Atelectasis",
+                "Pleural Effusion"
+            ],
+            "negative": []
+        },
+        "hidden_diagnosis_label": "Congestive Heart Failure Exacerbation",
+        "admission_note": "# Admission Note\n\n**Patient:** John Doe\n**Age:** 78\n**Sex:** Male\n**Date:** 2024-02-29\n\n## History of Present Illness (HPI):\n\nMr. Doe is a 78-year-old male with a history of hypertension, hyperlipidemia, and atrial fibrillation (on warfarin) presenting with worsening shortness of breath (dyspnea) over the past 3 days. The dyspnea is exertional initially but has progressed to occurring at rest. He reports a non-productive cough and denies fever, chills, or chest pain. He notes decreased exercise tolerance and increased fatigue. He denies recent travel or sick contacts.\n\n## Past Medical History (PMH):\n\n*   Hypertension\n*   Hyperlipidemia\n*   Atrial Fibrillation (on warfarin)\n\n## Social History:\n\nLives at home with wife, independent in ADLs prior to this illness. Denies smoking. Occasional alcohol use (1-2 beers/week).\n\n## Family History:\n\nNon-contributory.\n\n## Medications:\n\n*   Warfarin\n*   Lisinopril\n*   Atorvastatin\n\n## Allergies:\n\nNKDA\n\n## Review of Systems (ROS):\n\n*   **General:** Fatigue, decreased exercise tolerance.\n*   **HEENT:** Negative.\n*   **Respiratory:** Shortness of breath, non-productive cough.\n*   **Cardiovascular:** Denies chest pain, palpitations.\n*   **GI:** Negative.\n*   **GU:** Negative.\n*   **Neurologic:** Negative.\n*   **Skin:** Negative.\n*   **Musculoskeletal:** Negative.\n\n## Physical Examination:\n\n*   **General:** Elderly male, appears mildly distressed, sitting upright in chair.\n*   **Vitals:** HR 115 bpm, BP 130/80 mmHg, RR 24 breaths/min, SpO2 90% on room air, Temp 37.0\u00b0C (98.6\u00b0F).\n*   **HEENT:** Normocephalic, atraumatic. Mucous membranes moist. No JVD noted at rest.\n*   **Lungs:** Auscultation reveals bilateral crackles, predominantly at the bases. Decreased breath sounds at the right base.\n*   **Cardiovascular:** Tachycardic, regular rhythm (consistent with known Afib, rate likely elevated due to distress/underlying condition). No murmurs, rubs, or gallops appreciated.\n*   **Abdomen:** Soft, non-tender, non-distended. Bowel sounds present.\n*   **Extremities:** No edema noted. Pulses 2+ bilaterally.\n*   **Neurologic:** Alert and oriented x3. Grossly intact motor and sensory function.\n\n## Investigations:\n\n*   **Chest X-ray:** Shows bilateral pleural effusions, larger on the right, and associated atelectasis at the lung bases.\n*   **EKG:** Shows atrial fibrillation with rapid ventricular response (RVR).\n*   **Labs:** Pending (CBC, BMP, BNP, Troponin, Coags).\n\n## Assessment:\n\n1.  **Acute decompensated heart failure (ADHF):** Likely etiology for the patient's presentation, supported by worsening dyspnea, bilateral crackles, tachycardia, hypoxia, and radiographic findings of pleural effusions and atelectasis. The atrial fibrillation with RVR may be contributing to or exacerbated by the heart failure.\n2.  **Atrial Fibrillation with Rapid Ventricular Response (RVR):** Known history, currently uncontrolled.\n\n## Plan:\n\n1.  **Admit to Cardiology service.**\n2.  **Oxygen therapy:** Titrate to maintain SpO2 >92% (currently on 2L NC).\n3.  **Cardiac monitoring:** Continuous EKG monitoring.\n4.  **Medications:**\n    *   **Diuretics:** IV Furosemide 40mg now, then repeat dose q12h or PRN for fluid overload.\n    *   **Rate control:** IV Metoprolol 2.5mg slow push now, may repeat or start oral beta-blocker once stable.\n    *   **Anticoagulation:** Continue warfarin, monitor INR.\n5.  **Labs:** Repeat BMP, BNP, Troponin, Coags in the morning.\n6.  **Echocardiogram:** Obtain within 24 hours to assess cardiac function and etiology of heart failure.\n7.  **Fluid restriction:** 2L/day.\n8.  **Sodium restriction:** 2g/day.\n9.  **Consult Cardiology:** For further management of heart failure and atrial fibrillation.\n10. **Monitor:** Closely monitor respiratory status, vital signs, urine output, and electrolytes.\n",
+        "patient_id": "patient00038",
+        "image_reference": "patient00038_study1_view1_frontal.jpg"
+    }
+]

@@ -1,0 +1,29 @@
+[
+    {
+        "demographics": {
+            "age": 86,
+            "sex": "Male"
+        },
+        "clinical_history": "Mr. John Smith is an 86-year-old male with a history of hypertension, hyperlipidemia, atrial fibrillation (on warfarin), chronic kidney disease (stage 3), and osteoarthritis, presenting to the emergency department today with worsening shortness of breath and cough over the past 3 days. He reports the cough is productive of small amounts of yellowish sputum. He denies fever, chills, or chest pain. He states his shortness of breath is worse with exertion and when lying flat (orthopnea). He has noticed some mild wheezing. He denies recent travel or sick contacts. His medications include lisinopril, atorvastatin, warfarin, and acetaminophen as needed. He lives at home with his wife and is generally independent but requires assistance with some activities of daily living. He denies smoking history. He reports a recent episode of constipation which he attributes to his usual diet and medications. He denies any recent falls or injuries.",
+        "vitals": {
+            "HR": 115,
+            "BP": "130/80",
+            "SpO2": 90,
+            "Temp": 37.2
+        },
+        "radiographic_labels": {
+            "positive": [],
+            "negative": [
+                "Pneumonia",
+                "Pneumothorax",
+                "Pleural Effusion",
+                "Pulmonary Edema",
+                "Mass"
+            ]
+        },
+        "hidden_diagnosis_label": "Atelectasis",
+        "admission_note": "# Admission Note\n\n**Patient:** John Smith\n**Age:** 86\n**Sex:** Male\n**Date:** 2024-02-29\n\n## History of Present Illness (HPI):\nMr. Smith is an 86-year-old male presenting with a 3-day history of worsening shortness of breath and productive cough (yellowish sputum). He denies fever, chills, or chest pain. He reports orthopnea and mild wheezing. Symptoms are worse with exertion.\n\n## Past Medical History (PMH):\nHypertension, Hyperlipidemia, Atrial Fibrillation (on warfarin), Chronic Kidney Disease (Stage 3), Osteoarthritis.\n\n## Medications:\nLisinopril, Atorvastatin, Warfarin, Acetaminophen PRN.\n\n## Allergies:\nNKDA\n\n## Social History:\nLives at home with wife, generally independent, denies smoking.\n\n## Family History:\nNon-contributory.\n\n## Review of Systems (ROS):\n*   **Constitutional:** Denies fever, chills, weight loss.\n*   **Respiratory:** Reports worsening shortness of breath, productive cough, orthopnea, mild wheezing.\n*   **Cardiovascular:** Denies chest pain, palpitations.\n*   **Gastrointestinal:** Reports recent constipation.\n*   **Neurological:** Denies focal weakness, numbness, tingling.\n\n## Physical Examination:\n*   **General:** Elderly male, appears mildly distressed due to shortness of breath.\n*   **Vitals:** HR 115 bpm, BP 130/80 mmHg, SpO2 90% on room air, Temp 37.2\u00b0C.\n*   **HEENT:** Atraumatic, mucous membranes slightly dry.\n*   **Neck:** Supple, no JVD.\n*   **Lungs:** Auscultation reveals decreased breath sounds at the left lung base, with associated crackles. Mild wheezing is present bilaterally.\n*   **Cardiovascular:** Regular rate and rhythm, no murmurs, rubs, or gallops. No peripheral edema.\n*   **Abdomen:** Soft, non-tender, normoactive bowel sounds. Constipation noted on history.\n*   **Neurological:** Alert and oriented x3, no focal deficits.\n\n## Investigations:\n*   **Chest X-ray:** Shows decreased lung volume on the left side, with elevation of the left hemidiaphragm and crowding of the pulmonary vasculature. No evidence of consolidation, pneumothorax, pleural effusion, or pulmonary edema.\n*   **Labs:** CBC, BMP, Coags pending.\n\n## Assessment:\n1.  **Acute Respiratory Distress:** Likely secondary to underlying pulmonary process. The patient's symptoms (dyspnea, cough, wheezing, decreased breath sounds at the left base) and vital signs (tachycardia, hypoxia) indicate respiratory compromise.\n2.  **Possible Atelectasis:** Chest X-ray findings (decreased lung volume, elevated hemidiaphragm, crowding of vasculature) are suggestive of atelectasis, particularly at the left lung base. This could be due to mucus plugging, shallow breathing (possibly related to pain or weakness), or compression.\n3.  **Rule out other causes:** While pneumonia, pneumothorax, and heart failure are less likely given the CXR, they remain in the differential and need to be considered based on clinical picture and further investigations.\n\n## Plan:\n1.  **Oxygen Therapy:** Initiate supplemental oxygen via nasal cannula to maintain SpO2 > 92%.\n2.  **Respiratory Support:** Consider incentive spirometry and chest physiotherapy to encourage deep breathing and clear secretions, potentially helping to resolve atelectasis.\n3.  **Bronchodilators:** Administer nebulized albuterol/ipratropium for wheezing.\n4.  **Monitoring:** Continuous cardiac and pulse oximetry monitoring. Frequent reassessment of respiratory status.\n5.  **Further Investigations:** Obtain CBC, BMP, Coags, and potentially ABG to assess for infection, electrolyte abnormalities, and acid-base status. Consider D-dimer if pulmonary embolism is suspected (though less likely given presentation).\n6.  **Treat Underlying Cause:** Address potential causes of atelectasis, such as pain management (if applicable) or optimizing hydration.\n7.  **Consult:** Consider Pulmonary consult if respiratory status does not improve or if the etiology remains unclear.\n8.  **Disposition:** Admit to the hospital for monitoring and management of respiratory distress and suspected atelectasis.",
+        "patient_id": "patient00053",
+        "image_reference": "patient00053_study1_view1_frontal.jpg"
+    }
+]

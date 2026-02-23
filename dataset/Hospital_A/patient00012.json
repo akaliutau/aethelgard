@@ -1,0 +1,27 @@
+[
+    {
+        "demographics": {
+            "age": 61,
+            "sex": "Female"
+        },
+        "clinical_history": "Patient is a 61-year-old female presenting with progressive shortness of breath over the past 3 weeks, initially exertional but now present at rest. She also reports a non-productive cough and mild pleuritic chest pain on the right side. She denies fever, chills, or recent illness. Past medical history is significant for hypertension, hyperlipidemia, and osteoarthritis. She denies smoking history. Family history is non-contributory. Social history includes sedentary lifestyle. Medications include lisinopril and atorvastatin.",
+        "vitals": {
+            "HR": 92,
+            "BP": "130/80 mmHg",
+            "SpO2": 93,
+            "Temp": 37.0
+        },
+        "radiographic_labels": {
+            "positive": [
+                "Pleural Effusion"
+            ],
+            "negative": [
+                "Consolidation"
+            ]
+        },
+        "hidden_diagnosis_label": "Malignant Pleural Effusion (likely metastatic adenocarcinoma)",
+        "admission_note": "# Admission Note\n\n**Patient:** Jane Doe\n**Age:** 61\n**Sex:** Female\n**Date:** 2024-02-29\n\n## Chief Complaint\nProgressive shortness of breath.\n\n## History of Present Illness\nMs. Doe is a 61-year-old female presenting with a 3-week history of worsening shortness of breath. The dyspnea initially occurred with exertion (e.g., climbing stairs) but has progressed to occur even at rest. She also reports a non-productive cough and mild, intermittent pleuritic chest pain localized to the right side. She denies fever, chills, night sweats, weight loss, or recent travel. She denies any history of trauma or recent infection.\n\n## Past Medical History\n- Hypertension\n- Hyperlipidemia\n- Osteoarthritis\n\n## Medications\n- Lisinopril\n- Atorvastatin\n\n## Allergies\n- NKDA\n\n## Social History\n- Denies smoking. Drinks alcohol occasionally. Sedentary lifestyle.\n\n## Family History\n- Non-contributory\n\n## Review of Systems\n- **Constitutional:** Denies fever, chills, weight loss, night sweats.\n- **Respiratory:** Positive for shortness of breath, cough (non-productive), pleuritic chest pain.\n- **Cardiovascular:** Denies chest pain, palpitations, edema.\n- **Gastrointestinal:** Denies nausea, vomiting, diarrhea, abdominal pain.\n- **Neurological:** Denies headache, dizziness, weakness, numbness.\n\n## Physical Examination\n- **General:** Alert and oriented, appears slightly uncomfortable due to dyspnea.\n- **Vitals:** HR 92 bpm, BP 130/80 mmHg, SpO2 93% on room air, Temp 37.0\u00b0C.\n- **HEENT:** Normal.\n- **Neck:** Supple, no lymphadenopathy.\n- **Lungs:** Decreased breath sounds at the right lung base. Dullness to percussion at the right lung base. No wheezes or crackles appreciated.\n- **Cardiovascular:** Regular rate and rhythm, no murmurs, rubs, or gallops.\n- **Abdomen:** Soft, non-tender, non-distended. Bowel sounds present.\n- **Extremities:** No edema, normal pulses.\n- **Skin:** No rashes or lesions.\n\n## Investigations\n- **Chest X-ray:** Shows a moderate right-sided pleural effusion. No evidence of consolidation or pneumothorax.\n\n## Assessment\n1.  **Right-sided Pleural Effusion:** The patient presents with symptoms (dyspnea, cough, pleuritic chest pain) and physical exam findings (decreased breath sounds, dullness to percussion) consistent with a pleural effusion, confirmed by chest X-ray. The etiology is currently unknown but needs investigation. Given her age and the insidious onset, malignancy is a significant concern.\n\n## Plan\n1.  **Admit to hospital:** For further evaluation and management of the pleural effusion and associated symptoms.\n2.  **Oxygen:** Supplemental oxygen via nasal cannula to maintain SpO2 > 94%.\n3.  **Thoracentesis:** Diagnostic thoracentesis to analyze the pleural fluid (cell count, differential, protein, LDH, glucose, cytology, Gram stain, culture, possibly adenosine deaminase). This will help determine the etiology (transudative vs. exudative, infectious, malignant).\n4.  **CT Chest with contrast:** To further evaluate the pleural effusion, underlying lung parenchyma, mediastinum, and potential primary malignancy or metastatic disease.\n5.  **Consult Pulmonology:** For expert opinion and management of the pleural effusion.\n6.  **Consult Oncology:** If pleural fluid analysis or CT scan suggests malignancy.\n7.  **Labs:** CBC, CMP, LDH, coagulation studies.\n8.  **Monitor:** Vital signs, respiratory status, and symptoms.\n",
+        "patient_id": "patient00012",
+        "image_reference": "patient00012_study3_view1_frontal.jpg"
+    }
+]

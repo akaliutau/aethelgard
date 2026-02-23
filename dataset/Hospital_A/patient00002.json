@@ -1,0 +1,27 @@
+[
+    {
+        "demographics": {
+            "age": 87,
+            "sex": "Female"
+        },
+        "clinical_history": "Patient is an 87-year-old female presenting to the emergency department with worsening shortness of breath over the past 3 days. She reports a productive cough with yellowish sputum, chills, and generalized weakness. She denies chest pain, palpitations, or lower extremity edema. Past medical history is significant for hypertension, osteoarthritis, and chronic kidney disease stage 3. She lives at home independently with assistance from a home health aide. Medications include lisinopril, acetaminophen, and multivitamin. Allergies: NKDA. Social history: Non-smoker, denies alcohol or illicit drug use. Family history: Non-contributory.",
+        "vitals": {
+            "HR": 115,
+            "BP": "90/60 mmHg",
+            "SpO2": 88,
+            "Temp": 38.5
+        },
+        "radiographic_labels": {
+            "positive": [],
+            "negative": [
+                "Cardiomegaly",
+                "Edema",
+                "Pleural Effusion"
+            ]
+        },
+        "hidden_diagnosis_label": "Pneumonia",
+        "admission_note": "# Admission Note\n\n**Patient:** [Patient Name - Synthetic]\n**Age:** 87\n**Sex:** Female\n**Date:** 2024-02-29\n**Time:** 14:35\n\n## Chief Complaint\n\nWorsening shortness of breath.\n\n## History of Present Illness\n\nPatient is an 87-year-old female presenting with a 3-day history of progressively worsening shortness of breath. She also reports a productive cough with yellowish sputum, chills, and generalized weakness. She denies chest pain, palpitations, or lower extremity swelling. Symptoms began gradually and have worsened over the past 72 hours.\n\n## Past Medical History\n\n*   Hypertension\n*   Osteoarthritis\n*   Chronic Kidney Disease Stage 3\n\n## Medications\n\n*   Lisinopril\n*   Acetaminophen\n*   Multivitamin\n\n## Allergies\n\nNKDA\n\n## Social History\n\nNon-smoker. Denies alcohol or illicit drug use. Lives at home with home health aide.\n\n## Family History\n\nNon-contributory.\n\n## Review of Systems\n\n*   **Constitutional:** Reports chills, weakness.\n*   **Respiratory:** Reports shortness of breath, productive cough (yellowish sputum).\n*   **Cardiovascular:** Denies chest pain, palpitations, edema.\n*   **Gastrointestinal:** Denies nausea, vomiting, diarrhea, abdominal pain.\n*   **Neurological:** Denies headache, dizziness, focal weakness.\n\n## Physical Examination\n\n*   **General:** Elderly female, appears acutely ill, slightly diaphoretic.\n*   **Vitals:** HR 115 bpm, BP 90/60 mmHg, SpO2 88% on room air, Temp 38.5\u00b0C (101.3\u00b0F).\n*   **HEENT:** Mucous membranes slightly dry. No obvious signs of trauma.\n*   **Neck:** Supple, no lymphadenopathy or thyroid enlargement.\n*   **Lungs:** Auscultation reveals crackles and bronchial breath sounds in the right lower lobe. Decreased breath sounds noted diffusely bilaterally, possibly due to age-related changes or underlying lung disease. Increased work of breathing, including accessory muscle use.\n*   **Cardiovascular:** Tachycardic, regular rhythm. No murmurs, rubs, or gallops appreciated. Peripheral pulses 2+ bilaterally.\n*   **Abdomen:** Soft, non-tender, non-distended. Bowel sounds present in all four quadrants.\n*   **Neurological:** Alert and oriented to person, place, and time. Gross motor and sensory function intact.\n*   **Skin:** Warm, dry, slightly diaphoretic. No rashes or lesions noted.\n\n## Investigations\n\n*   **Chest X-ray:** (Findings pending, but clinical suspicion high for pneumonia given presentation and exam)\n*   CBC, CMP, Lactate, Blood Cultures, Sputum Culture\n\n## Assessment\n\n1.  **Hypotension and Tachycardia:** Likely secondary to sepsis/infection.\n2.  **Hypoxemia:** SpO2 88% on room air, consistent with respiratory compromise.\n3.  **Fever and Chills:** Suggestive of an infectious process.\n4.  **Productive Cough, Shortness of Breath, Crackles/Bronchial Breath Sounds:** Highly suggestive of pneumonia, likely right lower lobe.\n5.  **Possible Sepsis:** Given hypotension, tachycardia, fever, and likely source of infection (pneumonia).\n\n## Plan\n\n1.  **Admit to Medical Floor/ICU:** Given age, comorbidities, vital sign instability (hypotension, tachycardia, hypoxemia), and suspected sepsis.\n2.  **Oxygen Therapy:** Initiate supplemental oxygen via nasal cannula or mask to maintain SpO2 > 90%.\n3.  **IV Fluids:** Start IV fluids (e.g., Normal Saline) for resuscitation given hypotension.\n4.  **Antibiotics:** Initiate broad-spectrum IV antibiotics (e.g., Ceftriaxone + Azithromycin) empirically for community-acquired pneumonia, pending culture results.\n5.  **Labs:** Obtain CBC, CMP, Lactate, Blood Cultures, Sputum Culture, Urinalysis.\n6.  **Cardiac Monitoring:** Continuous cardiac monitoring due to tachycardia and potential for arrhythmia.\n7.  **Frequent Vitals:** Monitor vital signs closely (q15min initially, then q1-2h).\n8.  **Consider Vasopressors:** If hypotension persists despite fluid resuscitation.\n9.  **Chest X-ray:** Review chest x-ray results when available to confirm pneumonia and rule out other pathology.\n10. **Consult Respiratory Therapy:** For potential need for non-invasive ventilation if respiratory status worsens.\n11. **Monitor Urine Output:** Due to CKD and potential for acute kidney injury.\n",
+        "patient_id": "patient00002",
+        "image_reference": "patient00002_study2_view1_frontal.jpg"
+    }
+]

@@ -1,0 +1,29 @@
+[
+    {
+        "demographics": {
+            "age": 88,
+            "sex": "Male"
+        },
+        "clinical_history": "Mr. John Smith is an 88-year-old male with a history of hypertension, hyperlipidemia, and chronic obstructive pulmonary disease (COPD) presenting to the emergency department with worsening shortness of breath and cough for the past 3 days. He reports that his usual COPD symptoms have become significantly worse, with increased sputum production (clear/white) and difficulty breathing even at rest. He denies fever, chills, chest pain, or recent travel. He lives at home with his wife and is generally independent but requires assistance with some activities of daily living. He uses a home oxygen concentrator at 2L/min due to his COPD. He denies recent falls or immobilization. He reports decreased appetite over the last few days. His medications include lisinopril, atorvastatin, tiotropium inhaler, and albuterol inhaler as needed. He is a former smoker with a 50 pack-year history, having quit 15 years ago.",
+        "vitals": {
+            "HR": 110,
+            "BP": "140/85 mmHg",
+            "SpO2": 88,
+            "Temp": 37.0
+        },
+        "radiographic_labels": {
+            "positive": [
+                "Atelectasis"
+            ],
+            "negative": [
+                "Cardiomegaly",
+                "Consolidation",
+                "Pleural Effusion"
+            ]
+        },
+        "hidden_diagnosis_label": "COPD Exacerbation with Atelectasis",
+        "admission_note": "# Admission Note\n\n**Patient:** John Smith\n**Age:** 88\n**Sex:** Male\n**Date:** 2024-02-29\n**Time:** 14:35\n\n## History of Present Illness (HPI):\nMr. Smith is an 88-year-old male with a known history of COPD, hypertension, and hyperlipidemia presenting with a 3-day history of worsening shortness of breath and cough. He reports increased sputum production (clear/white) and increased work of breathing. His symptoms are significantly worse than his baseline COPD symptoms. He denies fever, chills, chest pain, or recent travel.\n\n## Past Medical History (PMH):\n- COPD\n- Hypertension\n- Hyperlipidemia\n- Former smoker (50 pack-years, quit 15 years ago)\n\n## Medications:\n- Lisinopril\n- Atorvastatin\n- Tiotropium inhaler\n- Albuterol inhaler PRN\n- Home oxygen 2L/min\n\n## Allergies:\n- NKDA\n\n## Social History:\n- Lives at home with wife.\n- Former smoker.\n\n## Family History:\n- Non-contributory\n\n## Review of Systems (ROS):\n- **General:** Decreased appetite.\n- **Respiratory:** Worsening shortness of breath, increased cough, increased sputum production.\n- **Cardiovascular:** Denies chest pain.\n- **Other:** Denies fever, chills, recent travel, recent falls.\n\n## Physical Examination:\n- **Vitals:** HR 110 bpm, BP 140/85 mmHg, SpO2 88% on room air, Temp 37.0\u00b0C (98.6\u00b0F).\n- **General:** Elderly male, appears mildly distressed, diaphoretic.\n- **Lungs:** Increased work of breathing, accessory muscle use. Auscultation reveals diffuse wheezing bilaterally, decreased breath sounds at the bases, particularly on the right. Crackles are not prominent.\n- **Cardiovascular:** Regular rate and rhythm, no murmurs, rubs, or gallops. No peripheral edema.\n- **Extremities:** No edema, no cyanosis.\n- **Neurologic:** Alert and oriented x3.\n\n## Labs/Imaging:\n- **Chest X-ray:** Shows evidence of atelectasis, likely in the right lower lobe, but no evidence of cardiomegaly, consolidation, or pleural effusion.\n- **ABG (on room air):** pH 7.32, PaCO2 58 mmHg, PaO2 55 mmHg, HCO3 28 mEq/L (consistent with acute on chronic respiratory acidosis).\n- **CBC:** WBC 12,000 (mildly elevated).\n- **BMP:** Within normal limits.\n\n## Assessment:\n1.  **Acute exacerbation of COPD:** Worsening dyspnea, cough, and sputum production in a patient with known COPD, supported by physical exam findings (wheezing, increased work of breathing) and ABG results (acute on chronic respiratory acidosis). The SpO2 of 88% on room air indicates significant hypoxemia.\n2.  **Atelectasis:** Confirmed on chest X-ray, likely secondary to mucus plugging or hypoventilation related to the COPD exacerbation.\n\n## Plan:\n1.  **Oxygen Therapy:** Initiate supplemental oxygen via nasal cannula to maintain SpO2 > 90% (target 90-92% in COPD). Start at 2L/min and titrate as needed.\n2.  **Respiratory Support:** Administer nebulized albuterol and ipratropium every 4 hours. Consider BiPAP if patient fails to improve with initial therapy or develops worsening respiratory acidosis.\n3.  **Systemic Corticosteroids:** Administer IV methylprednisolone 40mg q12h for 5 days to reduce airway inflammation.\n4.  **Antibiotics:** Initiate empiric antibiotics (e.g., azithromycin) due to increased sputum production, although the sputum is clear/white. Consider sputum culture if symptoms persist or worsen.\n5.  **Monitoring:** Continuous cardiac monitoring, frequent vital sign checks, serial ABGs as needed, and close monitoring of respiratory status.\n6.  **Other:** Encourage incentive spirometry to help prevent further atelectasis. Consider DVT prophylaxis (e.g., SCDs) due to decreased mobility and potential hypercoagulability.\n7.  **Consult:** Respiratory therapy consult for optimal respiratory support and airway clearance techniques.\n\n## Disposition:\nAdmit to the medical floor for management of COPD exacerbation and monitoring.",
+        "patient_id": "patient00056",
+        "image_reference": "patient00056_study1_view1_frontal.jpg"
+    }
+]

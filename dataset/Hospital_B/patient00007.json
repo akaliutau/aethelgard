@@ -1,0 +1,28 @@
+[
+    {
+        "demographics": {
+            "age": 69,
+            "sex": "Male"
+        },
+        "clinical_history": "Patient is a 69-year-old male with a history of hypertension, hyperlipidemia, and coronary artery disease (status post stent placement 5 years ago) presenting to the emergency department with worsening shortness of breath over the past 3 days. He reports a non-productive cough and denies fever, chills, or chest pain. He notes increased fatigue and orthopnea. He denies recent travel or sick contacts. He takes lisinopril, atorvastatin, and aspirin daily. He is a former smoker (quit 15 years ago, 20 pack-year history).",
+        "vitals": {
+            "HR": 110,
+            "BP": "145/88",
+            "SpO2": 90,
+            "Temp": 37.0
+        },
+        "radiographic_labels": {
+            "positive": [
+                "Atelectasis",
+                "Cardiomegaly"
+            ],
+            "negative": [
+                "Pleural Effusion"
+            ]
+        },
+        "hidden_diagnosis_label": "Congestive Heart Failure Exacerbation",
+        "admission_note": "# Admission Note\n\n**Patient:** John Doe\n**Age:** 69\n**Sex:** Male\n**Date:** 2024-02-29\n**Admitting Physician:** Dr. [Your Name]\n\n## History of Present Illness\n\nMr. Doe is a 69-year-old male with a history of hypertension, hyperlipidemia, and coronary artery disease (s/p stent x 1) who presents with worsening dyspnea on exertion and orthopnea over the past 3 days. He describes the onset as gradual, initially noticing increased fatigue with minimal activity, which has progressed to shortness of breath even at rest. He denies chest pain, fever, chills, or productive cough. He reports increased lower extremity edema over the past week.\n\n## Past Medical History\n\n*   Hypertension\n*   Hyperlipidemia\n*   Coronary Artery Disease (s/p stent x 1, 5 years ago)\n*   Former smoker (20 pack-years, quit 15 years ago)\n\n## Medications\n\n*   Lisinopril 20mg daily\n*   Atorvastatin 40mg daily\n*   Aspirin 81mg daily\n\n## Allergies\n\nNKDA\n\n## Social History\n\nFormer smoker. Denies alcohol or illicit drug use.\n\n## Family History\n\nFather with history of heart disease.\n\n## Review of Systems\n\n*   **Constitutional:** Reports fatigue.\n*   **Cardiovascular:** Denies chest pain. Reports orthopnea and lower extremity edema.\n*   **Respiratory:** Reports worsening dyspnea on exertion, now at rest. Non-productive cough.\n*   **GI:** Denies nausea, vomiting, diarrhea, abdominal pain.\n*   **GU:** Denies dysuria, frequency, urgency.\n*   **Neurologic:** Denies headache, dizziness, weakness, numbness.\n*   **Skin:** Denies rash, itching.\n\n## Physical Examination\n\n*   **General:** Elderly male, appears uncomfortable, diaphoretic.\n*   **Vitals:** HR 110 bpm, BP 145/88 mmHg, RR 24 breaths/min, SpO2 90% on room air, Temp 37.0\u00b0C (98.6\u00b0F).\n*   **HEENT:** Normocephalic, atraumatic. Mucous membranes slightly dry. JVP elevated to 8 cm.\n*   **Lungs:** Auscultation reveals bilateral crackles, predominantly at the bases. Decreased breath sounds in the lower lobes bilaterally, suggestive of atelectasis.\n*   **Cardiovascular:** Tachycardic, regular rhythm. S1 and S2 present. No murmurs, rubs, or gallops appreciated.\n*   **Abdomen:** Soft, non-tender, non-distended. Bowel sounds present in all four quadrants.\n*   **Extremities:** 2+ pitting edema bilaterally up to the mid-shins.\n*   **Skin:** Warm, dry, no rashes.\n\n## Laboratory Findings\n\n*   (Pending - will order CBC, CMP, BNP, Troponin, ABG)\n\n## Imaging\n\n*   **Chest X-ray:** Shows cardiomegaly and bilateral lower lobe atelectasis. No pleural effusion identified.\n\n## Assessment\n\n1.  **Acute decompensated heart failure (ADHF):** Likely secondary to underlying coronary artery disease and possibly non-compliance with medications or dietary indiscretion. Clinical presentation (dyspnea, orthopnea, edema, elevated JVP, crackles) and radiographic findings (cardiomegaly, atelectasis) are consistent with this diagnosis. The atelectasis is likely secondary to fluid overload and reduced lung volumes.\n2.  **Hypoxia:** Secondary to pulmonary congestion and atelectasis.\n3.  **Tachycardia:** Likely compensatory response to hypoxia and decreased cardiac output.\n\n## Plan\n\n1.  **Admit to Cardiology service.**\n2.  **Oxygen therapy:** Initiate supplemental oxygen via nasal cannula to maintain SpO2 > 92%.\n3.  **Cardiac monitoring:** Continuous EKG monitoring.\n4.  **IV access:** Establish two large-bore IVs.\n5.  **Medications:**\n    *   **Diuretics:** Administer IV furosemide (e.g., 40-80 mg) to address fluid overload.\n    *   **Vasodilator:** Consider IV nitroglycerin if BP allows, for preload and afterload reduction.\n    *   **Morphine:** Consider low-dose IV morphine for dyspnea and anxiety, if needed, with caution.\n6.  **Labs:** Draw CBC, CMP, BNP, Troponin, ABG, Coags.\n7.  **Further Imaging:** Consider echocardiogram to assess cardiac function and rule out acute valvular issues.\n8.  **Consult Cardiology:** Obtain cardiology consultation for further management and potential interventions.\n9.  **Diet:** Sodium restriction.\n10. **Fluid restriction:** As appropriate based on fluid status.\n11. **Monitor:** Closely monitor vital signs, oxygen saturation, urine output, and respiratory status.",
+        "patient_id": "patient00007",
+        "image_reference": "patient00007_study1_view1_frontal.jpg"
+    }
+]
