@@ -1,8 +1,0 @@
-[
-    {
-        "error": "JSON decoding failed: Expecting value: line 3 column 12 (char 33)",
-        "raw": "Prompt:\nYou are an expert senior attending physician.\nYour task is to generate a highly realistic, detailed admission note for a synthetic patient based on the provided profile and confirmed radiographic findings.\n\nPatient Profile:\n- Age: 25\n- Sex: Male\n\nChest X-Ray Ground Truth:\n- Confirmed Present: \n- Confirmed Absent: \n- Uncertain/Borderline: \n\nInstructions:\n1. Think step-by-step about the underlying pathophysiology to construct a realistic clinical presentation (HPI, ROS, Physical Exam) that aligns perfectly with the X-ray findings.\n2. Vitals must directly reflect the severity of the pathology (e.g., severe tachycardia and hypoxia for a large pneumothorax or consolidation).\n3. Output your response STRICTLY as a valid JSON object. Do not include introductory text, conversational filler, or anything outside the JSON block.\n\nREQUIRED JSON SCHEMA:\n{\n  \"demographics\": {\n    \"age\": <integer>,\n    \"sex\": \"<string>\"\n  },\n  \"clinical_history\": \"<Detailed History of Present Illness and Past Medical History>\",\n  \"vitals\": {\n    \"HR\": <integer>,\n    \"BP\": \"<string>\",\n    \"SpO2\": <integer>,\n    \"Temp\": <float>\n  },\n  \"radiographic_labels\": {\n    \"positive\": [\"<array of strings>\"],\n    \"negative\": [\"<array of strings>\"]\n  },\n  \"hidden_diagnosis_label\": \"<String representing the definitive underlying diagnosis>\",\n  \"admission_note\": \"<Full text of the admission note including Physical Exam, Assessment, and Plan formatted in Markdown>\"\n}\nOutput:\n",
-        "patient_id": "patient00078",
-        "image_reference": "patient00078_study1_view1_frontal.jpg"
-    }
-]

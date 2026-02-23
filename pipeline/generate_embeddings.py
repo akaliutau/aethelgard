@@ -101,8 +101,9 @@ class LocalIntelligenceNode:
         new_data = []
         processed_files = []
 
-        logger.info("Scanning file system for changes...")
         doc_folder = DATA_DIR / os.getenv("NODE_ID")
+        logger.info(f"Scanning file system for changes: {doc_folder}")
+
 
         # This loop acts exactly like a 'git add' diff
         for filepath, timestamp, size in self.tracker.get_changed_files(doc_folder):
@@ -156,7 +157,7 @@ class LocalIntelligenceNode:
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Embeddings Generator")
-    parser.add_argument("--config", type=str, default=".env", help="Path to the .env profile")
+    parser.add_argument("--config", type=str, required=True, help="Path to the .env profile")
     args = parser.parse_args()
     load_dotenv(args.config)
     LocalIntelligenceNode().sync_database()

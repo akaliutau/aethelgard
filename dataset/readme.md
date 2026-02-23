@@ -11,7 +11,7 @@ physically siloed across multiple simulated environments to evaluate privacy-pre
 ## Dataset Structure & Schema
 
 The dataset consists of 80 patient records distributed across two simulated hospital environments (Hospital_A and Hospital_B) - 
-42 patients in cohort A and 38 in cohort B 
+31 patients in cohort A and 35 in cohort B 
 
 * Modality 1 (Visual): Open-access frontal and lateral chest radiographs sourced from CheXpert.
 
