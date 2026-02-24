@@ -212,7 +212,7 @@ The super-link that should be available at `http://localhost:8010/docs`
 If everything is green, run the demo app:
 
 ```bash
-python samples/demo_app_2.py
+python samples/demo_app.py
 ```
 Run
 
