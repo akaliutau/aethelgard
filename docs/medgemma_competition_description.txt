@@ -1,0 +1,67 @@
+Description
+
+AI is already reshaping medicine, from diagnostics to drug discovery. But many clinical environments can’t rely on large, closed models that require constant internet access or centralized infrastructure. They need adaptable, privacy-focused tools that can run anywhere care is delivered.
+
+To meet this need, Google has released open-weight models specifically designed to help developers more efficiently create novel healthcare and life sciences applications. MedGemma and the rest of HAI-DEF collection give developers a starting point for building powerful tools while allowing them full control over the models and associated infrastructure.
+
+In this competition, you’ll use these models to build full fledged demonstration applications. Whether you’re building apps to streamline workflows, support patient communication, or facilitate diagnostics, your solution should demonstrate how these tools can enhance healthcare.
+
+Your submission must be a Kaggle Writeup and it must be attached to this page. To create a new Writeup, click on the "New Writeup" button here. After you have saved your Writeup, you should see a "Submit" button in the top right corner. Each team is limited to submitting only a single Writeup, but that same Writeup can be un-submitted, edited, and re-submitted as many times as you'd like. Your Writeup should contain a summary of your overall project along with links to supporting resources.
+Choosing a track
+
+All submissions compete in the Main Track, and are eligible to win one special award prize (Agentic Workflow Prize, The Novel Task Prize, or The Edge of AI Prize). While you will have the option to select multiple tracks when you create your writeup, you can only chose the main track and one special award prize. If you choose multiple special awards, we will only consider your submission for one of your indicated special awards (randomly selected).
+Links
+
+    Required: Video (3 min or less)
+    Required: Public code repository
+    Bonus: Public interactive live demo app
+    Bonus: Open-weight Hugging Face model tracing to a HAI-DEF model
+
+Proposed Writeup template
+
+Use the following structure and in 3 pages or less present your work. Less is more! You should take advantage of the video to convey most of the concepts and keep the write-up as high level as possible.
+
+### Project name 
+[A concise name for your project.]
+
+### Your team 
+[Name your team members, their speciality and the role they played.]
+
+### Problem statement
+[Your answer to the “Problem domain” & “Impact potential” criteria]
+
+### Overall solution: 
+[Your answer to “Effective use of HAI-DEF models” criterion] 
+
+### Technical details 
+[Your answer to “Product feasibility” criterion]
+
+
+
+Evaluation Criteria
+
+Submissions are evaluated on the following criteria:
+Criteria (percentage) 	Description
+Effective use of HAI-DEF models
+(20%) 	Are HAI-DEF models used appropriately?
+
+You will be assessed on: whether the submission proposes an application that uses HAI-DEF models to their fullest potential, where other solutions would likely be less effective.
+
+Note: Use of at least one of HAI-DEF models such as MedGemma is mandatory.
+Problem domain
+(15%) 	How important is this problem to solve and how plausible is it that AI is the right solution?
+
+You will be assessed on: storytelling, clarity of problem definition, clarity on whether there is an unmet need, the magnitude of the problem, who the user is and their improved journey given your solution.
+Impact potential
+(15%) 	If the solution works, what impact would it have?
+
+You will be assessed on: clear articulation of real or anticipated impact of your application within the given problem domain and description of how you calculated your estimates.
+Product feasibility
+(20%) 	Is the technical solution clearly feasible?
+
+You will be assessed on: technical documentation detailing model fine-tuning, model's performance analysis, your user-facing application stack, deployment challenges and how you plan on overcoming them. Consideration of how a product might be used in practice, rather than only for benchmarking.
+Execution and communication (30%) 	What is the quality of your project's execution and your clear and concise communication of your work? Your main submission package follows the provided template and includes a mandatory video demo and a write-up with links to your source material.
+
+You will be assessed on: the clarity, polish, and effectiveness of your video demonstration; the completeness and readability of your technical write-up; and the quality of your source code (e.g., organization, comments, reusability). Judges will look for a cohesive and compelling narrative across all submitted materials that effectively articulates how you meet the rest of the judging criteria.
+
+

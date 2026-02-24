@@ -1,5 +1,11 @@
 # 🛡️ Aethelgard
 
+<p>
+ <a><img alt="Status" src="https://img.shields.io/badge/status-research_prototype-6a5acd"></a>
+ <a><img alt="Python" src="https://img.shields.io/badge/Python-3.12%2B-blue"></a>
+ <a><img alt="License" src="https://img.shields.io/badge/license-MIT-lightgrey"></a>
+</p>
+
 **Aethelgard** is a lightweight, pure-pull Federated Retrieval-Augmented Generation (FedRAG) framework. 
 It allows you to query highly sensitive, distributed vector databases (like clinical patient data) without ever moving 
 raw data or opening inbound corporate firewalls.
