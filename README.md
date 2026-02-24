@@ -108,6 +108,7 @@ aethelgard/
 ├── Dockerfile                    # Container definition for the SuperLink server
 ├── pyproject.toml                # Modern Python packaging configuration
 └── README.md```
+```
 
 ## ⚡ Quick Start
 
