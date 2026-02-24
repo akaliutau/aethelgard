@@ -6,6 +6,13 @@ raw data or opening inbound corporate firewalls.
 Unlike traditional federated learning frameworks that focus on *training* models across silos, 
 Aethelgard focuses strictly on *inference and routing*.
 
+<p align="center">
+<img src="docs/local_intelligence_node.png" width="85%" alt="Local Intelligence Node" />
+
+<em>Figure 1: The concept of UI for the Local Intelligence Node (`samples/demo_app_2.py`)</em>
+</p>
+
+
 ### ✨ Key Features
 
 * **Pure-Pull Architecture:** Edge nodes use outbound asynchronous polling. **Zero inbound port-forwarding required** by IT departments.

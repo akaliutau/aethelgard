@@ -3,7 +3,7 @@
 ## Abstract
 Current methodologies for overcoming medical data silos are largely inadequate for the era of generative AI. 
 To validate the "Project Aethelgard" Federated RAG architecture, we introduce a highly realistic, synthetic multimodal dataset. 
-This dataset is a curated, downsampled subset (N=80) of the [CheXpert dataset](https://stanfordmlgroup.github.io/competitions/chexpert/), 
+This dataset is a curated, downsampled subset (N=66) of the [CheXpert dataset](https://stanfordmlgroup.github.io/competitions/chexpert/), 
 enriched with generative synthetic clinical admission notes. 
 The dataset maps high-fidelity text narratives to confirmed radiographic ground truths, 
 physically siloed across multiple simulated environments to evaluate privacy-preserving inference networks.
