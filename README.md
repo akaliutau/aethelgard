@@ -15,7 +15,7 @@ Aethelgard focuses strictly on *inference and routing*.
 <p align="center">
 <img src="docs/assets/local_intelligence_node.png" width="85%" alt="Local Intelligence Node" />
 
-<em>Figure 1: The concept of UI for the Local Intelligence Node (`samples/demo_app_2.py`)</em>
+<em>Figure 1: The concept of UI for the Local Intelligence Node (`samples/demo_app.py`)</em>
 </p>
 
 
@@ -26,6 +26,13 @@ Aethelgard focuses strictly on *inference and routing*.
 * **Semantic Firewall Ready:** Designed to easily integrate local LLM verification (e.g., MedGemma) to sanitize vector search 
 results before they are transmitted back to the global orchestrator.
 
+### 🏗️ Architecture 
+
+<p align="center">
+<img src="docs/assets/Diagram_1.png" width="75%" alt="Architecture of Aethelgard" />
+
+<em>Figure 2: The abstract System Design of our protocol. Super-link is built on the basis of message queue</em>
+</p>
 
 ### 🌌 The Vision
 
@@ -63,14 +70,6 @@ By applying a controlled Gaussian noise ($\sigma=0.2$) directly to the vectors, 
 
 👉 **[Privacy-Utility Trade-off Analysis](notebooks/LDP_and_Empirical_Noise_Parameter_Selection_Analysis.ipynb)** 
 👉 **[Paper Draft](docs/Privacy_Utility_Tradeoff_Analysis.pdf)** 
-
-
-Aethelgard is built on Hexagonal Architecture. Don't want to use Redis? Write your own Broker:
-
-```python
-from aethelgard.core.broker import BaseTaskBroker
-```
-TBA
 
 
 ## 📂 Project Structure
@@ -136,7 +135,7 @@ conda activate aethelgard
 pip install -r requirements.txt
 ```
 
-4. **Install ollama and Gemma/CXR models**
+4. **Install ollama and Gemma/embedding models**
 
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
@@ -146,10 +145,13 @@ ollama pull gemma3:4b
 # quick test
 ollama run gemma3:4b "What is the capital of France?"
 ```
+Cache Location: The model weights (typically a .gguf file) are cached securely on local disk:
+** Linux: `/usr/share/ollama/.ollama/models`
 
-Auth for Gated Models (important since we are using CXR models - `google/cxr-foundation`!)
 
-* Accept the Terms: You cannot download this anonymously. You must log in to Hugging Face, navigate to the `google/cxr-foundation` page, 
+NOTE: Extra steps for using Gated Models
+
+* Accept the Terms: You cannot download these models anonymously. If they are hosted at Hugging Face, you must log in to Hugging Face, navigate to the model card page, 
   and review the Health AI Developer Foundations terms of use. Once you click to agree, your access request is processed immediately.
 * Generate a Token: Go to your Hugging Face account settings and generate an Access Token (Read permission) and store in `.env` file under HF
 
@@ -169,29 +171,8 @@ sudo docker images
 
 7. (optional) **Re-Generate datasets from scratch**
 
-A. First we need to lift the limitations for Spot GPUs and models, from 0 -> 1:
-
-* Go to the Google Cloud Console in your browser.
-* Search for Quotas (IAM & Admin -> Quotas).
-* In the Filter bar, paste exactly these metrics: custom_model_serving_nvidia_a100_80gb_gpus, CustomModelServingPreemptibleCPUsPerProjectPerRegion.
-  and CustomModelServingPreemptibleA10080GBGPUsPerProjectPerRegion
-* Ensure the location is set to us-central1.
-* Select the checkbox next to the quota, click Edit Quotas, and request a limit of 1 (or 12 for CustomModelServingPreemptibleCPUsPerProjectPerRegion)
-
-B. Generate a small dataset from CheXpert, using notebook `notebooks/dataset-small.ipynb` and unpack the archive to `.cache/CheXpert`
-
-C. Deploy infra and run pipeline:
-
-```bash
-scripts/deploy_infra.sh
-gcloud ai models list --region=us-central1
-scripts/run_batch_gcp.sh .cache/CheXpert
-```
-
-The generated synthetic notes will be saved to /dataset.
-
-To complete the data preparation, we must generate the embeddings for data, using scripts 
-
+Note: this step is only needed if you need to re-create dataset for your experiments.
+See the instructions in [dedicated page](dataset/readme.md)
 
 
 ### 🚀 Running examples
@@ -210,41 +191,26 @@ A cache folder will automatically appear in your project directory containing th
 
 The super-link that should be available at `http://localhost:8010/docs`
 
-If everything is green, run the demo app:
+
+In other terminal run the local node using profile for the Hospital B:
 
 ```bash
-python samples/demo_app.py
+python samples/03_hospital_node.py --config profiles/node_b.env
 ```
-Run
+
+If everything is green, run the demo app using profile for the Hospital A:
+
+```bash
+python samples/demo_app.py --config profiles/node_a.env
+```
+The UI page of application will automatically open in browser.
 
 ### 🏗️ How It Works (The Pure-Pull Workflow)
 
 1. **Broadcast:** The global orchestrator drops a vectorized query into a secure mailbox (Broker).
 2. **Pull:** The client node (behind a strict hospital firewall) wakes up on its 10-second heartbeat and asks, *"Do I have any mail?"*
 3. **Local RAG:** The client executes a local vector search (e.g., LanceDB) and sanitizes the output.
-4. **Upload:** The client pushes the safe, sanitized insight back to the orchestrator.
-
-Text Embedding: Gemma 4B via Ollama
-
-* Installation: Download the installer from ollama.com for your specific OS.
-* Downloading the Model: Open your terminal and run ollama pull gemma:4b. This fetches the weights from the Ollama registry.
-* Execution: Ollama runs a background service automatically. When `get_text_embedding()` function uses LiteLLM to hit `localhost:11434`, 
-  Ollama dynamically loads the model into your RAM/VRAM, generates the 2048-dimensional vector, and unloads it after a period of inactivity.
-* Cache Location: The model weights (typically a .gguf file) are cached securely on local disk:
-** Linux: `/usr/share/ollama/.ollama/models`
-
-Image Embedding: Google's CXR Foundation Models
-
-The script currently mocks the 128-dimensional vision output using `google/siglip-base-patch16-224`. 
-To swap this out for a dedicated medical foundation model (like Google's CXR models or similar open-weights variants), 
-you utilize the transformers library which is already in your `requirements.txt`.
-
-* Downloading the Model: When `AutoModel.from_pretrained("model-name")` is called, the transformers library automatically 
-  connects to the Hugging Face Hub, downloads the model weights, and caches them locally.
-* Execution: The script explicitly forces the model to run on the CPU (line DEVICE = "cpu"), which is highly compatible 
-  but slower than using a GPU. The transformers library handles tokenization and passes the tensors through the network to generate the embeddings.
-* Cache Location: By default, Hugging Face stores these large files in:
-** Linux/macOS: `~/.cache/huggingface/hub`
+4. **Upload:** The client pushes the safe, sanitized insight back to the orchestrator (super-link on the diagram).
 
 
 ### 🔌 Extending the Framework
@@ -253,6 +219,12 @@ Want to see it in action without configuring Redis? Run the local simulation in 
 ```bash
 pip install aethelgard
 ```
+
+```python
+from aethelgard.core.broker import BaseTaskBroker
+```
+TBA
+
 
 ## 🚀 Future Roadmap: Scaling Aethelgard
 
