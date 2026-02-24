@@ -26,6 +26,26 @@ Aethelgard focuses strictly on *inference and routing*.
 * **Semantic Firewall Ready:** Designed to easily integrate local LLM verification (e.g., MedGemma) to sanitize vector search 
 results before they are transmitted back to the global orchestrator.
 
+
+### 🌌 The Vision
+
+Solving the rare disease "Diagnostic Odyssey" requires more than a single application; it requires a paradigm shift in how 
+clinical systems communicate. Healthcare is notoriously fragmented. Every hospital has a unique IT infrastructure, 
+differing firewall policies, and strict, incompatible data governance laws (HIPAA, GDPR, etc.).
+
+**We did not build an app. We built a protocol.**
+
+Aethelgard is designed as a foundational **Federated Retrieval-Augmented Generation (FedRAG) Framework**. 
+Applications are brittle and siloed; protocols scale. 
+We engineered Aethelgard to act as the decentralized nervous system for clinical intelligence:
+* **Agnostic to the UI:** Whether a hospital uses Epic, Cerner, or a custom legacy Electronic Health Record (EHR) system, 
+  Aethelgard operates at the infrastructure layer, allowing local apps to hook into the global network seamlessly.
+* **Adaptable to any IT Environment:** Built on strict Hexagonal Architecture, the core geometric and AI logic is completely 
+  decoupled from the transport layer. 
+* **Beyond Diagnostics:** While our primary demonstration focuses on rare disease diagnostics, the Aethelgard protocol can be 
+  instantly adapted for pharmacovigilance (detecting rare adverse drug reactions globally), multi-center clinical trial matching, 
+  and real-time epidemiological tracking - all without moving a single row of raw data.
+
 ### 🧮 Security Innovation: Empirical Noise vs. LDP
 
 The most significant technical hurdle in Federated RAG is ensuring that transmitted semantic vectors cannot be reverse-engineered 
@@ -40,7 +60,9 @@ By applying a controlled Gaussian noise ($\sigma=0.2$) directly to the vectors, 
 (rendering exact inversion mathematically impossible) while perfectly preserving the relative spatial geometry. 
 
 **Result:** 100% Top-1 Retrieval Accuracy across the network with zero raw data exposure.
+
 👉 **[Privacy-Utility Trade-off Analysis](notebooks/LDP_and_Empirical_Noise_Parameter_Selection_Analysis.ipynb)** 
+👉 **[Paper Draft](docs/Privacy_Utility_Tradeoff_Analysis.pdf)** 
 
 
 Aethelgard is built on Hexagonal Architecture. Don't want to use Redis? Write your own Broker:
@@ -53,33 +75,39 @@ TBA
 
 ## 📂 Project Structure
 
-The codebase is organized to separate infrastructure from geometric logic.
+The codebase is organized to separate infrastructure from implementation logic.
 
+Here are the main components:
 ```text
 aethelgard/
-├── aethelgard/               # The core Python package
+├── aethelgard/                   # The core Python package
 │   ├── __init__.py
-│   ├── core/                 # Abstract Base Classes (The "Ports")
-│   │   ├── broker.py         # Defines TaskBroker interface
-│   │   └── transport.py      # Defines ServerTransport & ClientTransport
-│   ├── brokers/              # Concrete state managers (The "Adapters")
-│   │   ├── in_memory.py      # For local testing (no dependencies)
-│   │   └── redis_broker.py   # For production (requires Redis)
-│   ├── transports/           # Concrete web servers/clients
-│   │   ├── fastapi_server.py # REST/HTTP implementation
-│   │   └── httpx_client.py   # Async HTTP client implementation
-│   ├── orchestrator.py       # The central SuperLink logic
-│   └── client_node.py        # The hospital SuperNode logic
-├── samples/                 
-│   ├── 01_local_simulation.py    # The minimal PoC - used only for internal logic tests 
-│   ├── 02_production_server.py   # Integration tests
-│   └── 03_gemma_pipeline.py      # Full semantic firewall pipeline
-├── tests/
-├── docker-compose.yml        # Instantly spins up the environment
-├── pyproject.toml            # Modern Python packaging
-└── README.md
-```
-
+│   ├── core/                     # Abstract Base Classes & Core Utilities (The "Ports")
+│   │   ├── broker.py             # Defines the BaseTaskBroker interface
+│   │   ├── config.py             # Global logging and environment configuration
+│   │   ├── llm_middleware.py     # Model-agnostic LLM routing (powered by LiteLLM)
+│   │   ├── smartfolder.py        # SQLite-based state tracker for local file changes
+│   │   └── transport.py          # Defines ServerTransport & ClientTransport interfaces
+│   ├── brokers/                  # Concrete state managers (The "Adapters")
+│   │   └── redis_broker.py       # Distributed task queue implementation using Redis
+│   ├── firewall/                 # Security & Sanitization
+│   │   └── litellm_firewall.py   # The MedGemma-powered generative sanitization adapter
+│   ├── transports/               # Concrete network protocols
+│   │   ├── fastapi_server.py     # REST/HTTP Orchestrator API implementation
+│   │   └── httpx_client.py       # Async HTTP client for outbound node polling
+│   └── node.py                   # The Edge Node heartbeat and execution loop
+├── pipeline/                     # Scripts for GCP batch inference and data prep - 
+│                                 #     only if a new dataset for experiments is needed
+├── profiles/                     # .env configuration files for different network nodes
+├── samples/                      # Demonstration scripts and interactive UIs
+│   ├── demo_app_2.py             # The example of interactive clinician app built on NiceGUI
+│   ├── test_integration.py       # Full network broadcast and consensus simulation for smoke tests
+│   └── ...
+├── tests/                        # Unit and integration test suite
+├── docker-compose.yml            # Instantly spins up the Redis & FastAPI Orchestrator
+├── Dockerfile                    # Container definition for the SuperLink server
+├── pyproject.toml                # Modern Python packaging configuration
+└── README.md```
 
 ## ⚡ Quick Start
 
@@ -224,5 +252,36 @@ Want to see it in action without configuring Redis? Run the local simulation in 
 ```bash
 pip install aethelgard
 ```
+
+## 🚀 Future Roadmap: Scaling Aethelgard
+
+Aethelgard is a foundation ready for enterprise scaling. Our immediate roadmap focuses on making the protocol completely invisible to the end-user while expanding its security and interoperability:
+
+- [ ] **Native OS Daemon & Zero-Touch Ollama Integration:** Package the Aethelgard edge node as a lightweight, 
+        headless background service (e.g., `systemd` for Linux, Windows Service). 
+        This daemon will natively orchestrate local Ollama instances, dynamically loading and unloading MedGemma weights 
+        and managing the inference lifecycle automatically - requiring zero technical overhead or terminal usage from clinicians.
+- [ ] **Automated FHIR/HL7 EHR Ingestion:** Build native data pipelines to continuously ingest, vectorize, and index clinical notes and 
+        imaging directly from standard Electronic Health Record (EHR) systems (like Epic and Cerner) in real-time, completely replacing manual data uploads.
+- [ ] **Enterprise Message Brokers:** Expand the `BaseTaskBroker` port beyond Redis. Ship drop-in adapters for state-scale deployments using 
+        **Apache Kafka**, **GCP Pub/Sub**, or **AWS SQS** with zero changes to the core geometric logic.
+- [ ] **Hardware-Level Enclaves (TEE):** Integrate Trusted Execution Environments (e.g., Intel SGX, AMD SEV) for the SuperLink Message Queue 
+        to guarantee mathematically and at the hardware level that the centralized routing infrastructure cannot inspect even the heavily obfuscated query vectors.
+- [ ] **Specialized Multi-Agent Semantic Firewalls:** Evolve the single MedGemma instance into a local multi-agent system. Deploy specialized 
+        sub-agents for distinct tasks (e.g., a Genomic Privacy Agent, a Radiographic Reasoning Agent) that debate and synthesize the final, hyper-secure outbound payload.
+- [ ] **gRPC Multiplexing:** Upgrade the FastAPI/HTTPX transports to multiplexed **gRPC** to support low-latency, high-volume vector polling 
+        across tens of thousands of concurrent hospital nodes globally.
+
+
+## ⚖️ License
+
+Project Aethelgard is open-source software distributed under the **MIT License**. 
+
+By keeping the core routing and security protocol open and accessible, we aim to lower the barrier to entry for underfunded 
+rural clinics and state-scale hospital networks alike. See the [LICENSE](LICENSE) file for more details.
+
+---
+*Built for the [MedGemma Impact Challenge](https://www.kaggle.com/competitions/med-gemma-impact-challenge/writeups/project-aethelgard-decentralized-clinical-intelli) organized by Google Research.* <br>
+*Sharing knowledge to save lives.*
 
 

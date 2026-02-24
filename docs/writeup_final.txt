@@ -1,0 +1,78 @@
+# Project Aethelgard: Decentralized Clinical Intelligence via Federated RAG
+
+## Team
+
+Aliaksei Kaliutau (sole developer and presenter), Software Engineer and Researcher with 10+ YoE; serial entrepreneur; MSc in AI, Imperial College London
+
+## Problem statement
+
+The "Diagnostic Odyssey" remains one of the most persistent challenges in modern medicine. Patients with complex or rare conditions - such as rare presentations of Sarcoidosis, Myositis, or Primary Immunodeficiency (PID) - often wait years for an accurate diagnosis. The collective intelligence required to diagnose these edge cases exists, but it is locked away in siloed, decentralized hospital networks.
+
+Traditional approaches to pooling this knowledge have failed. Centralized data lakes are blocked by stringent HIPAA and GDPR regulations. Conversely, traditional Federated Learning (FL) frameworks, while preserving privacy, focus heavily on decentralized model *training*. These frameworks are notoriously brittle, computationally expensive, and require complex inbound firewall configurations that hospital IT departments routinely reject.
+
+### Impact Potential
+
+The magnitude of this problem is vast: for 400 million people globally, a [rare disease diagnosis averages](https://doi.org/10.1186/s13023-024-03319-2) 4.8 years and 7.3 physicians. The financial and human cost of this delay is enormous. If Aethelgard is deployed across independent hospital networks and accelerates the diagnostic timeline by just 20% for even 1% of this global cohort, it would eliminate nearly 3.8 million years of diagnostic waiting time. We can unlock the long-tail of medical data without requiring a single Data Use Agreement (DUA), creating a scalable infrastructure for global clinical consensus and knowledge sharing.
+
+## Overall solution
+
+Aethelgard abandons the overhead of federated training to focus strictly on **federated inference and routing**. It allows a physician to ask, *"Have any other hospitals in the network successfully treated a patient with this exact, complex clinical and radiological presentation?"* without ever exposing the local patient's raw clinical data.
+
+Aethelgard is engineered on a strict Hexagonal Architecture, ensuring maximum deployability across varied hospital IT environments. At its core, it solves the "firewall problem" through a **Pure-Pull Architecture**.
+It's built on edge intelligence nodes which utilize outbound, asynchronous polling. The nodes securely reach out to a central broker to pull pending queries, compute the semantic similarity locally against their private LanceDB vector stores, and push the obfuscated results back. **Zero inbound port-forwarding is required**, guaranteeing frictionless IT compliance. The data security problem is solved via a novel Empirical Noise Strategy combined with a local Semantic Firewall, that allowed Aethelgard preserve 100% Top-1 retrieval utility while mathematically rendering exact vector inversion impossible.
+
+![](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F7338753%2F3cff2aa9d674fe28dbf242b3257d7bc1%2FDiagram_1b.png?generation=1771969234173625&alt=media)
+
+### Clinical Workflow: How It Actually Could Look Like
+
+Consider a live clinical scenario showcased in our video:
+A local physician is treating a 65-year-old female patient (Jane Doe, Patient ID: 00077) presenting with Spontaneous Pneumothorax, severe tachycardia (HR 110), and a complex history. Doctor needs more knowledge since he suspects this is a complicated, nuanced case.
+
+1. **Local Contextualization**: The local Aethelgard node ingests the admission note and chest X-ray, embedding them into a unified, high-dimensional vector representation.
+2. **Obfuscation**: The Empirical Noise Engine applies sigma=0.2 Gaussian noise. The raw data remains on the hospital server; only an anonymized, structurally distorted vector leaves the node. Additional prompt in form of questions is attached to vector.
+3. **Global Retrieval**: The vector is polled against the decentralized network. A hospital across the country finds a highly correlated case (despite the noise).
+4. **Semantic Sanitization**: The remote hospital's MedGemma Semantic Firewall sanitizes their historical case, securely extracting, formulating and transmitting back the successful treatment protocol without exposing their patient's identity.
+
+![Local Intelligence Node](https://www.googleapis.com/download/storage/v1/b/kaggle-user-content/o/inbox%2F7338753%2F8480cbfaa3505a8e236090474b187057%2Flocal_intelligence_node.png?generation=1771895660523045&alt=media)
+
+This entire process occurs seamlessly and the infrastructure relies entirely on open-source, easily installable python libraries and runs on local, cost-effective hardware, drastically lowering the barrier to entry for underfunded or rural clinics and poor countries (which are typically the major source of data about rare diseases).
+
+## Technical details
+
+The framework is designed to run efficiently on accessible hardware (such as single-GPU or advanced CPU instances) rather than requiring massive GPU clusters:
+
+* **Local Embedding Engine**: Clinical text is embedded locally using dynamic loading via LiteLLM and Ollama (ollama/embeddinggemma), storing locally 1920-dimensional vectors.
+* **Vision Integration**: Radiological imaging (validated on the [CheXpert dataset](https://stanfordmlgroup.github.io/competitions/chexpert/)) utilizes Google's CXR Foundation Models (prototyped via [google/medsiglip-448](https://huggingface.co/google/medsiglip-448) on Hugging Face transformers) to generate high-fidelity image embeddings.
+* **Storage & Routing**: LanceDB manages local high-dimensional vector similarity search, while a modular broker system (defaulting to FastAPI and Redis, but easily portable for more scalable gRPC, Kafka, or GCP Pub/Sub) handles the pure-pull message queues.
+
+### Model Fine-Tuning Justification (The AI Paradigm)
+
+We deliberately chose *not* to fine-tune the HAI-DEF models. In the context of rare diseases, fine-tuning an LLM across distributed silos leads to "catastrophic forgetting". FL models optimize for generalization (the average features of a disease), which actively erases the specific, low-prevalence "reference patients" required for an accurate rare diagnosis since these patients represent the extreme outliers. Instead, we utilize MedGemma 4B strictly as a *zero-shot reasoning engine and Semantic Firewall at inference time*. This allows the model to dynamically sanitize and contextualize highly specific retrieved data (RAG) without baking sensitive Protected Health Information (PHI) into its weights, representing a far more robust and privacy-preserving AI architecture for this domain.
+
+### Security Innovation: Empirical Noise and the Semantic Firewall
+
+The most significant technical hurdle in Federated RAG is ensuring that the semantic vectors transmitted across the network cannot be [reverse-engineered](https://arxiv.org/abs/2310.06816) to reveal patient data. During our development, we extensively analyzed Local Differential Privacy (LDP) mechanisms for high-dimensional clinical vectors.
+
+### Overcoming the Failure of Strict LDP
+
+Our empirical evaluation of 1920-dimensional clinical vectors revealed a critical limitation in current privacy theory: strict Local Differential Privacy is mathematically incompatible with exact Top-1 retrieval utility in high-dimensional spaces we are dealing with.
+
+When we applied the standard LDP Gaussian mechanism directly to raw vectors, the result was a catastrophic loss of clinical utility. At mathematically secure privacy budgets (industry standard epsilon < 5.0), Top-1 retrieval accuracy collapsed to under 10%. To achieve usable utility, we had to push the privacy budget to epsilon > 50.0, an environment that provides absolutely no meaningful mathematical privacy guarantees.
+
+To resolve this, we engineered an **Empirical Noise Strategy**. We abandoned the overly strict theoretical constraints of LDP and applied a controlled, empirical Gaussian noise directly to the vectors, achieving excellent mathematical obfuscation, robustly defending against any known exact vector inversion attacks.
+
+Despite the heavy obfuscation, the Aethelgard system maintains a perfect **100% Top-1 Retrieval Accuracy** across the network. More details in [this notebook](https://github.com/akaliutau/aethelgard/blob/main/notebooks/LDP_and_Empirical_Noise_Parameter_Selection_Analysis.ipynb) and [problem formulation](https://github.com/akaliutau/aethelgard/raw/main/docs/Privacy_Utility_Tradeoff_Analysis.pdf)
+
+### The MedGemma Semantic Firewall
+
+To provide defense-in-depth, Aethelgard implements a **Semantic Firewall** powered by local MedGemma deployments. Even after a vector match is found, raw clinical notes are never transmitted blindly. Instead, the local instance of [MedGemma 4B](https://huggingface.co/google/medgemma-4b-it) acts as an intelligent, generative sanitizer. It reviews the retrieved local admission note, extracts only the clinically relevant insights requested by the inbound query, strictly strips out all PHI, and generates a synthesized, anonymized summary. Only this sanitized, generative payload is returned to the global network. We utilized Google's MedGemma 4B and CXR Foundation models precisely because they offer state-of-the-art clinical reasoning in a footprint small enough to be quantized and run entirely locally on standard machines, providing hi-fi medical extraction that generic models simply cannot match.
+
+### Deployment Challenges & Mitigations
+
+The primary hurdle in hospital software deployment is the IT firewall. We solved this by implementing an *outbound-only* polling architecture, meaning nodes never accept inbound API requests, effectively bypassing strict hospital firewall restrictions. To mitigate hardware constraints, all software relies entirely on open-source libraries and cost-effective local hardware (in our demo all services including UI app run on a single laptop which does not even have a dedicated GPU).
+
+## Conclusion
+
+If widely adopted, Aethelgard fundamentally shifts the paradigm of medical collaboration. It delivers a highly scalable, privacy-first application that solves a massive, quantifiable problem: the isolation of clinical data.
+
+By achieving a zero-inbound-firewall footprint, proving the mathematical viability of Empirical Noise vs LDP for high-dimensional spaces, and leveraging MedGemma/CXR models as a localized Semantic Firewall, Aethelgard provides a production-ready, highly secure and scalable architecture that allows every clinic in the world to access the collective diagnostic intelligence of the entire medical community.
