@@ -15,7 +15,7 @@ Aethelgard focuses strictly on *inference and routing*.
 <p align="center">
 <img src="docs/assets/local_intelligence_node.png" width="85%" alt="Local Intelligence Node" />
 
-<em>Figure 1: The concept of UI for the Local Intelligence Node (`samples/demo_app.py`)</em>
+<em>Figure 1: The concept of UI for the Local Intelligence Node (`samples/demo_app.py`). The current variant is built on the basis of NiceGUI</em>
 </p>
 
 
@@ -99,7 +99,7 @@ aethelgard/
 │                                 #     only if a new dataset for experiments is needed
 ├── profiles/                     # .env configuration files for different network nodes
 ├── samples/                      # Demonstration scripts and interactive UIs
-│   ├── demo_app_2.py             # The example of interactive clinician app built on NiceGUI
+│   ├── demo_app.py             # The example of interactive clinician app built on NiceGUI
 │   ├── test_integration.py       # Full network broadcast and consensus simulation for smoke tests
 │   └── ...
 ├── tests/                        # Unit and integration test suite
