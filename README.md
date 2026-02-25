@@ -78,7 +78,7 @@ By applying a controlled Gaussian noise ($\sigma=0.2$) directly to the vectors, 
 **Result:** 100% Top-1 Retrieval Accuracy across the network with zero raw data exposure.
 
 👉 **[Privacy-Utility Trade-off Analysis](notebooks/LDP_and_Empirical_Noise_Parameter_Selection_Analysis.ipynb)** 
-👉 **[Paper Draft](docs/Privacy_Utility_Tradeoff_Analysis.pdf)** 
+👉 **[Paper Draft](https://github.com/akaliutau/aethelgard/raw/main/docs/Privacy_Utility_Tradeoff_Analysis.pdf)** 
 
 
 ## 📂 Project Structure
