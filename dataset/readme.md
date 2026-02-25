@@ -28,6 +28,32 @@ Atelectasis, Cardiomegaly, Consolidation, Edema, and Pleural Effusion.
 
 Utilizing these validated labels ensures the radiographic ground truth exactly matches the generative clinical presentation.
 
+## 🧬 Synthetic Dataset Generation
+
+Evaluating a privacy-preserving clinical network requires high-fidelity, multimodal data. To safely validate Aethelgard, we generated 
+a highly realistic synthetic dataset distributed across our simulated hospital environments. 
+
+The dataset is a curated subset (N=66) of the CheXpert chest X-ray competition dataset. We mapped these open-access images to generative, 
+synthetic clinical admission notes. 
+
+### Generation Rationale & Pipeline
+We selected five highly prevalent pathologies—Atelectasis, Cardiomegaly, Consolidation, Edema, and Pleural Effusion—to ensure the 
+radiographic ground truth perfectly matches the clinical presentation. 
+
+The clinical text was generated using MedGemma 27B. To achieve maximum realism, the model was prompted using a Chain-of-Thought reasoning process. 
+Specifically, the prompt (`templates/generate_patient.j2`) instructs the model to act as an expert senior attending physician. 
+
+The prompt engine injects:
+* **Patient Demographics**: Age and sex.
+* **Radiographic Ground Truth**: Confirmed present, confirmed absent, and uncertain/borderline findings derived directly from the CheXpert labels.
+
+The model is instructed to think step-by-step about the underlying pathophysiology to construct a realistic clinical presentation 
+(including History of Present Illness, Review of Systems, and Physical Exam) that precisely aligns with the X-ray. 
+It also ensures that generated vitals reflect the severity of the pathology (e.g., severe tachycardia for large consolidations). 
+
+The output is strictly constrained to a structured JSON schema containing the demographics, clinical history, vitals, radiographic labels, 
+a hidden diagnosis label, and the full admission note.
+
 ## Generate datasets from scratch
 
 A. First we need to lift the limitations for Spot GPUs and A100 models, from 0 -> 1. Lifting limitations on spot resource is optional, 

@@ -183,7 +183,14 @@ sudo docker images
 7. (optional) **Re-Generate datasets from scratch**
 
 Note: this step is only needed if you need to re-create dataset for your experiments.
-See the instructions in [dedicated page](dataset/readme.md)
+
+Evaluating a privacy-preserving clinical network requires high-fidelity, multimodal data. To safely validate Aethelgard, we generated 
+a highly realistic synthetic dataset distributed across our simulated hospital environments. 
+
+The dataset is a curated subset (N=66) of the CheXpert chest X-ray competition dataset. We mapped these open-access images to generative, 
+synthetic clinical admission notes. 
+
+See more details and the instructions how to do that in [dedicated page](dataset/readme.md)
 
 
 ### 🚀 Running examples
@@ -251,6 +258,29 @@ The `LiteLLMFirewall` acts as the critical generative security layer between the
 To seamlessly manage the local ingestion of EHR notes and medical imaging, Aethelgard implements a `SmartFolder` utility. It acts similarly to a local `git status` tracker, 
 utilizing a lightweight SQLite database to track file modification times and sizes. 
 This ensures that only newly added or modified clinical records are computationally embedded and fused into the local vector store.
+
+
+## 📦 Protocol: Payload Structure
+
+<p align="center">
+<img src="docs/assets/protocol_payload.png" width="85%" alt="payload structure" />
+
+<em>Figure 4: The structure of payload that is used in protocol; 1920-d combined embedding is mixed with noise before broadcasting, 
+the user prompt is added as is</em>
+</p>
+
+Aethelgard utilizes strict JSON schemas for all network communication to ensure type safety and seamless cross-node deserialization. The data exchange revolves around three primary payloads:
+
+* **Clinical Query (`/broadcast`)**: When a doctor initiates a search, the orchestrator receives a payload containing the `query_text` 
+  (the human-readable clinical question), the `query_vector` (the 1920-dimensional fused multimodal embedding, obfuscated with empirical noise), 
+  and the `target_clients` (the list of hospital nodes to poll).
+* **Insight Submission (`/insight`)**: When a remote node successfully finds a match and sanitizes it via the MedGemma Semantic Firewall, 
+  it returns an object containing its `client_id` and the `sanitized_insight` (a JSON string containing the extracted clinical protocol devoid 
+  of Protected Health Information).
+* **Acknowledgment (`/ack`)**: A simple payload containing the `client_id`, sent by the edge node to clear the task from the orchestrator's 
+   processing queue, regardless of whether a semantic match was found.
+
+
 
 ## 🚀 Future Roadmap: Scaling Aethelgard
 
