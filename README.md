@@ -50,7 +50,8 @@ We engineered Aethelgard to act as the decentralized nervous system for clinical
 <p align="center">
 <img src="docs/assets/Diagram_1.png" width="75%" alt="Architecture of Aethelgard" />
 
-<em>Figure 2: The abstract System Design of our protocol. Super-link is built on the basis of message queue</em>
+<em>Figure 2: The abstract System Design of our protocol. Super-link is built on the basis of message queue. 
+  For each component we have a pre-defined interface in our framework - see the classes in `/aethelgard`</em>
 </p>
 
 ### 🏗️ How It Works (The Pure-Pull Workflow)
