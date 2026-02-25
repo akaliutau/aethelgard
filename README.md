@@ -12,6 +12,8 @@ raw data or opening inbound corporate firewalls.
 Unlike traditional federated learning frameworks that focus on *training* models across silos, 
 Aethelgard focuses strictly on *inference and routing*.
 
+See the HQ video presentation [here](https://github.com/akaliutau/aethelgard/raw/main/docs/assets/Project_Aethelgard_demo.mp4)
+
 <p align="center">
 <img src="docs/assets/local_intelligence_node.png" width="85%" alt="Local Intelligence Node" />
 
