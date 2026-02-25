@@ -266,7 +266,8 @@ This ensures that only newly added or modified clinical records are computationa
 <img src="docs/assets/protocol_payload.png" width="85%" alt="payload structure" />
 
 <em>Figure 4: The structure of payload that is used in protocol; 1920-d combined embedding is mixed with noise before broadcasting, 
-the user prompt is added as is</em>
+the user prompt is added as is. For text embeddings we are using `ollama/embeddinggemma` and for CXR images `google/medsiglip-448`. 
+The core logic is in `pipeline/generate_embeddings.py`</em>
 </p>
 
 Aethelgard utilizes strict JSON schemas for all network communication to ensure type safety and seamless cross-node deserialization. The data exchange revolves around three primary payloads:
