@@ -213,19 +213,6 @@ The UI page of application will automatically open in browser.
 4. **Upload:** The client pushes the safe, sanitized insight back to the orchestrator (super-link on the diagram).
 
 
-### 🔌 Extending the Framework
-
-Want to see it in action without configuring Redis? Run the local simulation in 3 lines of code:
-```bash
-pip install aethelgard
-```
-
-```python
-from aethelgard.core.broker import BaseTaskBroker
-```
-TBA
-
-
 ## 🚀 Future Roadmap: Scaling Aethelgard
 
 Aethelgard is a foundation ready for enterprise scaling. Our immediate roadmap focuses on making the protocol completely invisible to the end-user while expanding its security and interoperability:
