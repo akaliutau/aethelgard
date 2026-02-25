@@ -26,14 +26,6 @@ Aethelgard focuses strictly on *inference and routing*.
 * **Semantic Firewall Ready:** Designed to easily integrate local LLM verification (e.g., MedGemma) to sanitize vector search 
 results before they are transmitted back to the global orchestrator.
 
-### 🏗️ Architecture 
-
-<p align="center">
-<img src="docs/assets/Diagram_1.png" width="75%" alt="Architecture of Aethelgard" />
-
-<em>Figure 2: The abstract System Design of our protocol. Super-link is built on the basis of message queue</em>
-</p>
-
 ### 🌌 The Vision
 
 Solving the rare disease "Diagnostic Odyssey" requires more than a single application; it requires a paradigm shift in how 
@@ -52,6 +44,22 @@ We engineered Aethelgard to act as the decentralized nervous system for clinical
 * **Beyond Diagnostics:** While our primary demonstration focuses on rare disease diagnostics, the Aethelgard protocol can be 
   instantly adapted for pharmacovigilance (detecting rare adverse drug reactions globally), multi-center clinical trial matching, 
   and real-time epidemiological tracking - all without moving a single row of raw data.
+
+### 🏗️ Architecture 
+
+<p align="center">
+<img src="docs/assets/Diagram_1.png" width="75%" alt="Architecture of Aethelgard" />
+
+<em>Figure 2: The abstract System Design of our protocol. Super-link is built on the basis of message queue</em>
+</p>
+
+### 🏗️ How It Works (The Pure-Pull Workflow)
+
+1. **Broadcast:** The global orchestrator drops a vectorized query into a secure mailbox (Broker).
+2. **Pull:** The client node (behind a strict hospital firewall) wakes up on its 10-second heartbeat and asks, *"Do I have any mail?"*
+3. **Local RAG:** The client executes a local vector search (e.g., LanceDB) and sanitizes the output.
+4. **Upload:** The client pushes the safe, sanitized insight back to the orchestrator (super-link on the diagram).
+
 
 ### 🧮 Security Innovation: Empirical Noise vs. LDP
 
@@ -204,13 +212,6 @@ If everything is green, run the demo app using profile for the Hospital A:
 python samples/demo_app.py --config profiles/node_a.env
 ```
 The UI page of application will automatically open in browser.
-
-### 🏗️ How It Works (The Pure-Pull Workflow)
-
-1. **Broadcast:** The global orchestrator drops a vectorized query into a secure mailbox (Broker).
-2. **Pull:** The client node (behind a strict hospital firewall) wakes up on its 10-second heartbeat and asks, *"Do I have any mail?"*
-3. **Local RAG:** The client executes a local vector search (e.g., LanceDB) and sanitizes the output.
-4. **Upload:** The client pushes the safe, sanitized insight back to the orchestrator (super-link on the diagram).
 
 
 ## 🚀 Future Roadmap: Scaling Aethelgard
