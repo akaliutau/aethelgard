@@ -217,6 +217,41 @@ python samples/demo_app.py --config profiles/node_a.env
 The UI page of application will automatically open in browser.
 
 
+## 🧩 Core Framework Internals
+
+Aethelgard is engineered strictly on Hexagonal Architecture (Ports and Adapters) to ensure high decoupling between the clinical logic and the infrastructure layer. This design makes the protocol adaptable to any hospital IT environment and allows for easy swapping of backend components.
+
+### 1. The Orchestrator and Broker (State Management)
+The central SuperLink orchestrator operates via a unified REST API (`FastAPIServer`) that maps directly to an abstract `BaseTaskBroker`. 
+This abstraction allows the state management to be instantly swapped from the default Redis implementation to enterprise message queues like Kafka or GCP Pub/Sub without altering the core logic.
+* **Broadcast**: The server drops a new query into the target clients' respective queues.
+* **Poll**: Client nodes securely hit a polling endpoint to pull their pending tasks.
+* **Insight & ACK**: Clients push successfully sanitized insights back to the server and explicitly acknowledge (`ACK`) task completion to safely clear the queue.
+
+<p align="center">
+<img src="docs/assets/swagger.png" width="85%" alt="The super-link API layer" />
+
+<em>Figure 3: The super-link API layer. The current variant is built on the basis of FastAPI and uvicorn (`aethelgard/transports/fastapi_server.py`)</em>
+</p>
+
+### 2. The Edge Node (Pure-Pull Mechanism)
+The `Node` class operates a secure, outbound-only heartbeat loop. By exclusively polling the transport layer for tasks, it completely eliminates the need for inbound corporate firewall ports.
+* Upon receiving a task, the node executes a dependency-injected `search_fn` (acting as the local Semantic Firewall) against the incoming query vector.
+* If a relevant clinical insight is found locally, it securely uploads the sanitized payload.
+* The node strictly guarantees an `ACK` after successful processing (even if no matching data is found) to maintain network consensus integrity.
+
+### 3. The Semantic Firewall 
+The `LiteLLMFirewall` acts as the critical generative security layer between the local vector database and the outbound network. 
+* It executes the local mathematical vector search using a provided retriever function (e.g., against LanceDB).
+* The retrieved raw, highly sensitive clinical text is injected into a specialized Jinja prompt template.
+* A local model—such as MedGemma 4B routed via our LiteLLM middleware—acts as an intelligent sanitizer to synthesize and extract only the relevant clinical protocol.
+* The firewall strictly returns only the sanitized JSON payload and the similarity score, mathematically guaranteeing no raw PHI leaks.
+
+### 4. Local State Synchronization
+To seamlessly manage the local ingestion of EHR notes and medical imaging, Aethelgard implements a `SmartFolder` utility. It acts similarly to a local `git status` tracker, 
+utilizing a lightweight SQLite database to track file modification times and sizes. 
+This ensures that only newly added or modified clinical records are computationally embedded and fused into the local vector store.
+
 ## 🚀 Future Roadmap: Scaling Aethelgard
 
 Aethelgard is a foundation ready for enterprise scaling. Our immediate roadmap focuses on making the protocol completely invisible to the end-user while expanding its security and interoperability:
