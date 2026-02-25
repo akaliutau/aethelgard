@@ -259,8 +259,18 @@ To seamlessly manage the local ingestion of EHR notes and medical imaging, Aethe
 utilizing a lightweight SQLite database to track file modification times and sizes. 
 This ensures that only newly added or modified clinical records are computationally embedded and fused into the local vector store.
 
+### 📡 API Reference
 
-## 📦 Protocol: Payload Structure
+| Method | Endpoint | Description |
+| --- | --- | --- |
+| **POST** | `/api/v1/query/broadcast` | Initiates a federated query. Drops the query payload into the secure queues of all targeted client nodes. |
+| **GET** | `/api/v1/client/{client_id}/poll` | The outbound polling endpoint utilized by hospital nodes to retrieve their pending task queues.  |
+| **POST** | `/api/v1/query/{request_id}/insight` | Endpoint for client nodes to push back their successfully sanitized, localized insights.  |
+| **POST** | `/api/v1/query/{request_id}/ack` | Required endpoint for clients to acknowledge task completion, instructing the broker to drop the task from the active queue. |
+| **GET** | `/api/v1/query/{request_id}/consensus` | Polled by the original requesting client to retrieve the globally aggregated insights once all targeted nodes have responded. |
+
+
+### 📦 Protocol: Payload Structure
 
 <p align="center">
 <img src="docs/assets/protocol_payload.png" width="85%" alt="payload structure" />
