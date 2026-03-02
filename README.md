@@ -17,7 +17,7 @@ See the HQ video presentation [here](https://github.com/akaliutau/aethelgard/raw
 <p align="center">
 <img src="docs/assets/local_intelligence_node.png" width="85%" alt="Local Intelligence Node" />
 
-<em>Figure 1: The concept of UI for the Local Intelligence Node (`samples/demo_app.py`). The current variant is built on the basis of NiceGUI</em>
+<em>Figure 1: The UI for the Local Intelligence Node (`samples/demo_app.py`). The current variant is built on the basis of NiceGUI</em>
 </p>
 
 
@@ -52,7 +52,7 @@ We engineered Aethelgard to act as the decentralized nervous system for clinical
 <p align="center">
 <img src="docs/assets/Diagram_1.png" width="75%" alt="Architecture of Aethelgard" />
 
-<em>Figure 2: The abstract System Design of our protocol. Super-link is built on the basis of message queue. 
+<em>Figure 2: System Design of our protocol. Super-link is built on the basis of message queue. 
   For each component we have a pre-defined interface in our framework - see the classes in `/aethelgard`</em>
 </p>
 
@@ -119,6 +119,75 @@ aethelgard/
 ├── pyproject.toml                # Modern Python packaging configuration
 └── README.md```
 ```
+
+
+## 🧩 Core Framework Internals
+
+Aethelgard is engineered strictly on Hexagonal Architecture (Ports and Adapters) to ensure high decoupling between the clinical logic and the infrastructure layer. This design makes the protocol adaptable to any hospital IT environment and allows for easy swapping of backend components.
+
+### 1. The Orchestrator and Broker (State Management)
+The central SuperLink orchestrator operates via a unified REST API (`FastAPIServer`) that maps directly to an abstract `BaseTaskBroker`. 
+This abstraction allows the state management to be instantly swapped from the default Redis implementation to enterprise message queues like Kafka or GCP Pub/Sub without altering the core logic.
+* **Broadcast**: The server drops a new query into the target clients' respective queues.
+* **Poll**: Client nodes securely hit a polling endpoint to pull their pending tasks.
+* **Insight & ACK**: Clients push successfully sanitized insights back to the server and explicitly acknowledge (`ACK`) task completion to safely clear the queue.
+
+<p align="center">
+<img src="docs/assets/swagger.png" width="85%" alt="The super-link API layer" />
+
+<em>Figure 3: The super-link API layer. The current variant is built on the basis of FastAPI and uvicorn (`aethelgard/transports/fastapi_server.py`)</em>
+</p>
+
+### 2. The Edge Node (Pure-Pull Mechanism)
+The `Node` class operates a secure, outbound-only heartbeat loop. By exclusively polling the transport layer for tasks, it completely eliminates the need for inbound corporate firewall ports.
+* Upon receiving a task, the node executes a dependency-injected `search_fn` (acting as the local Semantic Firewall) against the incoming query vector.
+* If a relevant clinical insight is found locally, it securely uploads the sanitized payload.
+* The node strictly guarantees an `ACK` after successful processing (even if no matching data is found) to maintain network consensus integrity.
+
+### 3. The Semantic Firewall 
+The `LiteLLMFirewall` acts as the critical generative security layer between the local vector database and the outbound network. 
+* It executes the local mathematical vector search using a provided retriever function (e.g., against LanceDB).
+* The retrieved raw, highly sensitive clinical text is injected into a specialized Jinja prompt template.
+* A local model—such as MedGemma 4B routed via our LiteLLM middleware—acts as an intelligent sanitizer to synthesize and extract only the relevant clinical protocol.
+* The firewall strictly returns only the sanitized JSON payload and the similarity score, mathematically guaranteeing no raw PHI leaks.
+
+### 4. Local State Synchronization
+To seamlessly manage the local ingestion of EHR notes and medical imaging, Aethelgard implements a `SmartFolder` utility. It acts similarly to a local `git status` tracker, 
+utilizing a lightweight SQLite database to track file modification times and sizes. 
+This ensures that only newly added or modified clinical records are computationally embedded and fused into the local vector store.
+
+### 📡 API Reference
+
+| Method | Endpoint | Description |
+| --- | --- | --- |
+| **POST** | `/api/v1/query/broadcast` | Initiates a federated query. Drops the query payload into the secure queues of all targeted client nodes. |
+| **GET** | `/api/v1/client/{client_id}/poll` | The outbound polling endpoint utilized by hospital nodes to retrieve their pending task queues.  |
+| **POST** | `/api/v1/query/{request_id}/insight` | Endpoint for client nodes to push back their successfully sanitized, localized insights.  |
+| **POST** | `/api/v1/query/{request_id}/ack` | Required endpoint for clients to acknowledge task completion, instructing the broker to drop the task from the active queue. |
+| **GET** | `/api/v1/query/{request_id}/consensus` | Polled by the original requesting client to retrieve the globally aggregated insights once all targeted nodes have responded. |
+
+
+### 📦 Protocol: Payload Structure
+
+<p align="center">
+<img src="docs/assets/protocol_payload.png" width="85%" alt="payload structure" />
+
+<em>Figure 4: The structure of payload that is used in protocol; 1920-d combined embedding is mixed with noise before broadcasting, 
+the user prompt is added as is. For text embeddings we are using `ollama/embeddinggemma` and for CXR images `google/medsiglip-448`. 
+The core logic is in `pipeline/generate_embeddings.py`</em>
+</p>
+
+Aethelgard utilizes strict JSON schemas for all network communication to ensure type safety and seamless cross-node deserialization. The data exchange revolves around three primary payloads:
+
+* **Clinical Query (`/broadcast`)**: When a doctor initiates a search, the orchestrator receives a payload containing the `query_text` 
+  (the human-readable clinical question), the `query_vector` (the 1920-dimensional fused multimodal embedding, obfuscated with empirical noise), 
+  and the `target_clients` (the list of hospital nodes to poll).
+* **Insight Submission (`/insight`)**: When a remote node successfully finds a match and sanitizes it via the MedGemma Semantic Firewall, 
+  it returns an object containing its `client_id` and the `sanitized_insight` (a JSON string containing the extracted clinical protocol devoid 
+  of Protected Health Information).
+* **Acknowledgment (`/ack`)**: A simple payload containing the `client_id`, sent by the edge node to clear the task from the orchestrator's 
+   processing queue, regardless of whether a semantic match was found.
+
 
 ## ⚡ Quick Start
 
@@ -222,74 +291,6 @@ If everything is green, run the demo app using profile for the Hospital A:
 python samples/demo_app.py --config profiles/node_a.env
 ```
 The UI page of application will automatically open in browser.
-
-
-## 🧩 Core Framework Internals
-
-Aethelgard is engineered strictly on Hexagonal Architecture (Ports and Adapters) to ensure high decoupling between the clinical logic and the infrastructure layer. This design makes the protocol adaptable to any hospital IT environment and allows for easy swapping of backend components.
-
-### 1. The Orchestrator and Broker (State Management)
-The central SuperLink orchestrator operates via a unified REST API (`FastAPIServer`) that maps directly to an abstract `BaseTaskBroker`. 
-This abstraction allows the state management to be instantly swapped from the default Redis implementation to enterprise message queues like Kafka or GCP Pub/Sub without altering the core logic.
-* **Broadcast**: The server drops a new query into the target clients' respective queues.
-* **Poll**: Client nodes securely hit a polling endpoint to pull their pending tasks.
-* **Insight & ACK**: Clients push successfully sanitized insights back to the server and explicitly acknowledge (`ACK`) task completion to safely clear the queue.
-
-<p align="center">
-<img src="docs/assets/swagger.png" width="85%" alt="The super-link API layer" />
-
-<em>Figure 3: The super-link API layer. The current variant is built on the basis of FastAPI and uvicorn (`aethelgard/transports/fastapi_server.py`)</em>
-</p>
-
-### 2. The Edge Node (Pure-Pull Mechanism)
-The `Node` class operates a secure, outbound-only heartbeat loop. By exclusively polling the transport layer for tasks, it completely eliminates the need for inbound corporate firewall ports.
-* Upon receiving a task, the node executes a dependency-injected `search_fn` (acting as the local Semantic Firewall) against the incoming query vector.
-* If a relevant clinical insight is found locally, it securely uploads the sanitized payload.
-* The node strictly guarantees an `ACK` after successful processing (even if no matching data is found) to maintain network consensus integrity.
-
-### 3. The Semantic Firewall 
-The `LiteLLMFirewall` acts as the critical generative security layer between the local vector database and the outbound network. 
-* It executes the local mathematical vector search using a provided retriever function (e.g., against LanceDB).
-* The retrieved raw, highly sensitive clinical text is injected into a specialized Jinja prompt template.
-* A local model—such as MedGemma 4B routed via our LiteLLM middleware—acts as an intelligent sanitizer to synthesize and extract only the relevant clinical protocol.
-* The firewall strictly returns only the sanitized JSON payload and the similarity score, mathematically guaranteeing no raw PHI leaks.
-
-### 4. Local State Synchronization
-To seamlessly manage the local ingestion of EHR notes and medical imaging, Aethelgard implements a `SmartFolder` utility. It acts similarly to a local `git status` tracker, 
-utilizing a lightweight SQLite database to track file modification times and sizes. 
-This ensures that only newly added or modified clinical records are computationally embedded and fused into the local vector store.
-
-### 📡 API Reference
-
-| Method | Endpoint | Description |
-| --- | --- | --- |
-| **POST** | `/api/v1/query/broadcast` | Initiates a federated query. Drops the query payload into the secure queues of all targeted client nodes. |
-| **GET** | `/api/v1/client/{client_id}/poll` | The outbound polling endpoint utilized by hospital nodes to retrieve their pending task queues.  |
-| **POST** | `/api/v1/query/{request_id}/insight` | Endpoint for client nodes to push back their successfully sanitized, localized insights.  |
-| **POST** | `/api/v1/query/{request_id}/ack` | Required endpoint for clients to acknowledge task completion, instructing the broker to drop the task from the active queue. |
-| **GET** | `/api/v1/query/{request_id}/consensus` | Polled by the original requesting client to retrieve the globally aggregated insights once all targeted nodes have responded. |
-
-
-### 📦 Protocol: Payload Structure
-
-<p align="center">
-<img src="docs/assets/protocol_payload.png" width="85%" alt="payload structure" />
-
-<em>Figure 4: The structure of payload that is used in protocol; 1920-d combined embedding is mixed with noise before broadcasting, 
-the user prompt is added as is. For text embeddings we are using `ollama/embeddinggemma` and for CXR images `google/medsiglip-448`. 
-The core logic is in `pipeline/generate_embeddings.py`</em>
-</p>
-
-Aethelgard utilizes strict JSON schemas for all network communication to ensure type safety and seamless cross-node deserialization. The data exchange revolves around three primary payloads:
-
-* **Clinical Query (`/broadcast`)**: When a doctor initiates a search, the orchestrator receives a payload containing the `query_text` 
-  (the human-readable clinical question), the `query_vector` (the 1920-dimensional fused multimodal embedding, obfuscated with empirical noise), 
-  and the `target_clients` (the list of hospital nodes to poll).
-* **Insight Submission (`/insight`)**: When a remote node successfully finds a match and sanitizes it via the MedGemma Semantic Firewall, 
-  it returns an object containing its `client_id` and the `sanitized_insight` (a JSON string containing the extracted clinical protocol devoid 
-  of Protected Health Information).
-* **Acknowledgment (`/ack`)**: A simple payload containing the `client_id`, sent by the edge node to clear the task from the orchestrator's 
-   processing queue, regardless of whether a semantic match was found.
 
 
 
