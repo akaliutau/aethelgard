@@ -10,7 +10,8 @@
 It allows you to query highly sensitive, distributed vector databases (like clinical patient data) without ever moving 
 raw data or opening inbound corporate firewalls.
 Unlike traditional federated learning frameworks that focus on *training* models across silos, 
-Aethelgard focuses strictly on *inference and routing*.
+Aethelgard focuses strictly on *inference and routing*. If deployed, Aethelgard could eliminate millions of years of diagnostic 
+waiting time without requiring a single Data Use Agreement (DUA), creating a scalable infrastructure for global clinical consensus.
 
 See the HQ video presentation [here](https://github.com/akaliutau/aethelgard/raw/main/docs/assets/Project_Aethelgard_demo.mp4)
 
@@ -313,6 +314,18 @@ Aethelgard is a foundation ready for enterprise scaling. Our immediate roadmap f
 - [ ] **gRPC Multiplexing:** Upgrade the FastAPI/HTTPX transports to multiplexed **gRPC** to support low-latency, high-volume vector polling 
         across tens of thousands of concurrent hospital nodes globally.
 
+## 📝 Citation
+If you use Aethelgard or our Empirical Noise methodology in your research, please cite our work:
+
+```
+@misc{kaliutau2024aethelgard,
+  title={Project Aethelgard: Decentralized Clinical Intelligence via Federated RAG},
+  author={Kaliutau, Aliaksei},
+  year={2026},
+  howpublished={\url{https://github.com/akaliutau/aethelgard}},
+  note={Built for the MedGemma Impact Challenge}
+}
+```
 
 ## ⚖️ License
 
